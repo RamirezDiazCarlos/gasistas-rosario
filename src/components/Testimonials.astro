@@ -1,0 +1,125 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    name: "Verónica Insúa",
+    role: "Propietaria, Pichincha",
+    text: "Encontré a Claudia en minutos. Vino el mismo día a revisar una pérdida de gas. Explicó todo con claridad, trabajo impecable y con garantía por escrito.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Martín Brizuela",
+    role: "Local gastronómico, Centro",
+    text: "Necesitaba habilitación municipal urgente para abrir. María Eugenia gestionó todo en tiempo récord. Sin el directorio no hubiera dado con alguien tan especializado.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Analía Funes",
+    role: "Inquilina, Fisherton",
+    text: "Roberto me hizo el certificado de instalación para renovar el contrato. Puntual, prolijo y a precio justo. Lo recomendaría sin dudarlo.",
+    rating: 5,
+  },
+];
+---
+
+<section class="py-20 sm:py-28 bg-warm-50 border-t border-warm-200/60 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex flex-col lg:flex-row lg:items-end gap-6 mb-14 scroll-reveal">
+      <div class="flex-1">
+        <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
+          Vecinos que encontraron su gasista
+        </p>
+        <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+          Lo que dicen<br/>los clientes.
+        </h2>
+      </div>
+
+      <div class="flex-shrink-0 self-end pb-1 hidden sm:block" aria-hidden="true">
+        <svg width="72" height="56" viewBox="0 0 72 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0 56V33.6C0 24.4 2.05333 16.8 6.16 10.8C10.2667 4.6 16.2133 1.33333 24 0.8L26.4 6.4C21.0667 7.6 16.8 10.4 13.6 14.8C10.4 19.2 8.8 24.2667 8.8 30H20.8V56H0ZM41.6 56V33.6C41.6 24.4 43.6533 16.8 47.76 10.8C51.8667 4.6 57.8133 1.33333 65.6 0.8L68 6.4C62.6667 7.6 58.4 10.4 55.2 14.8C52 19.2 50.4 24.2667 50.4 30H62.4V56H41.6Z"
+            fill="#e07418"
+            opacity="0.12"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] gap-5 stagger-children">
+      {testimonials.map((t, i) => (
+        <article
+          class:list={[
+            "relative flex flex-col rounded-2xl p-6 border transition-shadow duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+            i === 0
+              ? "bg-dark border-white/[0.07] lg:row-span-1 hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.4)]"
+              : "bg-white border-warm-200/70 hover:shadow-[0_8px_32px_-12px_rgba(0,0,0,0.1)]"
+          ]}
+          aria-label={`Testimonio de ${t.name}`}
+        >
+          <div
+            class:list={[
+              "absolute top-5 right-5 font-display font-800 text-7xl leading-none select-none pointer-events-none",
+              i === 0 ? "text-flame/10" : "text-warm-200"
+            ]}
+            aria-hidden="true"
+          >
+            "
+          </div>
+
+          <div class="flex gap-0.5 mb-5" aria-label={`${t.rating} de 5 estrellas`} role="img">
+            {Array.from({ length: t.rating }).map(() => (
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M6.5 1L8.09 4.26L11.6 4.77L9.05 7.24L9.68 10.73L6.5 9.05L3.32 10.73L3.95 7.24L1.4 4.77L4.91 4.26L6.5 1Z"
+                  fill="#f59e0b" stroke="#f59e0b" stroke-width="0.5" stroke-linejoin="round"/>
+              </svg>
+            ))}
+          </div>
+
+          <blockquote
+            class:list={[
+              "text-sm sm:text-[15px] leading-relaxed flex-1 mb-6 relative z-10",
+              i === 0 ? "text-white/75" : "text-warm-900/80"
+            ]}
+          >
+            "{t.text}"
+          </blockquote>
+
+          <footer class:list={[
+            "flex items-center gap-3 pt-4 border-t",
+            i === 0 ? "border-white/[0.08]" : "border-warm-100"
+          ]}>
+            <div
+              class:list={[
+                "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-display font-700",
+                i === 0
+                  ? "bg-flame/20 text-flame border border-flame/20"
+                  : "bg-flame/10 text-flame border border-flame/15"
+              ]}
+              aria-hidden="true"
+            >
+              {t.name.charAt(0)}
+            </div>
+            <div class="min-w-0">
+              <p class:list={[
+                "font-display font-700 text-sm leading-none mb-0.5 truncate",
+                i === 0 ? "text-white" : "text-dark"
+              ]}>
+                {t.name}
+              </p>
+              <p class:list={[
+                "text-xs truncate",
+                i === 0 ? "text-white/35" : "text-warm-800/60"
+              ]}>
+                {t.role}
+              </p>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>

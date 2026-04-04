@@ -1,0 +1,116 @@
+---
+import gasistas from '../data/gasistas.json';
+import GasistaCard from './GasistaCard.astro';
+
+const sorted = [...gasistas].sort((a, b) => {
+  if (a.featured && !b.featured) return -1;
+  if (!a.featured && b.featured) return 1;
+  return b.rating - a.rating;
+});
+---
+
+<section id="profesionales" class="py-20 sm:py-24 bg-warm-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-12 scroll-reveal">
+      <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
+        Profesionales habilitados
+      </p>
+      <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-3">
+        Profesionales<br class="hidden sm:block"/> disponibles
+      </h2>
+      <p class="text-warm-800/70 text-base max-w-sm">
+        Contactalos directo — matrícula y zonas en cada perfil.
+      </p>
+    </div>
+
+    <div id="gasista-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 stagger-children">
+      {sorted.map(gasista => (
+        <div
+          data-card
+          data-zones={gasista.zones.join(',')}
+          data-services={gasista.services.join(',')}
+        >
+          <GasistaCard gasista={gasista} />
+        </div>
+      ))}
+    </div>
+
+    <!-- sin resultados -->
+    <div id="no-results" class="hidden py-20 flex flex-col items-center text-center">
+      <div class="w-12 h-12 rounded-2xl bg-warm-100 border border-warm-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-warm-800/50" aria-hidden="true">
+          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 9H11M9 7V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="font-display font-700 text-dark text-base mb-1">Sin resultados</p>
+      <p class="text-warm-800/60 text-sm max-w-xs">Probá con otros filtros o limpiá la búsqueda.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="como-funciona" class="py-20 sm:py-24 bg-white border-t border-warm-200/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="mb-14 scroll-reveal">
+      <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
+        Sin intermediarios
+      </p>
+      <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl tracking-tight leading-tight">
+        Tres pasos,<br/> sin vueltas.
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 stagger-children">
+
+      {[
+        {
+          n: "01",
+          title: "Filtrá por zona o servicio",
+          body: "Elegí el barrio que necesitás y el tipo de trabajo que querés hacer.",
+        },
+        {
+          n: "02",
+          title: "Revisá el perfil",
+          body: "Verificá matrícula, zonas, calificaciones y descripción del profesional.",
+        },
+        {
+          n: "03",
+          title: "Contactá por WhatsApp",
+          body: "Directo con el gasista, sin comisiones ni formularios.",
+        },
+      ].map(({ n, title, body }, i) => (
+        <div class="relative flex flex-col gap-5 px-0 sm:pr-10 lg:pr-16 pb-10 sm:pb-0">
+          <div class="relative w-fit">
+            <span
+              class="font-display font-800 text-[80px] leading-none tracking-[-0.04em] select-none"
+              style="color: transparent; -webkit-text-stroke: 1.5px rgba(224,116,24,0.2);"
+              aria-hidden="true"
+            >
+              {n}
+            </span>
+            <span class="absolute -bottom-1 left-1 w-2 h-2 rounded-full bg-flame/50 inline-block"></span>
+          </div>
+
+          <div>
+            <h3 class="font-display font-700 text-dark text-base mb-2">{title}</h3>
+            <p class="text-warm-800/60 text-sm leading-relaxed max-w-[220px]">{body}</p>
+          </div>
+
+          <!-- línea entre pasos (solo desktop) -->
+          {i < 2 && (
+            <div
+              class="hidden sm:block absolute top-10 right-0 w-8 lg:w-10 h-px"
+              style="background: linear-gradient(to right, rgba(224,116,24,0.25), rgba(224,116,24,0.05));"
+              aria-hidden="true"
+            />
+          )}
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>

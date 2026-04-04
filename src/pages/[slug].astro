@@ -1,0 +1,292 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import gasistas from '../data/gasistas.json';
+import AvatarPlaceholder from '../components/AvatarPlaceholder.astro';
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return gasistas.map(g => ({
+    params: { slug: g.slug },
+    props: { gasista: g },
+  }));
+};
+
+interface Gasista {
+  id: string;
+  slug: string;
+  name: string;
+  photo: string;
+  matricula: string;
+  zones: string[];
+  services: string[];
+  phone: string;
+  rating: number;
+  reviews: number;
+  featured: boolean;
+  description: string;
+}
+
+const { gasista } = Astro.props as { gasista: Gasista };
+
+const waLink = `https://wa.me/${gasista.phone}`;
+const fullStars = Math.floor(gasista.rating);
+const hasHalf = gasista.rating % 1 >= 0.5;
+const emptyStars = 5 - fullStars - (hasHalf ? 1 : 0);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": `https://gasistasrosario.com.ar/${gasista.slug}#business`,
+      "name": `${gasista.name} — Gasista Matriculado`,
+      "description": gasista.description,
+      "telephone": `+${gasista.phone}`,
+      "image": gasista.photo,
+      "priceRange": "$$",
+      "areaServed": gasista.zones.map((z: string) => ({
+        "@type": "Place",
+        "name": `${z}, Rosario, Santa Fe, Argentina`
+      })),
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rosario",
+        "addressRegion": "Santa Fe",
+        "addressCountry": "AR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": gasista.rating,
+        "reviewCount": gasista.reviews,
+        "bestRating": 5,
+        "worstRating": 1
+      },
+      "additionalProperty": {
+        "@type": "PropertyValue",
+        "name": "Matrícula ENARGAS",
+        "value": gasista.matricula
+      },
+      "url": `https://gasistasrosario.com.ar/${gasista.slug}`,
+      "sameAs": [`https://wa.me/${gasista.phone}`]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://gasistasrosario.com.ar"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Profesionales",
+          "item": "https://gasistasrosario.com.ar/#profesionales"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": gasista.name,
+          "item": `https://gasistasrosario.com.ar/${gasista.slug}`
+        }
+      ]
+    }
+  ]
+};
+---
+
+<Layout
+  title={`${gasista.name} — Gasista en Rosario | GasistasRosario`}
+  description={`${gasista.name}, gasista matriculado ${gasista.matricula} en Rosario. ${gasista.services.slice(0, 3).join(', ')}. Zonas: ${gasista.zones.join(', ')}. Contactalo por WhatsApp.`}
+  ogImage={gasista.photo}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} slot="head" />
+
+  <Header />
+
+  <main id="main-content">
+
+    <div class="bg-dark pt-10 pb-0">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <a
+          href="/#profesionales"
+          class="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-sm font-medium transition-colors mb-8"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M13 8H3M7 4L3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Volver al directorio
+        </a>
+      </div>
+    </div>
+
+    <div class="bg-dark pb-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+
+          <div class="relative flex-shrink-0">
+            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-white/10">
+              <AvatarPlaceholder name={gasista.name} />
+            </div>
+            {gasista.featured && (
+              <span class="absolute -top-2 -right-2 inline-flex items-center gap-1 bg-flame text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg uppercase tracking-wide">
+                <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                  <path d="M5 1L6.2 3.6L9 4L7 5.9L7.5 8.6L5 7.3L2.5 8.6L3 5.9L1 4L3.8 3.6L5 1Z" fill="currentColor"/>
+                </svg>
+                Destacado
+              </span>
+            )}
+          </div>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-2.5 py-1 rounded-md">
+                {gasista.matricula}
+              </span>
+              <span class="text-xs text-white/30 font-medium">Matrícula registrada</span>
+            </div>
+
+            <h1 class="font-display font-800 text-white text-3xl sm:text-4xl tracking-tight leading-tight mb-3">
+              {gasista.name}
+            </h1>
+
+            <div class="flex items-center gap-2 mb-4" aria-label={`Calificación: ${gasista.rating} de 5. ${gasista.reviews} reseñas`} role="img">
+              <div class="flex items-center gap-0.5">
+                {Array.from({ length: fullStars }).map(() => (
+                  <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M7 1L8.854 4.757L13 5.382L10 8.307L10.708 12.236L7 10.27L3.292 12.236L4 8.307L1 5.382L5.146 4.757L7 1Z" fill="#f59e0b" stroke="#f59e0b" stroke-width="0.5" stroke-linejoin="round"/>
+                  </svg>
+                ))}
+                {hasHalf && (
+                  <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="half-profile" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="50%" stop-color="#f59e0b"/>
+                        <stop offset="50%" stop-color="#3d322b"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M7 1L8.854 4.757L13 5.382L10 8.307L10.708 12.236L7 10.27L3.292 12.236L4 8.307L1 5.382L5.146 4.757L7 1Z" fill="url(#half-profile)" stroke="#f59e0b" stroke-width="0.5" stroke-linejoin="round"/>
+                  </svg>
+                )}
+                {Array.from({ length: emptyStars }).map(() => (
+                  <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M7 1L8.854 4.757L13 5.382L10 8.307L10.708 12.236L7 10.27L3.292 12.236L4 8.307L1 5.382L5.146 4.757L7 1Z" fill="#3d322b" stroke="#3d322b" stroke-width="0.5" stroke-linejoin="round"/>
+                  </svg>
+                ))}
+              </div>
+              <span class="text-white font-semibold">{gasista.rating}</span>
+              <span class="text-white/40 text-sm">· {gasista.reviews} reseñas</span>
+            </div>
+
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-semibold px-5 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-[#25D366]/20 text-sm"
+              aria-label={`Contactar a ${gasista.name} por WhatsApp`}
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 1C4.582 1 1 4.582 1 9C1 10.549 1.424 12.003 2.163 13.249L1 17L4.851 15.864C6.065 16.544 7.487 16.936 9 16.936C13.418 16.936 17 13.354 17 8.936 17 4.518 13.418 1 9 1ZM6.543 5.759C6.368 5.759 6.083 5.821 5.842 6.079C5.602 6.337 4.917 6.974 4.917 8.271C4.917 9.568 5.863 10.823 5.99 10.997C6.117 11.171 7.733 13.618 10.155 14.728C12.163 15.65 12.563 15.494 13.001 15.455C13.439 15.415 14.418 14.833 14.641 14.228C14.863 13.623 14.863 13.104 14.800 12.999C14.737 12.894 14.557 12.831 14.297 12.708C14.038 12.584 12.736 11.940 12.495 11.855C12.254 11.770 12.075 11.728 11.896 11.977C11.717 12.226 11.218 12.831 11.063 12.999C10.908 13.167 10.753 13.189 10.493 13.066C10.234 12.942 9.407 12.674 8.434 11.804C7.677 11.126 7.162 10.288 7.007 10.040C6.852 9.791 6.993 9.657 7.119 9.532C7.232 9.421 7.372 9.240 7.499 9.093C7.625 8.946 7.666 8.843 7.751 8.668C7.836 8.493 7.793 8.346 7.730 8.223C7.666 8.100 7.170 6.798 6.944 6.248C6.726 5.713 6.504 5.783 6.337 5.774L6.543 5.759Z" fill="white"/>
+              </svg>
+              Contactar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-warm-50 border-t border-warm-200">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-12">
+
+          <div>
+            <section class="mb-8">
+              <h2 class="font-display font-700 text-dark text-xl mb-3">Sobre el profesional</h2>
+              <p class="text-warm-900 text-base leading-relaxed">{gasista.description}</p>
+            </section>
+
+            <section class="mb-8">
+              <h2 class="font-display font-700 text-dark text-xl mb-3">Servicios</h2>
+              <div class="flex flex-wrap gap-2">
+                {gasista.services.map(s => (
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium text-warm-900 bg-white border border-warm-200 px-3 py-1.5 rounded-lg shadow-sm">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-flame">
+                      <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/>
+                      <path d="M4 6L5.5 7.5L8 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h2 class="font-display font-700 text-dark text-xl mb-3">Zonas que cubre</h2>
+              <div class="flex flex-wrap gap-2">
+                {gasista.zones.map(z => (
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium text-warm-900 bg-white border border-warm-200 px-3 py-1.5 rounded-lg shadow-sm">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-warm-800">
+                      <path d="M6 1C4.343 1 3 2.343 3 4C3 6.5 6 11 6 11C6 11 9 6.5 9 4C9 2.343 7.657 1 6 1Z" stroke="currentColor" stroke-width="1.3"/>
+                      <circle cx="6" cy="4" r="1.3" fill="currentColor"/>
+                    </svg>
+                    {z}
+                  </span>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <aside>
+            <div class="bg-white rounded-2xl border border-warm-200 shadow-sm p-5 sticky top-24">
+
+              <h3 class="font-display font-700 text-dark text-base mb-4">Contacto directo</h3>
+
+              <a
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-semibold px-4 py-3 rounded-xl transition-all duration-200 shadow-md shadow-[#25D366]/20 text-sm mb-4"
+                aria-label={`Contactar a ${gasista.name} por WhatsApp`}
+              >
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 1C4.582 1 1 4.582 1 9C1 10.549 1.424 12.003 2.163 13.249L1 17L4.851 15.864C6.065 16.544 7.487 16.936 9 16.936C13.418 16.936 17 13.354 17 8.936 17 4.518 13.418 1 9 1ZM6.543 5.759C6.368 5.759 6.083 5.821 5.842 6.079C5.602 6.337 4.917 6.974 4.917 8.271C4.917 9.568 5.863 10.823 5.99 10.997C6.117 11.171 7.733 13.618 10.155 14.728C12.163 15.65 12.563 15.494 13.001 15.455C13.439 15.415 14.418 14.833 14.641 14.228C14.863 13.623 14.863 13.104 14.800 12.999C14.737 12.894 14.557 12.831 14.297 12.708C14.038 12.584 12.736 11.940 12.495 11.855C12.254 11.770 12.075 11.728 11.896 11.977C11.717 12.226 11.218 12.831 11.063 12.999C10.908 13.167 10.753 13.189 10.493 13.066C10.234 12.942 9.407 12.674 8.434 11.804C7.677 11.126 7.162 10.288 7.007 10.040C6.852 9.791 6.993 9.657 7.119 9.532C7.232 9.421 7.372 9.240 7.499 9.093C7.625 8.946 7.666 8.843 7.751 8.668C7.836 8.493 7.793 8.346 7.730 8.223C7.666 8.100 7.170 6.798 6.944 6.248C6.726 5.713 6.504 5.783 6.337 5.774L6.543 5.759Z" fill="white"/>
+                </svg>
+                Abrir WhatsApp
+              </a>
+
+              <div class="border-t border-warm-100 pt-4">
+                <div class="flex flex-col gap-2.5">
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-warm-800">Matrícula</span>
+                    <span class="text-xs font-mono font-semibold text-dark">{gasista.matricula}</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-warm-800">Calificación</span>
+                    <span class="text-xs font-semibold text-dark">{gasista.rating} / 5 ({gasista.reviews} reseñas)</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs text-warm-800">Ciudad</span>
+                    <span class="text-xs font-semibold text-dark">Rosario, Santa Fe</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-xs text-warm-800 mt-4 leading-relaxed border-t border-warm-100 pt-4">
+                Verificá la matrícula en el <a href="https://www.litoral-gas.com.ar/site/hogares-y-comercios/info-y-tramites/listado-de-gasistas-y-profesionales/" target="_blank" rel="noopener noreferrer" class="text-flame underline underline-offset-2 hover:text-flame-dark">listado oficial de Litoral Gas</a> antes de contratar.
+              </p>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>

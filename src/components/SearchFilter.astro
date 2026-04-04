@@ -1,0 +1,119 @@
+---
+import gasistas from '../data/gasistas.json';
+
+const allZones = [...new Set(gasistas.flatMap(g => g.zones))].sort((a, b) => a.localeCompare(b, 'es'));
+const allServices = [...new Set(gasistas.flatMap(g => g.services))].sort((a, b) => a.localeCompare(b, 'es'));
+const total = gasistas.length;
+---
+
+<div class="sticky top-[68px] z-40 pointer-events-none">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 pointer-events-auto">
+    <div class="bg-white/95 backdrop-blur-2xl border border-warm-200/60 rounded-2xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.1),0_0_0_1px_rgba(0,0,0,0.02)] px-4 sm:px-5">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 py-3">
+
+      <!-- zona -->
+      <div class="flex items-center gap-2">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" class="text-warm-800/60 flex-shrink-0" aria-hidden="true">
+          <path d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="6.5" cy="4.5" r="1.4" fill="currentColor"/>
+        </svg>
+        <label for="filter-zone" class="text-[12px] font-medium text-warm-800/70 whitespace-nowrap">Zona</label>
+        <div class="relative">
+          <select
+            id="filter-zone"
+            class="appearance-none bg-warm-50/80 border border-warm-200/80 text-warm-900 text-[12px] font-medium rounded-xl px-3 py-1.5 pr-7 focus:outline-none focus:ring-2 focus:ring-flame/20 focus:border-flame/50 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
+          >
+            <option value="">Todas las zonas</option>
+            {allZones.map((z: string) => <option value={z}>{z}</option>)}
+          </select>
+          <svg width="9" height="5" viewBox="0 0 9 5" fill="none" class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-warm-800/50" aria-hidden="true">
+            <path d="M1 1L4.5 4L8 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="hidden sm:block w-px h-4 bg-warm-200" aria-hidden="true"></div>
+
+      <!-- servicio -->
+      <div class="flex items-center gap-2">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" class="text-warm-800/60 flex-shrink-0" aria-hidden="true">
+          <path d="M2 10L4.5 7.5L2 5L4.5 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 2.5H11M7 6.5H11M7 10.5H9.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <label for="filter-service" class="text-[12px] font-medium text-warm-800/70 whitespace-nowrap">Servicio</label>
+        <div class="relative">
+          <select
+            id="filter-service"
+            class="appearance-none bg-warm-50/80 border border-warm-200/80 text-warm-900 text-[12px] font-medium rounded-xl px-3 py-1.5 pr-7 focus:outline-none focus:ring-2 focus:ring-flame/20 focus:border-flame/50 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] cursor-pointer"
+          >
+            <option value="">Todos los servicios</option>
+            {allServices.map((s: string) => <option value={s}>{s}</option>)}
+          </select>
+          <svg width="9" height="5" viewBox="0 0 9 5" fill="none" class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-warm-800/50" aria-hidden="true">
+            <path d="M1 1L4.5 4L8 1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="sm:ml-auto flex items-center gap-3">
+        <p id="result-count" class="text-[12px] text-warm-800/60">
+          <span id="count-number" class="font-semibold text-warm-900/80">{total}</span>
+          <span id="count-label"> profesionales</span>
+        </p>
+        <button
+          id="reset-filters"
+          class="hidden text-[11px] text-flame hover:text-flame-dark font-semibold underline underline-offset-2 transition-colors duration-200"
+          aria-label="Limpiar filtros"
+        >
+          Limpiar
+        </button>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const zoneSelect = document.getElementById('filter-zone') as HTMLSelectElement | null;
+  const serviceSelect = document.getElementById('filter-service') as HTMLSelectElement | null;
+  const resetBtn = document.getElementById('reset-filters');
+  const countNumber = document.getElementById('count-number');
+  const countLabel = document.getElementById('count-label');
+  const noResults = document.getElementById('no-results');
+
+  const updateCount = (n: number) => {
+    if (countNumber) countNumber.textContent = String(n);
+    if (countLabel) countLabel.textContent = n === 1 ? ' profesional' : ' profesionales';
+  };
+
+  const filterCards = () => {
+    const zone = zoneSelect?.value ?? '';
+    const service = serviceSelect?.value ?? '';
+    const cards = document.querySelectorAll<HTMLElement>('[data-card]');
+    let visible = 0;
+
+    cards.forEach(card => {
+      const zones = card.dataset.zones?.split(',').map(z => z.trim()) ?? [];
+      const services = card.dataset.services?.split(',').map(s => s.trim()) ?? [];
+      const show = (zone === '' || zones.includes(zone)) && (service === '' || services.includes(service));
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+
+    updateCount(visible);
+    const hasFilter = zone !== '' || service !== '';
+    if (resetBtn) resetBtn.classList.toggle('hidden', !hasFilter);
+    if (noResults) noResults.classList.toggle('hidden', visible > 0);
+  };
+
+  const resetFilters = () => {
+    if (zoneSelect) zoneSelect.value = '';
+    if (serviceSelect) serviceSelect.value = '';
+    filterCards();
+  };
+
+  zoneSelect?.addEventListener('change', filterCards);
+  serviceSelect?.addEventListener('change', filterCards);
+  resetBtn?.addEventListener('click', resetFilters);
+</script>

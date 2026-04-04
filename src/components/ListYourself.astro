@@ -1,0 +1,289 @@
+---
+const services = [
+  "Instalación",
+  "Reparación",
+  "Certificado",
+  "Detección de pérdidas",
+  "Calderas",
+  "Habilitación comercial",
+  "Urgencias 24hs",
+];
+---
+
+<section id="listar" class="bg-dark py-16 lg:py-20 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-16 items-start">
+
+      <div class="lg:sticky lg:top-28 relative">
+
+        <!-- anillos decorativos de fondo -->
+        <div class="absolute -bottom-8 -right-4 pointer-events-none select-none" aria-hidden="true">
+          <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.12">
+            <!-- Outer ring -->
+            <circle cx="140" cy="140" r="130" stroke="#e07418" stroke-width="1" stroke-dasharray="4 6"/>
+            <!-- Mid ring -->
+            <circle cx="140" cy="140" r="100" stroke="#e07418" stroke-width="1" stroke-dasharray="3 5"/>
+            <!-- Inner ring -->
+            <circle cx="140" cy="140" r="70" stroke="#e07418" stroke-width="1.5" stroke-dasharray="2 4"/>
+            <!-- Burner ring -->
+            <circle cx="140" cy="140" r="44" stroke="#e07418" stroke-width="1.5"/>
+            <!-- Burner ports -->
+            <circle cx="140" cy="96" r="3" fill="#e07418"/>
+            <circle cx="168" cy="103" r="3" fill="#e07418"/>
+            <circle cx="184" cy="128" r="3" fill="#e07418"/>
+            <circle cx="184" cy="152" r="3" fill="#e07418"/>
+            <circle cx="168" cy="177" r="3" fill="#e07418"/>
+            <circle cx="140" cy="184" r="3" fill="#e07418"/>
+            <circle cx="112" cy="177" r="3" fill="#e07418"/>
+            <circle cx="96" cy="152" r="3" fill="#e07418"/>
+            <circle cx="96" cy="128" r="3" fill="#e07418"/>
+            <circle cx="112" cy="103" r="3" fill="#e07418"/>
+            <!-- Center -->
+            <circle cx="140" cy="140" r="8" stroke="#e07418" stroke-width="1.5"/>
+            <circle cx="140" cy="140" r="2.5" fill="#e07418"/>
+            <!-- Cross hairs -->
+            <line x1="140" y1="132" x2="140" y2="148" stroke="#e07418" stroke-width="1"/>
+            <line x1="132" y1="140" x2="148" y2="140" stroke="#e07418" stroke-width="1"/>
+          </svg>
+        </div>
+
+        <span class="inline-flex items-center text-xs font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-3 py-1.5 rounded-full uppercase tracking-widest mb-6">
+          Para profesionales
+        </span>
+
+        <h2 class="font-display font-800 text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
+          ¿Sos gasista<br/>
+          <span class="text-flame">matriculado</span>?
+        </h2>
+
+        <p class="text-white/55 text-base leading-relaxed mb-8 max-w-md">
+          Publicá tu perfil en GasistasRosario y recibí consultas directas por WhatsApp de clientes en tu zona. Sin comisiones, sin intermediarios.
+        </p>
+
+        <ul class="flex flex-col gap-3" role="list">
+          {[
+            "Perfil con tus datos, zonas y servicios",
+            "Contacto directo vía WhatsApp",
+            "Sin comisiones por trabajo realizado",
+            "Opción de perfil destacado disponible",
+            "Tu matrícula como diferencial",
+          ].map(benefit => (
+            <li class="flex items-start gap-3 text-sm text-white/65">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 mt-0.5 text-flame" aria-hidden="true">
+                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {benefit}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="bg-dark-2 rounded-2xl border border-white/10 p-6 sm:p-8">
+
+        <h3 class="font-display font-700 text-white text-xl mb-1">Enviá tu solicitud</h3>
+        <p class="text-white/45 text-sm mb-6">Te contactamos en menos de 48hs para activar tu perfil.</p>
+
+        <!-- Netlify Form -->
+        <form
+          name="gasista-listing"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="listing-form"
+          class="flex flex-col gap-5"
+          novalidate
+        >
+          <!-- honeypot anti-spam -->
+          <input type="hidden" name="form-name" value="gasista-listing" />
+          <p class="hidden" aria-hidden="true">
+            <label>No completar: <input name="bot-field" /></label>
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1.5">
+              <label for="f-name" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+                Nombre completo <span class="text-flame" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="f-name"
+                name="nombre"
+                required
+                autocomplete="name"
+                placeholder="Ej: Carlos Rodríguez"
+                class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors"
+              />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="f-phone" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+                Teléfono / WhatsApp <span class="text-flame" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="tel"
+                id="f-phone"
+                name="telefono"
+                required
+                autocomplete="tel"
+                placeholder="Ej: 341 4123456"
+                class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors"
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="f-email" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+              Email <span class="text-flame" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="email"
+              id="f-email"
+              name="email"
+              required
+              autocomplete="email"
+              placeholder="tu@email.com"
+              class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors"
+            />
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="f-matricula" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+              Número de matrícula <span class="text-flame" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="f-matricula"
+              name="matricula"
+              required
+              placeholder="Ej: MAT-00234"
+              class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors font-mono"
+            />
+            <p class="text-xs text-white/35">Confirmamos tu matrícula antes de publicar el perfil.</p>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="f-zones" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+              Zonas que cubrís <span class="text-flame" aria-hidden="true">*</span>
+            </label>
+            <input
+              type="text"
+              id="f-zones"
+              name="zonas"
+              required
+              placeholder="Ej: Fisherton, Las Delicias, Tablada"
+              class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors"
+            />
+            <p class="text-xs text-white/35">Ingresá los barrios separados por coma.</p>
+          </div>
+
+          <fieldset>
+            <legend class="text-xs font-semibold text-white/60 uppercase tracking-wide mb-3">
+              Servicios que ofrecés <span class="text-flame" aria-hidden="true">*</span>
+            </legend>
+            <div class="grid grid-cols-2 gap-2">
+              {services.map(s => (
+                <label class="flex items-center gap-2.5 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    name="servicios"
+                    value={s}
+                    class="w-4 h-4 rounded border border-white/20 bg-dark-3 text-flame accent-flame cursor-pointer"
+                  />
+                  <span class="text-sm text-white/60 group-hover:text-white/80 transition-colors">{s}</span>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <div class="flex flex-col gap-1.5">
+            <label for="f-desc" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+              Descripción breve
+            </label>
+            <textarea
+              id="f-desc"
+              name="descripcion"
+              rows="3"
+              placeholder="Contá brevemente tu experiencia y especialidad..."
+              class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full inline-flex items-center justify-center gap-2 bg-flame hover:bg-flame-dark active:scale-[0.99] text-white font-semibold text-base px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-flame/20 mt-1"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Enviar solicitud
+          </button>
+
+          <!-- éxito -->
+          <div id="form-success" class="hidden rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-3.5">
+            <p class="text-[#25D366] text-sm font-semibold">
+              Solicitud enviada correctamente. Te contactamos pronto.
+            </p>
+          </div>
+
+          <!-- error -->
+          <div id="form-error" class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3.5">
+            <p class="text-red-400 text-sm font-semibold">
+              Hubo un error al enviar. Revisá los campos o intentá de nuevo.
+            </p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('listing-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form) return;
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+    }
+
+    successMsg?.classList.add('hidden');
+    errorMsg?.classList.add('hidden');
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      });
+
+      if (response.ok) {
+        form.reset();
+        successMsg?.classList.remove('hidden');
+      } else {
+        throw new Error('Error en el servidor');
+      }
+    } catch {
+      errorMsg?.classList.remove('hidden');
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Enviar solicitud`;
+      }
+    }
+  });
+</script>

@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SearchFilter from '../components/SearchFilter.astro';
+import GasistaGrid from '../components/GasistaGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
+import ListYourself from '../components/ListYourself.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Gasistas Matriculados en Rosario | GasistasRosario"
+  description="Encontrá gasistas matriculados y verificados en Rosario, Santa Fe. Instalaciones, reparaciones, certificados de gas y urgencias. Contactalos directo por WhatsApp."
+>
+  <Header />
+  <main id="main-content">
+    <Hero />
+    <SearchFilter />
+    <GasistaGrid />
+    <Testimonials />
+    <ListYourself />
+  </main>
+  <Footer />
+</Layout>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Account for floating pill header (≈76px) + filter bar (≈48px) */
+  #profesionales {
+    scroll-margin-top: 76px;
+  }
+  #como-funciona {
+    scroll-margin-top: 76px;
+  }
+  #listar {
+    scroll-margin-top: 76px;
+  }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(2px);
+    transition:
+      opacity 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+      transform 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+      filter 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  /* Staggered children */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(2px);
+    transition:
+      opacity 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+      transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
+      filter 0.5s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .stagger-children.visible > *:nth-child(1) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 0ms; }
+  .stagger-children.visible > *:nth-child(2) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 80ms; }
+  .stagger-children.visible > *:nth-child(3) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 160ms; }
+  .stagger-children.visible > *:nth-child(4) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 240ms; }
+  .stagger-children.visible > *:nth-child(5) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 320ms; }
+  .stagger-children.visible > *:nth-child(6) { opacity:1; transform:translateY(0); filter:blur(0); transition-delay: 400ms; }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+  );
+
+  document.querySelectorAll('.scroll-reveal, .stagger-children').forEach(el => observer.observe(el));
+</script>
