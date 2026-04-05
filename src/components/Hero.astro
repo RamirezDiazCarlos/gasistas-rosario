@@ -96,18 +96,10 @@
           class="flex flex-wrap items-center gap-5 opacity-0 translate-y-3"
           style="animation: heroFadeUp 0.7s cubic-bezier(0.32,0.72,0,1) 0.62s forwards;"
         >
-          {[
-            { num: "6", label: "profesionales" },
-            { num: "12", label: "barrios" },
-            { num: "24hs", label: "urgencias" },
-          ].map(({ num, label }) => (
-            <div class="flex items-center gap-2">
-              <span class="w-px h-3 bg-white/10" aria-hidden="true"></span>
-              <span class="text-[13px] text-white/35">
-                <strong class="text-white/70 font-600 font-display">{num}</strong> {label}
-              </span>
-            </div>
-          ))}
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-flame/60 animate-pulse inline-block"></span>
+            <span class="text-[13px] text-white/35 italic">Directorio en construcción — sumamos profesionales.</span>
+          </div>
         </div>
       </div>
 

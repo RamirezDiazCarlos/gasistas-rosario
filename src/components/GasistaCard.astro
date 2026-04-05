@@ -22,7 +22,7 @@ import AvatarPlaceholder from './AvatarPlaceholder.astro';
 
 const { gasista } = Astro.props;
 
-const waLink = `https://wa.me/${gasista.phone}`;
+const waLink = gasista.phone ? `https://wa.me/${gasista.phone}` : null;
 const profileLink = `/${gasista.slug}`;
 
 const fullStars = Math.floor(gasista.rating);
@@ -172,20 +172,24 @@ const jsonLd = {
           <span class="text-[11px] text-warm-800/70">({gasista.reviews})</span>
         </div>
 
-        <a
-          href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group/wa inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white text-[12px] font-semibold rounded-full transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_8px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_16px_rgba(37,211,102,0.4)] active:scale-[0.97]"
-          aria-label={`Contactar a ${gasista.name} por WhatsApp`}
-        >
-          WhatsApp
-          <span class="w-6 h-6 rounded-full bg-black/15 flex items-center justify-center transition-transform duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/wa:translate-x-px group-hover/wa:-translate-y-px">
-            <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 1C3.462 1 1 3.462 1 6.5C1 7.533 1.283 8.502 1.775 9.333L1 12L3.734 11.243C4.543 11.697 5.49 11.957 6.5 11.957C9.538 11.957 12 9.496 12 6.457 12 3.419 9.538 1 6.5 1ZM4.869 4.173C4.746 4.173 4.55 4.217 4.383 4.397C4.216 4.578 3.737 5.023 3.737 5.929C3.737 6.834 4.398 7.711 4.487 7.834C4.576 7.957 5.712 9.716 7.437 10.485C8.876 11.116 9.163 11.006 9.47 10.978C9.777 10.95 10.458 10.534 10.611 10.104C10.764 9.673 10.764 9.309 10.72 9.236C10.676 9.163 10.553 9.119 10.368 9.031C10.184 8.942 9.278 8.496 9.111 8.438C8.944 8.38 8.821 8.351 8.697 8.527C8.574 8.703 8.224 9.119 8.115 9.236C8.007 9.353 7.898 9.368 7.714 9.28C7.529 9.192 6.938 8.996 6.238 8.37C5.695 7.886 5.33 7.287 5.222 7.111C5.113 6.934 5.21 6.839 5.3 6.75C5.38 6.671 5.484 6.538 5.573 6.429C5.662 6.32 5.691 6.247 5.75 6.124C5.808 6 5.779 5.892 5.735 5.803C5.691 5.714 5.334 4.804 5.182 4.425C5.041 4.059 4.898 4.107 4.788 4.101L4.869 4.173Z" fill="white"/>
-            </svg>
-          </span>
-        </a>
+        {waLink ? (
+          <a
+            href={waLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/wa inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white text-[12px] font-semibold rounded-full transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_8px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_16px_rgba(37,211,102,0.4)] active:scale-[0.97]"
+            aria-label={`Contactar a ${gasista.name} por WhatsApp`}
+          >
+            WhatsApp
+            <span class="w-6 h-6 rounded-full bg-black/15 flex items-center justify-center transition-transform duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/wa:translate-x-px group-hover/wa:-translate-y-px">
+              <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.5 1C3.462 1 1 3.462 1 6.5C1 7.533 1.283 8.502 1.775 9.333L1 12L3.734 11.243C4.543 11.697 5.49 11.957 6.5 11.957C9.538 11.957 12 9.496 12 6.457 12 3.419 9.538 1 6.5 1ZM4.869 4.173C4.746 4.173 4.55 4.217 4.383 4.397C4.216 4.578 3.737 5.023 3.737 5.929C3.737 6.834 4.398 7.711 4.487 7.834C4.576 7.957 5.712 9.716 7.437 10.485C8.876 11.116 9.163 11.006 9.47 10.978C9.777 10.95 10.458 10.534 10.611 10.104C10.764 9.673 10.764 9.309 10.72 9.236C10.676 9.163 10.553 9.119 10.368 9.031C10.184 8.942 9.278 8.496 9.111 8.438C8.944 8.38 8.821 8.351 8.697 8.527C8.574 8.703 8.224 9.119 8.115 9.236C8.007 9.353 7.898 9.368 7.714 9.28C7.529 9.192 6.938 8.996 6.238 8.37C5.695 7.886 5.33 7.287 5.222 7.111C5.113 6.934 5.21 6.839 5.3 6.75C5.38 6.671 5.484 6.538 5.573 6.429C5.662 6.32 5.691 6.247 5.75 6.124C5.808 6 5.779 5.892 5.735 5.803C5.691 5.714 5.334 4.804 5.182 4.425C5.041 4.059 4.898 4.107 4.788 4.101L4.869 4.173Z" fill="white"/>
+              </svg>
+            </span>
+          </a>
+        ) : (
+          <span class="text-[11px] text-warm-800/50 italic">Próximamente</span>
+        )}
       </div>
 
     </div>
