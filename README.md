@@ -8,7 +8,7 @@ Directorio de gasistas matriculados en Rosario, Santa Fe. Conecta vecinos con pr
 
 ## Stack
 
-- [Astro 4](https://astro.build) — generación estática
+- [Astro 5](https://astro.build) — generación estática
 - [Tailwind CSS](https://tailwindcss.com) — estilos
 - [Netlify](https://netlify.com) — hosting + formularios
 - Vanilla JS — filtros y animaciones
