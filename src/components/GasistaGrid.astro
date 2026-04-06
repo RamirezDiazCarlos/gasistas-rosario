@@ -12,15 +12,17 @@ const sorted = [...gasistas].sort((a, b) => {
 <section id="profesionales" class="py-20 sm:py-24 bg-warm-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <div class="mb-12 scroll-reveal">
-      <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
-        Profesionales habilitados
-      </p>
-      <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-3">
-        Profesionales<br class="hidden sm:block"/> disponibles
-      </h2>
-      <p class="text-warm-800/70 text-base max-w-sm">
-        Contactalos directo — matrícula y zonas en cada perfil.
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 scroll-reveal">
+      <div>
+        <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
+          Profesionales habilitados
+        </p>
+        <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight">
+          Encontrá el tuyo.
+        </h2>
+      </div>
+      <p class="text-warm-800/60 text-sm max-w-[220px] leading-relaxed sm:text-right pb-1">
+        Matrícula y zonas en cada perfil. Contacto directo por WhatsApp.
       </p>
     </div>
 
@@ -52,19 +54,28 @@ const sorted = [...gasistas].sort((a, b) => {
   </div>
 </section>
 
-<section id="como-funciona" class="py-20 sm:py-24 bg-white border-t border-warm-200/60">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="como-funciona" class="py-24 sm:py-32 bg-[#1a1612] overflow-hidden relative">
 
-    <div class="mb-14 scroll-reveal">
-      <p class="text-[10px] font-semibold text-flame/70 uppercase tracking-[0.2em] mb-3">
+  <!-- glow decorativo -->
+  <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" aria-hidden="true"
+    style="background: radial-gradient(circle, rgba(224,116,24,0.07) 0%, transparent 65%);">
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <div class="mb-16 scroll-reveal">
+      <p class="text-[10px] font-semibold text-flame/60 uppercase tracking-[0.2em] mb-3">
         Sin intermediarios
       </p>
-      <h2 class="font-display font-800 text-dark text-3xl sm:text-4xl tracking-tight leading-tight">
+      <h2 class="font-display font-800 text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-3">
         Tres pasos,<br/> sin vueltas.
       </h2>
+      <p class="text-white/30 text-sm leading-relaxed">
+        Sin registros. Sin comisiones. Solo contacto directo.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 stagger-children">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-2xl overflow-hidden stagger-children">
 
       {[
         {
@@ -82,32 +93,23 @@ const sorted = [...gasistas].sort((a, b) => {
           title: "Contactá por WhatsApp",
           body: "Directo con el gasista, sin comisiones ni formularios.",
         },
-      ].map(({ n, title, body }, i) => (
-        <div class="relative flex flex-col gap-5 px-0 sm:pr-10 lg:pr-16 pb-10 sm:pb-0">
+      ].map(({ n, title, body }) => (
+        <div class="relative flex flex-col gap-6 p-8 lg:p-10 bg-[#1a1612] hover:bg-white/[0.04] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]">
           <div class="relative w-fit">
             <span
-              class="font-display font-800 text-[80px] leading-none tracking-[-0.04em] select-none"
-              style="color: transparent; -webkit-text-stroke: 1.5px rgba(224,116,24,0.2);"
+              class="font-display font-800 text-[96px] leading-none tracking-[-0.04em] select-none"
+              style="color: transparent; -webkit-text-stroke: 1px rgba(224,116,24,0.18);"
               aria-hidden="true"
             >
               {n}
             </span>
-            <span class="absolute -bottom-1 left-1 w-2 h-2 rounded-full bg-flame/50 inline-block"></span>
+            <span class="absolute bottom-2 left-1 w-1.5 h-1.5 rounded-full bg-flame/70 inline-block"></span>
           </div>
 
           <div>
-            <h3 class="font-display font-700 text-dark text-base mb-2">{title}</h3>
-            <p class="text-warm-800/60 text-sm leading-relaxed max-w-[220px]">{body}</p>
+            <h3 class="font-display font-700 text-white text-base mb-2.5">{title}</h3>
+            <p class="text-white/35 text-sm leading-relaxed max-w-[220px]">{body}</p>
           </div>
-
-          <!-- línea entre pasos (solo desktop) -->
-          {i < 2 && (
-            <div
-              class="hidden sm:block absolute top-10 right-0 w-8 lg:w-10 h-px"
-              style="background: linear-gradient(to right, rgba(224,116,24,0.25), rgba(224,116,24,0.05));"
-              aria-hidden="true"
-            />
-          )}
         </div>
       ))}
 
