@@ -366,14 +366,27 @@ const jsonLd = {
 <script>
   const stickyBar = document.getElementById('wa-sticky');
   if (stickyBar) {
-    const sidebar = document.querySelector('aside');
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        stickyBar.style.opacity = entry.isIntersecting ? '0' : '1';
-        (stickyBar as HTMLElement).style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
-      },
+    let sidebarVisible = false;
+    let footerVisible = false;
+
+    const update = () => {
+      const hide = sidebarVisible || footerVisible;
+      stickyBar.style.opacity = hide ? '0' : '1';
+      (stickyBar as HTMLElement).style.pointerEvents = hide ? 'none' : 'auto';
+    };
+
+    const sidebarObserver = new IntersectionObserver(
+      ([entry]) => { sidebarVisible = entry.isIntersecting; update(); },
       { threshold: 0.1 }
     );
-    if (sidebar) observer.observe(sidebar);
+    const footerObserver = new IntersectionObserver(
+      ([entry]) => { footerVisible = entry.isIntersecting; update(); },
+      { threshold: 0.01 }
+    );
+
+    const sidebar = document.querySelector('aside');
+    const footer = document.querySelector('footer');
+    if (sidebar) sidebarObserver.observe(sidebar);
+    if (footer) footerObserver.observe(footer);
   }
 </script>
