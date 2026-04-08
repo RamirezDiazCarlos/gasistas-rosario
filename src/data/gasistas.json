@@ -4,9 +4,17 @@
     "slug": "roberto-marcelo-gutierrez",
     "name": "Roberto Marcelo Gutiérrez",
     "photo": "https://picsum.photos/seed/gasista-roberto/400/400",
-    "matricula": "MAT-00234",
-    "zones": ["Fisherton", "Las Delicias", "Tablada"],
-    "services": ["Instalación", "Reparación", "Certificado"],
+    "matricula": "M3-00234",
+    "zones": [
+      "Fisherton",
+      "Las Delicias",
+      "Tablada"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Certificado"
+    ],
     "phone": "",
     "rating": 4.8,
     "reviews": 37,
@@ -18,9 +26,17 @@
     "slug": "claudia-beatriz-ferreyra",
     "name": "Claudia Beatriz Ferreyra",
     "photo": "https://picsum.photos/seed/gasista-claudia/400/400",
-    "matricula": "MAT-00581",
-    "zones": ["Pichincha", "Refinería", "Centro"],
-    "services": ["Instalación", "Reparación", "Detección de pérdidas"],
+    "matricula": "M3-00581",
+    "zones": [
+      "Pichincha",
+      "Refinería",
+      "Centro"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Detección de pérdidas"
+    ],
     "phone": "",
     "rating": 4.9,
     "reviews": 52,
@@ -32,9 +48,17 @@
     "slug": "hector-daniel-pereyra",
     "name": "Héctor Daniel Pereyra",
     "photo": "https://picsum.photos/seed/gasista-hector/400/400",
-    "matricula": "MAT-00312",
-    "zones": ["Alberdi", "Echesortu", "Observatorio"],
-    "services": ["Reparación", "Calderas", "Certificado"],
+    "matricula": "M3-00312",
+    "zones": [
+      "Alberdi",
+      "Echesortu",
+      "Observatorio"
+    ],
+    "services": [
+      "Reparación",
+      "Calderas",
+      "Certificado"
+    ],
     "phone": "",
     "rating": 4.6,
     "reviews": 28,
@@ -46,9 +70,17 @@
     "slug": "maria-eugenia-salvatore",
     "name": "María Eugenia Salvatore",
     "photo": "https://picsum.photos/seed/gasista-maria/400/400",
-    "matricula": "MAT-00749",
-    "zones": ["Puerto Norte", "Ludueña", "Arroyito"],
-    "services": ["Instalación", "Certificado", "Habilitación comercial"],
+    "matricula": "M3-00749",
+    "zones": [
+      "Puerto Norte",
+      "Ludueña",
+      "Arroyito"
+    ],
+    "services": [
+      "Instalación",
+      "Certificado",
+      "Habilitación comercial"
+    ],
     "phone": "",
     "rating": 5.0,
     "reviews": 19,
@@ -60,9 +92,17 @@
     "slug": "ariel-gustavo-mendez",
     "name": "Ariel Gustavo Méndez",
     "photo": "https://picsum.photos/seed/gasista-ariel/400/400",
-    "matricula": "MAT-00423",
-    "zones": ["Echesortu", "Fisherton", "Belgrano"],
-    "services": ["Reparación", "Detección de pérdidas", "Calderas"],
+    "matricula": "M3-00423",
+    "zones": [
+      "Echesortu",
+      "Fisherton",
+      "Belgrano"
+    ],
+    "services": [
+      "Reparación",
+      "Detección de pérdidas",
+      "Calderas"
+    ],
     "phone": "",
     "rating": 4.7,
     "reviews": 44,
@@ -70,13 +110,47 @@
     "description": "Urgencias y reparaciones en todo Rosario y zona norte. Equipo propio de detección de pérdidas con tecnología de ultrasonido actualizada. Presupuesto sin cargo. Más de 15 años en el mercado, referente en mantenimiento de calderas industriales y residenciales. Trabajo con garantía de 12 meses."
   },
   {
+    "id": "7",
+    "slug": "anni-quiroz",
+    "name": "Anni Quiroz",
+    "photo": "",
+    "matricula": "M3-72723",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Certificado",
+      "Detección de pérdidas",
+      "Rehabilitación",
+      "Planos y cálculos"
+    ],
+    "phone": "5493416360033",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": true,
+    "description": "Trámites: planos, cálculos, habilitaciones y rehabilitaciones de servicio.\nSeguridad: pruebas de hermeticidad y detección de pérdidas.\nTécnica: instalación de ventilaciones reglamentarias y adecuación de ambientes."
+  },
+  {
     "id": "6",
     "slug": "pablo-antonio-castillo",
     "name": "Pablo Antonio Castillo",
     "photo": "https://picsum.photos/seed/gasista-pablo/400/400",
-    "matricula": "MAT-00167",
-    "zones": ["Las Flores", "Saladillo", "Tablada"],
-    "services": ["Instalación", "Reparación", "Certificado", "Calderas"],
+    "matricula": "M3-00167",
+    "zones": [
+      "Las Flores",
+      "Saladillo",
+      "Tablada"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Certificado",
+      "Calderas"
+    ],
     "phone": "",
     "rating": 4.5,
     "reviews": 31,
