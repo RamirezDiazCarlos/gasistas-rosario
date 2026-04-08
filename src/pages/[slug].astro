@@ -109,51 +109,76 @@ const jsonLd = {
 
   <main id="main-content">
 
-    <div class="bg-dark pt-10 pb-0">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a
-          href="/#profesionales"
-          class="inline-flex items-center gap-1.5 text-white/50 hover:text-white text-sm font-medium transition-colors mb-8"
-        >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M13 8H3M7 4L3 8L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Volver al directorio
-        </a>
-      </div>
-    </div>
+    <!-- Hero oscuro -->
+    <div class="bg-dark relative overflow-hidden pt-8 pb-10 sm:pt-10 sm:pb-20">
 
-    <div class="bg-dark pb-12">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+      <!-- grain -->
+      <div
+        class="pointer-events-none absolute inset-0 opacity-[0.028]"
+        style="background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 256 256%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter id%3D%22noise%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.9%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23noise)%22%2F%3E%3C%2Fsvg%3E'); background-size: 180px;"
+        aria-hidden="true"
+      ></div>
 
+      <!-- glow ambiental -->
+      <div
+        class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px]"
+        style="background: radial-gradient(ellipse, rgba(224,116,24,0.07) 0%, transparent 65%);"
+        aria-hidden="true"
+      ></div>
+
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="mb-6">
+          <ol class="flex items-center gap-1.5 text-xs text-white/35 flex-wrap">
+            <li>
+              <a href="/" class="hover:text-white/70 transition-colors">Inicio</a>
+            </li>
+            <li aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="opacity-40">
+                <path d="M3.5 2L6.5 5L3.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </li>
+            <li>
+              <a href="/#profesionales" class="hover:text-white/70 transition-colors">Profesionales</a>
+            </li>
+            <li aria-hidden="true">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" class="opacity-40">
+                <path d="M3.5 2L6.5 5L3.5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </li>
+            <li class="text-white/60 truncate max-w-[180px]" aria-current="page">{gasista.name}</li>
+          </ol>
+        </nav>
+
+        <div class="flex flex-row gap-4 sm:gap-10 items-start">
+
+          <!-- Avatar -->
           <div class="relative flex-shrink-0">
-            <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl overflow-hidden border-2 border-white/10">
+            <div class="w-20 h-20 sm:w-44 sm:h-44 rounded-xl sm:rounded-2xl overflow-hidden border border-flame/30 shadow-[0_0_40px_-8px_rgba(224,116,24,0.25)]">
               <AvatarPlaceholder name={gasista.name} />
             </div>
             {gasista.featured && (
-              <span class="absolute -top-2 -right-2 inline-flex items-center gap-1 bg-flame text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg uppercase tracking-wide">
-                <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <span class="absolute -top-2 -right-2 inline-flex items-center gap-1 bg-flame text-white text-[9px] sm:text-xs font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full shadow-lg shadow-flame/30 uppercase tracking-wide">
+                <svg width="7" height="7" viewBox="0 0 10 10" fill="none" aria-hidden="true" class="sm:w-[9px] sm:h-[9px]">
                   <path d="M5 1L6.2 3.6L9 4L7 5.9L7.5 8.6L5 7.3L2.5 8.6L3 5.9L1 4L3.8 3.6L5 1Z" fill="currentColor"/>
                 </svg>
-                Destacado
+                Top
               </span>
             )}
           </div>
 
+          <!-- Info -->
           <div class="flex-1 min-w-0">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-2.5 py-1 rounded-md">
-                {gasista.matricula}
-              </span>
-              <span class="text-xs text-white/30 font-medium">Matrícula registrada</span>
-            </div>
+            <span class="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-2.5 py-1 rounded-md mb-2.5">
+              {gasista.matricula}
+            </span>
 
-            <h1 class="font-display font-800 text-white text-3xl sm:text-4xl tracking-tight leading-tight mb-3">
+            <h1 class="font-display font-800 text-white text-2xl sm:text-4xl tracking-tight leading-tight mb-2.5">
               {gasista.name}
             </h1>
 
-            <div class="flex items-center gap-2 mb-4" aria-label={`Calificación: ${gasista.rating} de 5. ${gasista.reviews} reseñas`} role="img">
+            <div class="flex items-center gap-2 mb-4 sm:mb-6" aria-label={`Calificación: ${gasista.rating} de 5. ${gasista.reviews} reseñas`} role="img">
               <div class="flex items-center gap-0.5">
                 {Array.from({ length: fullStars }).map(() => (
                   <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -181,12 +206,13 @@ const jsonLd = {
               <span class="text-white/40 text-sm">· {gasista.reviews} reseñas</span>
             </div>
 
+            <!-- Botón WA en hero: solo visible en sm+ (en mobile lo cubre el sticky) -->
             {waLink && (
               <a
                 href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-semibold px-5 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-[#25D366]/20 text-sm"
+                class="hidden sm:inline-flex items-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-semibold px-5 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-[#25D366]/20 text-sm"
                 aria-label={`Contactar a ${gasista.name} por WhatsApp`}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -201,23 +227,33 @@ const jsonLd = {
       </div>
     </div>
 
-    <div class="bg-warm-50 border-t border-warm-200">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- transición: borde degradado dark → warm -->
+    <div class="h-px bg-gradient-to-r from-dark via-flame/20 to-dark"></div>
+
+    <!-- Contenido -->
+    <div class="bg-warm-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-28 md:pb-10">
 
         <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-8 lg:gap-12">
 
           <div>
-            <section class="mb-8">
-              <h2 class="font-display font-700 text-dark text-xl mb-3">Sobre el profesional</h2>
-              <p class="text-warm-900 text-base leading-relaxed whitespace-pre-line">{gasista.description}</p>
+            <section class="mb-10">
+              <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
+                <span class="w-1 h-4 rounded-full bg-flame/60 inline-block flex-shrink-0"></span>
+                Sobre el profesional
+              </h2>
+              <p class="text-warm-900 text-base leading-relaxed whitespace-pre-line max-w-prose">{gasista.description}</p>
             </section>
 
-            <section class="mb-8">
-              <h2 class="font-display font-700 text-dark text-xl mb-3">Servicios</h2>
+            <section class="mb-10">
+              <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
+                <span class="w-1 h-4 rounded-full bg-flame/60 inline-block flex-shrink-0"></span>
+                Servicios
+              </h2>
               <div class="flex flex-wrap gap-2">
                 {gasista.services.map(s => (
-                  <span class="inline-flex items-center gap-1.5 text-sm font-medium text-warm-900 bg-white border border-warm-200 px-3 py-1.5 rounded-lg shadow-sm">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-flame">
+                  <span class="inline-flex items-center gap-1.5 text-sm font-medium text-warm-900 bg-flame/[0.07] border border-flame/20 px-3 py-1.5 rounded-lg">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-flame flex-shrink-0">
                       <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/>
                       <path d="M4 6L5.5 7.5L8 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
@@ -228,11 +264,14 @@ const jsonLd = {
             </section>
 
             <section>
-              <h2 class="font-display font-700 text-dark text-xl mb-3">Zonas que cubre</h2>
+              <h2 class="font-display font-700 text-dark text-lg mb-3 flex items-center gap-2">
+                <span class="w-1 h-4 rounded-full bg-flame/60 inline-block flex-shrink-0"></span>
+                Zonas que cubre
+              </h2>
               <div class="flex flex-wrap gap-2">
                 {gasista.zones.map(z => (
                   <span class="inline-flex items-center gap-1.5 text-sm font-medium text-warm-900 bg-white border border-warm-200 px-3 py-1.5 rounded-lg shadow-sm">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-warm-800">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-warm-700 flex-shrink-0">
                       <path d="M6 1C4.343 1 3 2.343 3 4C3 6.5 6 11 6 11C6 11 9 6.5 9 4C9 2.343 7.657 1 6 1Z" stroke="currentColor" stroke-width="1.3"/>
                       <circle cx="6" cy="4" r="1.3" fill="currentColor"/>
                     </svg>
@@ -243,6 +282,7 @@ const jsonLd = {
             </section>
           </div>
 
+          <!-- Sidebar -->
           <aside>
             <div class="bg-white rounded-2xl border border-warm-200 shadow-sm p-5 sticky top-24">
 
@@ -283,7 +323,7 @@ const jsonLd = {
                 </div>
               </div>
 
-              <p class="text-xs text-warm-800 mt-4 leading-relaxed border-t border-warm-100 pt-4">
+              <p class="text-xs text-warm-800/60 mt-4 leading-relaxed border-t border-warm-100 pt-4">
                 Verificá la matrícula en el <a href="https://www.litoral-gas.com.ar/site/hogares-y-comercios/info-y-tramites/listado-de-gasistas-y-profesionales/" target="_blank" rel="noopener noreferrer" class="text-flame underline underline-offset-2 hover:text-flame-dark">listado oficial de Litoral Gas</a> antes de contratar.
               </p>
             </div>
@@ -294,7 +334,46 @@ const jsonLd = {
       </div>
     </div>
 
+    <!-- Botón WA sticky mobile -->
+    {waLink && (
+      <div
+        id="wa-sticky"
+        class="md:hidden fixed bottom-0 left-0 right-0 z-40 px-4 pt-3 pointer-events-none transition-opacity duration-300"
+        style="padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));"
+      >
+        <div class="absolute inset-0 bg-gradient-to-t from-warm-50 via-warm-50/95 to-transparent -z-10"></div>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="pointer-events-auto w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-semibold px-5 py-3.5 rounded-2xl transition-all duration-200 shadow-lg shadow-[#25D366]/30 text-sm"
+          aria-label={`Contactar a ${gasista.name} por WhatsApp`}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.406A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.952 7.952 0 01-4.078-1.123l-.292-.174-3.027.854.856-3.03-.19-.31A7.96 7.96 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/>
+          </svg>
+          Contactar por WhatsApp
+        </a>
+      </div>
+    )}
+
   </main>
 
   <Footer />
 </Layout>
+
+<script>
+  const stickyBar = document.getElementById('wa-sticky');
+  if (stickyBar) {
+    const sidebar = document.querySelector('aside');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        stickyBar.style.opacity = entry.isIntersecting ? '0' : '1';
+        (stickyBar as HTMLElement).style.pointerEvents = entry.isIntersecting ? 'none' : 'auto';
+      },
+      { threshold: 0.1 }
+    );
+    if (sidebar) observer.observe(sidebar);
+  }
+</script>
