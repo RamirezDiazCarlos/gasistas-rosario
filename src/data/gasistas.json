@@ -135,6 +135,31 @@
     "description": "Trámites: planos, cálculos, habilitaciones y rehabilitaciones de servicio.\nSeguridad: pruebas de hermeticidad y detección de pérdidas.\nTécnica: instalación de ventilaciones reglamentarias y adecuación de ambientes."
   },
   {
+    "id": "8",
+    "slug": "ramon-aguirre",
+    "name": "Ramon Aguirre",
+    "photo": "",
+    "matricula": "M3-40317",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Fisherton"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Certificado",
+      "Detección de pérdidas",
+      "Rehabilitación",
+      "Planos y cálculos"
+    ],
+    "phone": "5493415649178",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Responsabilidad en el trabajo."
+  },
+  {
     "id": "6",
     "slug": "pablo-antonio-castillo",
     "name": "Pablo Antonio Castillo",
