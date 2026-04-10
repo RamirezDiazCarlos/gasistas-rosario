@@ -41,7 +41,7 @@ const jsonLd = {
     {
       "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": `https://gasistasrosario.com.ar/${gasista.slug}#business`,
-      "name": `${gasista.name} — Gasista Matriculado`,
+      "name": `${gasista.name} — Profesional Matriculado/a`,
       "description": gasista.description,
       "telephone": `+${gasista.phone}`,
       "image": gasista.photo,
@@ -65,11 +65,11 @@ const jsonLd = {
       },
       "additionalProperty": {
         "@type": "PropertyValue",
-        "name": "Matrícula ENARGAS",
+        "name": "Matrícula habilitante",
         "value": gasista.matricula
       },
       "url": `https://gasistasrosario.com.ar/${gasista.slug}`,
-      "sameAs": [`https://wa.me/${gasista.phone}`]
+      "sameAs": gasista.phone ? [`https://wa.me/${gasista.phone}`] : []
     },
     {
       "@type": "BreadcrumbList",
@@ -100,8 +100,8 @@ const jsonLd = {
 
 <Layout
   title={`${gasista.name} — Gasista en Rosario | GasistasRosario`}
-  description={`${gasista.name}, gasista matriculado ${gasista.matricula} en Rosario. ${gasista.services.slice(0, 3).join(', ')}. Zonas: ${gasista.zones.join(', ')}. Contactalo por WhatsApp.`}
-  ogImage={gasista.photo}
+  description={`${gasista.name}, profesional matriculado/a ${gasista.matricula} en Rosario. ${gasista.services.slice(0, 3).join(', ')}. Zonas: ${gasista.zones.join(', ')}. Contactalo por WhatsApp.`}
+  ogImage={gasista.photo || 'https://gasistasrosario.com.ar/og-image.png'}
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} slot="head" />
 
@@ -174,8 +174,9 @@ const jsonLd = {
               {gasista.matricula}
             </span>
 
-            <h1 class="font-display font-800 text-white text-2xl sm:text-4xl tracking-tight leading-tight mb-2.5">
-              {gasista.name}
+            <h1 class="font-display tracking-tight leading-tight mb-2.5">
+              <span class="block text-[11px] font-600 text-white/35 uppercase tracking-[0.18em] mb-1">Gasista matriculado/a · Rosario</span>
+              <span class="block font-800 text-white text-2xl sm:text-4xl">{gasista.name}</span>
             </h1>
 
             <div class="flex items-center gap-2 mb-4 sm:mb-6" aria-label={`Calificación: ${gasista.rating} de 5. ${gasista.reviews} reseñas`} role="img">
