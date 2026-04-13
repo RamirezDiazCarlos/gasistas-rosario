@@ -11,7 +11,7 @@ const BASE_URL = `https://${HOST}`;
 
 const urls = [
   `${BASE_URL}/`,
-  ...gasistas.map(g => `${BASE_URL}/${g.slug}/`),
+  ...gasistas.map(g => `${BASE_URL}/${g.slug}`),
 ];
 
 const body = JSON.stringify({
