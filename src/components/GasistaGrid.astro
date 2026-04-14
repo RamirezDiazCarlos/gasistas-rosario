@@ -39,16 +39,18 @@ const sorted = [...gasistas].sort((a, b) => {
     </div>
 
     <!-- sin resultados -->
-    <div id="no-results" class="hidden py-20 flex flex-col items-center text-center">
-      <div class="w-12 h-12 rounded-2xl bg-warm-100 border border-warm-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-warm-800/50" aria-hidden="true">
-          <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M7 9H11M9 7V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+    <div id="no-results" class="hidden">
+      <div class="py-20 flex flex-col items-center text-center">
+        <div class="w-12 h-12 rounded-2xl bg-warm-100 border border-warm-200 flex items-center justify-center mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="text-warm-800/50" aria-hidden="true">
+            <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 9H11M9 7V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="font-display font-700 text-dark text-base mb-1">Sin resultados</p>
+        <p class="text-warm-800/60 text-sm max-w-xs">Probá con otros filtros o limpiá la búsqueda.</p>
       </div>
-      <p class="font-display font-700 text-dark text-base mb-1">Sin resultados</p>
-      <p class="text-warm-800/60 text-sm max-w-xs">Probá con otros filtros o limpiá la búsqueda.</p>
     </div>
 
   </div>
