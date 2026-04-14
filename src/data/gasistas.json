@@ -160,6 +160,30 @@
     "description": "Responsabilidad en el trabajo."
   },
   {
+    "id": "9",
+    "slug": "daiana-cooreman",
+    "name": "Daiana Cooreman",
+    "photo": "",
+    "matricula": "M3-72060",
+    "zones": [
+      "Rosario Norte",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Instalación",
+      "Certificado",
+      "Habilitación comercial",
+      "Rehabilitación",
+      "Planos y cálculos"
+    ],
+    "phone": "5493417529827",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Hola! Mi nombre es Daiana, soy gasista matriculada y me dedico a las habilitaciones, rehabilitaciones, armado de expedientes y certificados comerciales y residenciales.\nCuento con un equipo de profesionales que trabajan para brindar la mejor calidad y también realizo trabajos administrativos para terceros."
+  },
+  {
     "id": "6",
     "slug": "pablo-antonio-castillo",
     "name": "Pablo Antonio Castillo",
