@@ -184,6 +184,34 @@
     "description": "Hola! Mi nombre es Daiana, soy gasista matriculada y me dedico a las habilitaciones, rehabilitaciones, armado de expedientes y certificados comerciales y residenciales.\nCuento con un equipo de profesionales que trabajan para brindar la mejor calidad y también realizo trabajos administrativos para terceros."
   },
   {
+    "id": "10",
+    "slug": "silvia-viviana-martin",
+    "name": "Silvia Viviana Martín",
+    "photo": "",
+    "matricula": "M3-71195/2",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán",
+      "Villa Gobernador Gálvez",
+      "Alvear"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Certificado",
+      "Detección de pérdidas",
+      "Habilitación comercial",
+      "Rehabilitación",
+      "Planos y cálculos"
+    ],
+    "phone": "5493413151977",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalación, reparación y control de cañerías y artefactos. Atiendo en Rosario, Funes, Roldán, Villa Gobernador Gálvez y Alvear."
+  },
+  {
     "id": "6",
     "slug": "pablo-antonio-castillo",
     "name": "Pablo Antonio Castillo",
