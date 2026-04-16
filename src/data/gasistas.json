@@ -66,50 +66,6 @@
     "description": "Técnico con amplia trayectoria en reparación de calefones, termotanques y calderas de todas las marcas. Trabajo prolijo y garantizado. Atención de lunes a sábado de 8 a 20hs. Cubro toda la zona noroeste de Rosario. Repuestos originales y trabajo con factura."
   },
   {
-    "id": "4",
-    "slug": "maria-eugenia-salvatore",
-    "name": "María Eugenia Salvatore",
-    "photo": "https://picsum.photos/seed/gasista-maria/400/400",
-    "matricula": "M3-00749",
-    "zones": [
-      "Puerto Norte",
-      "Ludueña",
-      "Arroyito"
-    ],
-    "services": [
-      "Instalación",
-      "Certificado",
-      "Habilitación comercial"
-    ],
-    "phone": "",
-    "rating": 5.0,
-    "reviews": 19,
-    "featured": false,
-    "description": "Gasista matriculada especializada en habilitaciones para locales comerciales, restaurantes y nuevas construcciones. Rapidez en trámites y documentación ante el municipio de Rosario. Instalaciones completas de gas natural desde cero. Gestión integral incluyendo VTV de instalación."
-  },
-  {
-    "id": "5",
-    "slug": "ariel-gustavo-mendez",
-    "name": "Ariel Gustavo Méndez",
-    "photo": "https://picsum.photos/seed/gasista-ariel/400/400",
-    "matricula": "M3-00423",
-    "zones": [
-      "Echesortu",
-      "Fisherton",
-      "Belgrano"
-    ],
-    "services": [
-      "Reparación",
-      "Detección de pérdidas",
-      "Calderas"
-    ],
-    "phone": "",
-    "rating": 4.7,
-    "reviews": 44,
-    "featured": false,
-    "description": "Urgencias y reparaciones en todo Rosario y zona norte. Equipo propio de detección de pérdidas con tecnología de ultrasonido actualizada. Presupuesto sin cargo. Más de 15 años en el mercado, referente en mantenimiento de calderas industriales y residenciales. Trabajo con garantía de 12 meses."
-  },
-  {
     "id": "7",
     "slug": "anni-quiroz",
     "name": "Anni Quiroz",
@@ -212,26 +168,69 @@
     "description": "Instalación, reparación y control de cañerías y artefactos. Atiendo en Rosario, Funes, Roldán, Villa Gobernador Gálvez y Alvear."
   },
   {
-    "id": "6",
-    "slug": "pablo-antonio-castillo",
-    "name": "Pablo Antonio Castillo",
-    "photo": "https://picsum.photos/seed/gasista-pablo/400/400",
-    "matricula": "M3-00167",
+    "id": "11",
+    "slug": "ramon-fernando-chamorro",
+    "name": "Ramón Fernando Chamorro",
+    "photo": "",
+    "matricula": "M3-9592",
     "zones": [
-      "Las Flores",
-      "Saladillo",
-      "Tablada"
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Plomería",
+      "Cloacas",
+      "Instalación",
+      "Reparación"
+    ],
+    "phone": "5493416211039",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Plomería, cloacas y gas. Más de 57 años de experiencia en el rubro."
+  },
+  {
+    "id": "12",
+    "slug": "sergio-gonzalez",
+    "name": "Sergio González",
+    "photo": "",
+    "matricula": "M3-43237",
+    "zones": [
+      "Rosario"
     ],
     "services": [
       "Instalación",
       "Reparación",
-      "Certificado",
-      "Calderas"
+      "Calderas",
+      "Rehabilitación"
     ],
-    "phone": "",
-    "rating": 4.5,
-    "reviews": 31,
+    "phone": "5493413354456",
+    "rating": 5.0,
+    "reviews": 1,
     "featured": false,
-    "description": "Más de 22 años instalando y reparando en Rosario sur. Instalaciones de gas natural y GLP (garrafa). Atención personalizada y precios claros sin sorpresas. Especialista en conversión de artefactos, cocinas industriales y sistemas de calefacción central. Atiendo domingos con recargo."
+    "description": ""
+  },
+  {
+    "id": "13",
+    "slug": "juan-martin",
+    "name": "Juan Martín",
+    "photo": "",
+    "matricula": "M3-49472",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Instalación",
+      "Reparación",
+      "Detección de pérdidas",
+      "Rehabilitación",
+      "Urgencias 24hs"
+    ],
+    "phone": "5493436571107",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Realizo instalaciones y reparaciones de artefactos y rehabilitaciones."
   }
 ]
