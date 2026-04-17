@@ -11,9 +11,9 @@
       "Tablada"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Certificado"
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Certificaciones y Formularios"
     ],
     "phone": "",
     "rating": 4.8,
@@ -33,9 +33,9 @@
       "Centro"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Detección de pérdidas"
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Urgencias 24hs"
     ],
     "phone": "",
     "rating": 4.9,
@@ -55,9 +55,9 @@
       "Observatorio"
     ],
     "services": [
-      "Reparación",
-      "Calderas",
-      "Certificado"
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Certificaciones y Formularios"
     ],
     "phone": "",
     "rating": 4.6,
@@ -77,12 +77,11 @@
       "Roldán"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Certificado",
-      "Detección de pérdidas",
-      "Rehabilitación",
-      "Planos y cálculos"
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493416360033",
     "rating": 5.0,
@@ -102,12 +101,11 @@
       "Fisherton"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Certificado",
-      "Detección de pérdidas",
-      "Rehabilitación",
-      "Planos y cálculos"
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493415649178",
     "rating": 5.0,
@@ -127,11 +125,11 @@
       "Roldán"
     ],
     "services": [
-      "Instalación",
-      "Certificado",
-      "Habilitación comercial",
-      "Rehabilitación",
-      "Planos y cálculos"
+      "Instalación y reparación de artefactos",
+      "Rehabilitación de suministro",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493417529827",
     "rating": 5.0,
@@ -153,13 +151,12 @@
       "Alvear"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Certificado",
-      "Detección de pérdidas",
-      "Habilitación comercial",
-      "Rehabilitación",
-      "Planos y cálculos"
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493413151977",
     "rating": 5.0,
@@ -179,10 +176,8 @@
       "Roldán"
     ],
     "services": [
-      "Plomería",
-      "Cloacas",
-      "Instalación",
-      "Reparación"
+      "Instalación y reparación de artefactos",
+      "Plomería y cloacas"
     ],
     "phone": "5493416211039",
     "rating": 5.0,
@@ -200,10 +195,9 @@
       "Rosario"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Calderas",
-      "Rehabilitación"
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Rehabilitación de suministro"
     ],
     "phone": "5493413354456",
     "rating": 5.0,
@@ -221,10 +215,9 @@
       "Rosario"
     ],
     "services": [
-      "Instalación",
-      "Reparación",
-      "Detección de pérdidas",
-      "Rehabilitación",
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
       "Urgencias 24hs"
     ],
     "phone": "5493436571107",

@@ -1,93 +1,231 @@
 ---
-const services = [
-  "Instalación",
-  "Reparación",
-  "Certificado",
-  "Detección de pérdidas",
-  "Calderas",
-  "Habilitación comercial",
-  "Rehabilitación",
-  "Planos y cálculos",
-  "Urgencias 24hs",
+const SERVICE_GROUPS: { label: string; items: string[] }[] = [
+  {
+    label: "Urgencias y Seguridad",
+    items: [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+    ],
+  },
+  {
+    label: "Instalaciones y Service",
+    items: [
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+    ],
+  },
+  {
+    label: "Trámites y Obras",
+    items: [
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios",
+    ],
+  },
 ];
+
+const ZONES: Record<string, string[]> = {
+  Centro: [
+    "Centro",
+    "Pichincha",
+    "Abasto",
+    "Echesortu",
+    "Barrio Martín",
+    "República de la Sexta",
+    "Lourdes",
+    "Terminal / Agote",
+  ],
+  Norte: [
+    "Alberdi",
+    "Arroyito",
+    "Refinería",
+    "Sarmiento",
+    "La Florida",
+    "Parque Field",
+    "Rucci",
+    "Lomas de Alberdi",
+  ],
+  Noroeste: [
+    "Fisherton",
+    "Belgrano",
+    "Azcuénaga",
+    "Empalme Granero",
+    "Ludueña",
+    "Hostal del Sol",
+    "Aldea",
+    "San Eduardo",
+  ],
+  Sur: [
+    "Saladillo",
+    "Tiro Suizo",
+    "Tablada",
+    "España y Hospitales",
+    "Las Heras",
+    "Acindar",
+  ],
+  Oeste: [
+    "Bella Vista",
+    "Cinco Esquinas",
+    "Barrio Godoy",
+    "Barrio Alvear",
+    "Vía Honda",
+  ],
+  Alrededores: ["Funes", "Roldán", "Villa Gobernador Gálvez", "Alvear"],
+};
+
+const zoneEntries = Object.entries(ZONES);
 ---
 
 <section id="listar" class="bg-dark py-16 lg:py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <div class="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-16 items-start">
-
+      <!-- columna izquierda -->
       <div class="lg:sticky lg:top-28 relative">
-
-        <!-- anillos decorativos de fondo -->
-        <div class="absolute -bottom-8 -right-4 pointer-events-none select-none" aria-hidden="true">
-          <svg width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg" opacity="0.12">
-            <!-- Outer ring -->
-            <circle cx="140" cy="140" r="130" stroke="#e07418" stroke-width="1" stroke-dasharray="4 6"/>
-            <!-- Mid ring -->
-            <circle cx="140" cy="140" r="100" stroke="#e07418" stroke-width="1" stroke-dasharray="3 5"/>
-            <!-- Inner ring -->
-            <circle cx="140" cy="140" r="70" stroke="#e07418" stroke-width="1.5" stroke-dasharray="2 4"/>
-            <!-- Burner ring -->
-            <circle cx="140" cy="140" r="44" stroke="#e07418" stroke-width="1.5"/>
-            <!-- Burner ports -->
-            <circle cx="140" cy="96" r="3" fill="#e07418"/>
-            <circle cx="168" cy="103" r="3" fill="#e07418"/>
-            <circle cx="184" cy="128" r="3" fill="#e07418"/>
-            <circle cx="184" cy="152" r="3" fill="#e07418"/>
-            <circle cx="168" cy="177" r="3" fill="#e07418"/>
-            <circle cx="140" cy="184" r="3" fill="#e07418"/>
-            <circle cx="112" cy="177" r="3" fill="#e07418"/>
-            <circle cx="96" cy="152" r="3" fill="#e07418"/>
-            <circle cx="96" cy="128" r="3" fill="#e07418"/>
-            <circle cx="112" cy="103" r="3" fill="#e07418"/>
-            <!-- Center -->
-            <circle cx="140" cy="140" r="8" stroke="#e07418" stroke-width="1.5"/>
-            <circle cx="140" cy="140" r="2.5" fill="#e07418"/>
-            <!-- Cross hairs -->
-            <line x1="140" y1="132" x2="140" y2="148" stroke="#e07418" stroke-width="1"/>
-            <line x1="132" y1="140" x2="148" y2="140" stroke="#e07418" stroke-width="1"/>
+        <div
+          class="absolute -bottom-8 -right-4 pointer-events-none select-none"
+          aria-hidden="true"
+        >
+          <svg
+            width="280"
+            height="280"
+            viewBox="0 0 280 280"
+            fill="none"
+            opacity="0.12"
+          >
+            <circle
+              cx="140"
+              cy="140"
+              r="130"
+              stroke="#e07418"
+              stroke-width="1"
+              stroke-dasharray="4 6"></circle>
+            <circle
+              cx="140"
+              cy="140"
+              r="100"
+              stroke="#e07418"
+              stroke-width="1"
+              stroke-dasharray="3 5"></circle>
+            <circle
+              cx="140"
+              cy="140"
+              r="70"
+              stroke="#e07418"
+              stroke-width="1.5"
+              stroke-dasharray="2 4"></circle>
+            <circle cx="140" cy="140" r="44" stroke="#e07418" stroke-width="1.5"
+            ></circle>
+            <circle cx="140" cy="96" r="3" fill="#e07418"></circle><circle
+              cx="168"
+              cy="103"
+              r="3"
+              fill="#e07418"></circle>
+            <circle cx="184" cy="128" r="3" fill="#e07418"></circle><circle
+              cx="184"
+              cy="152"
+              r="3"
+              fill="#e07418"></circle>
+            <circle cx="168" cy="177" r="3" fill="#e07418"></circle><circle
+              cx="140"
+              cy="184"
+              r="3"
+              fill="#e07418"></circle>
+            <circle cx="112" cy="177" r="3" fill="#e07418"></circle><circle
+              cx="96"
+              cy="152"
+              r="3"
+              fill="#e07418"></circle>
+            <circle cx="96" cy="128" r="3" fill="#e07418"></circle><circle
+              cx="112"
+              cy="103"
+              r="3"
+              fill="#e07418"></circle>
+            <circle cx="140" cy="140" r="8" stroke="#e07418" stroke-width="1.5"
+            ></circle>
+            <circle cx="140" cy="140" r="2.5" fill="#e07418"></circle>
+            <line
+              x1="140"
+              y1="132"
+              x2="140"
+              y2="148"
+              stroke="#e07418"
+              stroke-width="1"></line>
+            <line
+              x1="132"
+              y1="140"
+              x2="148"
+              y2="140"
+              stroke="#e07418"
+              stroke-width="1"></line>
           </svg>
         </div>
 
-        <span class="inline-flex items-center text-xs font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-3 py-1.5 rounded-full uppercase tracking-widest mb-6">
+        <span
+          class="inline-flex items-center text-xs font-semibold text-flame/80 bg-flame/10 border border-flame/20 px-3 py-1.5 rounded-full uppercase tracking-widest mb-6"
+        >
           Para profesionales
         </span>
-
-        <h2 class="font-display font-800 text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
-          ¿Sos gasista<br/>
-          <span class="text-flame">matriculado</span>?
+        <h2
+          class="font-display font-800 text-white text-3xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5"
+        >
+          ¿Sos gasista<br /><span class="text-flame">matriculado</span>?
         </h2>
-
         <p class="text-white/55 text-base leading-relaxed mb-8 max-w-md">
-          Publicá tu perfil en GasistasRosario y recibí consultas directas por WhatsApp de clientes en tu zona. Sin comisiones, sin intermediarios.
+          Publicá tu perfil en GasistasRosario y recibí consultas directas por
+          WhatsApp de clientes en tu zona. Sin comisiones, sin intermediarios.
         </p>
-
         <ul class="flex flex-col gap-3" role="list">
-          {[
-            "Perfil con tus datos, zonas y servicios",
-            "Contacto directo vía WhatsApp",
-            "Sin comisiones por trabajo realizado",
-            "Opción de perfil destacado disponible",
-            "Tu matrícula como diferencial",
-          ].map(benefit => (
-            <li class="flex items-start gap-3 text-sm text-white/65">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 mt-0.5 text-flame" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M5 8L7 10L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              {benefit}
-            </li>
-          ))}
+          {
+            [
+              "Perfil con tus datos, zonas y servicios",
+              "Contacto directo vía WhatsApp",
+              "Sin comisiones por trabajo realizado",
+              "Opción de perfil destacado disponible",
+              "Tu matrícula como diferencial",
+            ].map((b) => (
+              <li class="flex items-start gap-3 text-sm text-white/65">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  class="flex-shrink-0 mt-0.5 text-flame"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="8"
+                    cy="8"
+                    r="6.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M5 8L7 10L11 6"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                {b}
+              </li>
+            ))
+          }
         </ul>
       </div>
 
+      <!-- formulario -->
       <div class="bg-dark-2 rounded-2xl border border-white/10 p-6 sm:p-8">
+        <h3 class="font-display font-700 text-white text-xl mb-1">
+          Enviá tu solicitud
+        </h3>
+        <p class="text-white/45 text-sm mb-6">
+          Te contactamos en menos de 48hs para activar tu perfil.
+        </p>
 
-        <h3 class="font-display font-700 text-white text-xl mb-1">Enviá tu solicitud</h3>
-        <p class="text-white/45 text-sm mb-6">Te contactamos en menos de 48hs para activar tu perfil.</p>
-
-        <!-- Netlify Form -->
         <form
           name="gasista-listing"
           method="POST"
@@ -97,7 +235,6 @@ const services = [
           class="flex flex-col gap-5"
           novalidate
         >
-          <!-- honeypot anti-spam -->
           <input type="hidden" name="form-name" value="gasista-listing" />
           <p class="hidden" aria-hidden="true">
             <label>No completar: <input name="bot-field" /></label>
@@ -105,9 +242,11 @@ const services = [
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1.5">
-              <label for="f-name" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-                Nombre completo <span class="text-flame" aria-hidden="true">*</span>
-              </label>
+              <label
+                for="f-name"
+                class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+                >Nombre completo <span class="text-flame">*</span></label
+              >
               <input
                 type="text"
                 id="f-name"
@@ -119,9 +258,11 @@ const services = [
               />
             </div>
             <div class="flex flex-col gap-1.5">
-              <label for="f-phone" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-                Teléfono / WhatsApp <span class="text-flame" aria-hidden="true">*</span>
-              </label>
+              <label
+                for="f-phone"
+                class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+                >Teléfono / WhatsApp <span class="text-flame">*</span></label
+              >
               <input
                 type="tel"
                 id="f-phone"
@@ -135,9 +276,11 @@ const services = [
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="f-email" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-              Email <span class="text-flame" aria-hidden="true">*</span>
-            </label>
+            <label
+              for="f-email"
+              class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+              >Email <span class="text-flame">*</span></label
+            >
             <input
               type="email"
               id="f-email"
@@ -150,58 +293,178 @@ const services = [
           </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="f-matricula" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-              Número de matrícula <span class="text-flame" aria-hidden="true">*</span>
-            </label>
+            <label
+              for="f-matricula"
+              class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+              >Número de matrícula <span class="text-flame">*</span></label
+            >
             <input
               type="text"
               id="f-matricula"
               name="matricula"
               required
-              placeholder="Ej: MAT-00234"
+              placeholder="Ej: 12345"
               class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors font-mono"
             />
-            <p class="text-xs text-white/35">Confirmamos tu matrícula antes de publicar el perfil.</p>
+            <p class="text-xs text-white/35">
+              Confirmamos tu matrícula antes de publicar el perfil.
+            </p>
           </div>
 
-          <div class="flex flex-col gap-1.5">
-            <label for="f-zones" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-              Zonas que cubrís <span class="text-flame" aria-hidden="true">*</span>
-            </label>
+          <!-- ── Selector de zonas con tabs ── -->
+          <div id="zone-picker">
+            <div class="flex items-center justify-between mb-2.5">
+              <span
+                class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+                >Zonas que cubrís <span class="text-flame">*</span></span
+              >
+              <span
+                id="zones-counter"
+                class="text-xs text-white/35 tabular-nums transition-colors duration-200"
+                >ninguna</span
+              >
+            </div>
+
+            <!-- Todo Rosario -->
+            <button
+              type="button"
+              id="btn-todo-rosario"
+              class="w-full flex items-center justify-center gap-2 mb-3 py-2 rounded-lg border border-white/10 bg-dark-3 text-white/40 text-xs font-medium transition-all duration-200 hover:border-white/20 hover:text-white/60"
+            >
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 13 13"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z"
+                  stroke="currentColor"
+                  stroke-width="1.4"></path>
+                <circle cx="6.5" cy="4.5" r="1.4" fill="currentColor"></circle>
+              </svg>
+              Todo Rosario
+            </button>
+
+            <!-- Panel unificado: tabs + barrios -->
+            <div class="rounded-xl border border-white/10 bg-dark-3 overflow-hidden">
+              <div
+                class="flex overflow-x-auto scrollbar-none border-b border-white/8"
+                role="tablist"
+                id="zone-tabs"
+              >
+                {
+                  zoneEntries.map(([group], i) => (
+                    <button
+                      type="button"
+                      role="tab"
+                      class="zone-tab flex-shrink-0 px-3 py-2 text-xs font-medium transition-all duration-150 whitespace-nowrap"
+                      data-group={group}
+                      aria-selected={i === 0 ? "true" : "false"}
+                    >
+                      {group}
+                      <span
+                        class="zone-tab-count ml-1 text-[10px] font-bold tabular-nums"
+                        data-group={group}
+                      />
+                    </button>
+                  ))
+                }
+              </div>
+
+              <div class="p-3">
+                <div
+                  class="flex flex-wrap gap-1.5 min-h-[60px] content-start"
+                  id="barrios-panel"
+                >
+                  {
+                    zoneEntries.map(([group, barrios], i) => (
+                      <div
+                        class="zone-panel w-full flex flex-wrap gap-1.5"
+                        data-group={group}
+                        style={i !== 0 ? "display:none" : ""}
+                      >
+                        {barrios.map((b: string) => (
+                          <button
+                            type="button"
+                            class="barrio-pill px-2.5 py-1 rounded-md border border-white/10 text-white/40 text-xs font-medium transition-all duration-150 hover:border-white/20 hover:text-white/60"
+                            data-group={group}
+                            data-value={b}
+                          >
+                            {b}
+                          </button>
+                        ))}
+                      </div>
+                    ))
+                  }
+                </div>
+                <div class="flex justify-end mt-2 pt-2 border-t border-white/5">
+                  <button
+                    type="button"
+                    id="btn-todos-zona"
+                    class="text-[10px] text-white/25 hover:text-flame transition-colors duration-150 font-medium"
+                  >
+                    seleccionar todos
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <input type="hidden" id="f-zones" name="zonas" />
+
             <input
               type="text"
-              id="f-zones"
-              name="zonas"
-              required
-              placeholder="Ej: Fisherton, Las Delicias, Tablada"
-              class="bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-sm rounded-xl px-4 py-3 outline-none transition-colors"
+              id="f-zones-extra"
+              name="otras-zonas"
+              placeholder="Otra zona no listada (opcional)"
+              class="mt-2 w-full bg-dark-3 border border-white/10 hover:border-white/20 focus:border-flame/60 text-white placeholder:text-white/25 text-xs rounded-xl px-3 py-2.5 outline-none transition-colors"
             />
-            <p class="text-xs text-white/35">Ingresá los barrios separados por coma.</p>
           </div>
 
-          <fieldset>
-            <legend class="text-xs font-semibold text-white/60 uppercase tracking-wide mb-3">
-              Servicios que ofrecés <span class="text-flame" aria-hidden="true">*</span>
-            </legend>
-            <div class="grid grid-cols-2 gap-2">
-              {services.map(s => (
-                <label class="flex items-center gap-2.5 cursor-pointer group">
-                  <input
-                    type="checkbox"
-                    name="servicios"
-                    value={s}
-                    class="w-4 h-4 rounded border border-white/20 bg-dark-3 text-flame accent-flame cursor-pointer"
-                  />
-                  <span class="text-sm text-white/60 group-hover:text-white/80 transition-colors">{s}</span>
-                </label>
-              ))}
+          <!-- Servicios -->
+          <div id="services-picker">
+            <div class="flex items-center justify-between mb-2.5">
+              <span class="text-xs font-semibold text-white/60 uppercase tracking-wide">
+                Servicios que ofrecés <span class="text-flame">*</span>
+              </span>
+              <span
+                id="services-counter"
+                class="text-xs text-white/35 tabular-nums transition-colors duration-200"
+                >ninguno</span
+              >
             </div>
-          </fieldset>
+            <div class="flex flex-col gap-3">
+              {
+                SERVICE_GROUPS.map((group) => (
+                  <div>
+                    <p class="text-[10px] font-bold text-white/25 uppercase tracking-wider mb-1.5">
+                      {group.label}
+                    </p>
+                    <div class="flex flex-wrap gap-1.5">
+                      {group.items.map((s) => (
+                        <button
+                          type="button"
+                          class="service-pill px-2.5 py-1 rounded-md border border-white/10 text-white/40 text-xs font-medium transition-all duration-150 hover:border-white/20 hover:text-white/60"
+                          data-value={s}
+                        >
+                          {s}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+            <input type="hidden" id="f-services" name="servicios" />
+          </div>
 
           <div class="flex flex-col gap-1.5">
-            <label for="f-desc" class="text-xs font-semibold text-white/60 uppercase tracking-wide">
-              Descripción breve
-            </label>
+            <label
+              for="f-desc"
+              class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+              >Descripción breve</label
+            >
             <textarea
               id="f-desc"
               name="descripcion"
@@ -216,76 +479,365 @@ const services = [
             id="submit-btn"
             class="w-full inline-flex items-center justify-center gap-2 bg-flame hover:bg-flame-dark active:scale-[0.99] text-white font-semibold text-base px-6 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-flame/20 mt-1"
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M2 8L6 12L14 4"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"></path>
             </svg>
             Enviar solicitud
           </button>
 
-          <!-- éxito -->
-          <div id="form-success" class="hidden rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-3.5">
+          <div
+            id="form-success"
+            class="hidden rounded-xl border border-[#25D366]/30 bg-[#25D366]/10 px-4 py-3.5"
+          >
             <p class="text-[#25D366] text-sm font-semibold">
               Solicitud enviada correctamente. Te contactamos pronto.
             </p>
           </div>
-
-          <!-- error -->
-          <div id="form-error" class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3.5">
+          <div
+            id="form-error"
+            class="hidden rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3.5"
+          >
             <p class="text-red-400 text-sm font-semibold">
               Hubo un error al enviar. Revisá los campos o intentá de nuevo.
             </p>
           </div>
-
         </form>
       </div>
-
     </div>
   </div>
 </section>
 
+<style>
+  .zone-tab {
+    color: rgba(255,255,255,0.3);
+    background: transparent;
+    border-bottom: 2px solid transparent;
+  }
+  .zone-tab:hover {
+    color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.04);
+  }
+  .zone-tab[aria-selected="true"] {
+    color: #f59e0b;
+    border-bottom-color: #e07418;
+  }
+  .zone-tab-count { color: transparent; }
+  .zone-tab-count.has-count { color: #e07418; }
+
+  /* barrio pills */
+  .barrio-pill.selected {
+    background: rgba(224, 116, 24, 0.15);
+    border-color: rgba(224, 116, 24, 0.45);
+    color: #f59e0b;
+  }
+
+  /* todo rosario */
+  #btn-todo-rosario.selected {
+    background: rgba(224, 116, 24, 0.15);
+    border-color: rgba(224, 116, 24, 0.45);
+    color: #f59e0b;
+  }
+
+  /* counter naranja cuando hay selección */
+  #zones-counter.has-selection {
+    color: #e07418;
+  }
+
+  .service-pill.selected {
+    background: rgba(224, 116, 24, 0.15);
+    border-color: rgba(224, 116, 24, 0.45);
+    color: #f59e0b;
+  }
+
+  #services-counter.has-selection {
+    color: #e07418;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
 <script>
-  const form = document.getElementById('listing-form') as HTMLFormElement | null;
-  const successMsg = document.getElementById('form-success');
-  const errorMsg = document.getElementById('form-error');
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const ZONES_DATA: Record<string, string[]> = {
+    Centro: [
+      "Centro",
+      "Pichincha",
+      "Abasto",
+      "Echesortu",
+      "Barrio Martín",
+      "República de la Sexta",
+      "Lourdes",
+      "Terminal / Agote",
+    ],
+    Norte: [
+      "Alberdi",
+      "Arroyito",
+      "Refinería",
+      "Sarmiento",
+      "La Florida",
+      "Parque Field",
+      "Rucci",
+      "Lomas de Alberdi",
+    ],
+    Noroeste: [
+      "Fisherton",
+      "Belgrano",
+      "Azcuénaga",
+      "Empalme Granero",
+      "Ludueña",
+      "Hostal del Sol",
+      "Aldea",
+      "San Eduardo",
+    ],
+    Sur: [
+      "Saladillo",
+      "Tiro Suizo",
+      "Tablada",
+      "España y Hospitales",
+      "Las Heras",
+      "Acindar",
+    ],
+    Oeste: [
+      "Bella Vista",
+      "Cinco Esquinas",
+      "Barrio Godoy",
+      "Barrio Alvear",
+      "Vía Honda",
+    ],
+    Alrededores: ["Funes", "Roldán", "Villa Gobernador Gálvez", "Alvear"],
+  };
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!form) return;
+  const tabs = document.querySelectorAll<HTMLButtonElement>(".zone-tab");
+  const panels = document.querySelectorAll<HTMLElement>(".zone-panel");
+  const barriosPills =
+    document.querySelectorAll<HTMLButtonElement>(".barrio-pill");
+  const btnTodo = document.getElementById(
+    "btn-todo-rosario",
+  ) as HTMLButtonElement;
+  const btnTodosZona = document.getElementById(
+    "btn-todos-zona",
+  ) as HTMLButtonElement;
+  const zonesInput = document.getElementById("f-zones") as HTMLInputElement;
+  const counter = document.getElementById("zones-counter")!;
 
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando...';
+  let activeGroup = Object.keys(ZONES_DATA)[0];
+  let todoSelected = false;
+  const selected = new Set<string>();
+
+  // ── helpers ──────────────────────────────────────────
+  const syncCounter = () => {
+    if (todoSelected) {
+      counter.textContent = "Todo Rosario";
+      counter.classList.add("has-selection");
+    } else {
+      const n = selected.size;
+      counter.textContent =
+        n === 0 ? "ninguna" : `${n} barrio${n !== 1 ? "s" : ""}`;
+      counter.classList.toggle("has-selection", n > 0);
     }
+  };
 
-    successMsg?.classList.add('hidden');
-    errorMsg?.classList.add('hidden');
+  const extraInput = document.getElementById('f-zones-extra') as HTMLInputElement | null;
+
+  const syncHidden = () => {
+    const base = todoSelected ? 'Todo Rosario' : Array.from(selected).join(', ');
+    const extra = extraInput?.value.trim() ?? '';
+    zonesInput.value = [base, extra].filter(Boolean).join(', ');
+  };
+
+  extraInput?.addEventListener('input', syncHidden);
+
+  const syncTabCounts = () => {
+    tabs.forEach((tab) => {
+      const g = tab.dataset.group!;
+      const n = ZONES_DATA[g].filter((b) => selected.has(b)).length;
+      const countEl = tab.querySelector<HTMLElement>(".zone-tab-count")!;
+      countEl.textContent = n > 0 ? String(n) : "";
+      countEl.classList.toggle("has-count", n > 0);
+    });
+  };
+
+  const syncTodosZonaBtn = () => {
+    const barrios = ZONES_DATA[activeGroup];
+    const allSel = barrios.every((b) => selected.has(b));
+    btnTodosZona.textContent = allSel ? "quitar todos" : "seleccionar todos";
+  };
+
+  const setActiveTab = (group: string) => {
+    activeGroup = group;
+    tabs.forEach((t) =>
+      t.setAttribute("aria-selected", String(t.dataset.group === group)),
+    );
+    panels.forEach((p) => {
+      p.style.display = p.dataset.group === group ? "" : "none";
+    });
+    syncTodosZonaBtn();
+  };
+
+  const disableBarrios = (off: boolean) => {
+    barriosPills.forEach((p) => {
+      p.disabled = off;
+      p.style.opacity = off ? "0.3" : "";
+    });
+    btnTodosZona.disabled = off;
+    btnTodosZona.style.opacity = off ? "0.3" : "";
+  };
+
+  // ── tabs ─────────────────────────────────────────────
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => setActiveTab(tab.dataset.group!));
+  });
+
+  // ── barrios ──────────────────────────────────────────
+  barriosPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const v = pill.dataset.value!;
+      if (selected.has(v)) {
+        selected.delete(v);
+        pill.classList.remove("selected");
+      } else {
+        selected.add(v);
+        pill.classList.add("selected");
+      }
+      syncCounter();
+      syncHidden();
+      syncTabCounts();
+      syncTodosZonaBtn();
+    });
+  });
+
+  // ── seleccionar todos (zona activa) ──────────────────
+  btnTodosZona.addEventListener("click", () => {
+    const barrios = ZONES_DATA[activeGroup];
+    const allSel = barrios.every((b) => selected.has(b));
+    barrios.forEach((b) => {
+      const pill = document.querySelector<HTMLButtonElement>(
+        `.barrio-pill[data-value="${b}"]`,
+      );
+      if (allSel) {
+        selected.delete(b);
+        pill?.classList.remove("selected");
+      } else {
+        selected.add(b);
+        pill?.classList.add("selected");
+      }
+    });
+    syncCounter();
+    syncHidden();
+    syncTabCounts();
+    syncTodosZonaBtn();
+  });
+
+  // ── todo rosario ─────────────────────────────────────
+  btnTodo.addEventListener("click", () => {
+    todoSelected = !todoSelected;
+    btnTodo.classList.toggle("selected", todoSelected);
+    if (todoSelected) {
+      selected.clear();
+      barriosPills.forEach((p) => p.classList.remove("selected"));
+    }
+    disableBarrios(todoSelected);
+    syncCounter();
+    syncHidden();
+    syncTabCounts();
+    syncTodosZonaBtn();
+  });
+
+  // ── servicios (pills) ────────────────────────────────
+  const servicePills = document.querySelectorAll<HTMLButtonElement>(".service-pill");
+  const servicesInput = document.getElementById("f-services") as HTMLInputElement;
+  const servicesCounter = document.getElementById("services-counter")!;
+  const selectedServices = new Set<string>();
+
+  const syncServices = () => {
+    servicesInput.value = Array.from(selectedServices).join(", ");
+    const n = selectedServices.size;
+    servicesCounter.textContent = n === 0 ? "ninguno" : `${n} servicio${n !== 1 ? "s" : ""}`;
+    servicesCounter.classList.toggle("has-selection", n > 0);
+  };
+
+  servicePills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const v = pill.dataset.value!;
+      if (selectedServices.has(v)) {
+        selectedServices.delete(v);
+        pill.classList.remove("selected");
+      } else {
+        selectedServices.add(v);
+        pill.classList.add("selected");
+      }
+      syncServices();
+    });
+  });
+
+  const resetServices = () => {
+    selectedServices.clear();
+    servicePills.forEach((p) => p.classList.remove("selected"));
+    syncServices();
+  };
+
+  // ── formulario ───────────────────────────────────────
+  const form = document.getElementById("listing-form") as HTMLFormElement;
+  const successMsg = document.getElementById("form-success")!;
+  const errorMsg = document.getElementById("form-error")!;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+
+  const resetZones = () => {
+    todoSelected = false;
+    selected.clear();
+    btnTodo.classList.remove("selected");
+    barriosPills.forEach((p) => p.classList.remove("selected"));
+    if (extraInput) extraInput.value = '';
+    disableBarrios(false);
+    syncCounter();
+    syncHidden();
+    syncTabCounts();
+    syncTodosZonaBtn();
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    syncHidden();
+    syncServices();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando...";
+    successMsg.classList.add("hidden");
+    errorMsg.classList.add("hidden");
 
     try {
-      const formData = new FormData(form);
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(
+          new FormData(form) as unknown as Record<string, string>,
+        ).toString(),
       });
-
-      if (response.ok) {
+      if (res.ok) {
         form.reset();
-        successMsg?.classList.remove('hidden');
-      } else {
-        throw new Error('Error en el servidor');
-      }
+        resetZones();
+        resetServices();
+        successMsg.classList.remove("hidden");
+      } else throw new Error();
     } catch {
-      errorMsg?.classList.remove('hidden');
+      errorMsg.classList.remove("hidden");
     } finally {
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = `
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Enviar solicitud`;
-      }
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Enviar solicitud`;
     }
   });
 </script>
