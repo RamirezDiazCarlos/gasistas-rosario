@@ -1,27 +1,5 @@
 [
   {
-    "id": "1",
-    "slug": "roberto-marcelo-gutierrez",
-    "name": "Roberto Marcelo Gutiérrez",
-    "photo": "https://picsum.photos/seed/gasista-roberto/400/400",
-    "matricula": "M3-00234",
-    "zones": [
-      "Fisherton",
-      "Las Delicias",
-      "Tablada"
-    ],
-    "services": [
-      "Instalación y reparación de artefactos",
-      "Reparación de calderas",
-      "Certificaciones y Formularios"
-    ],
-    "phone": "",
-    "rating": 4.8,
-    "reviews": 37,
-    "featured": true,
-    "description": "Gasista matriculado con más de 18 años de experiencia en instalaciones residenciales y comerciales en zona oeste de Rosario. Especializado en reparación de calderas y termotanques, certificaciones oficiales ante el municipio y habilitaciones. Trabajo prolijo, puntual y con garantía escrita. Atención de urgencias dentro de las 2 horas."
-  },
-  {
     "id": "2",
     "slug": "claudia-beatriz-ferreyra",
     "name": "Claudia Beatriz Ferreyra",
@@ -42,28 +20,6 @@
     "reviews": 52,
     "featured": true,
     "description": "Especialista en detección y reparación de pérdidas de gas con equipo electrónico de última generación. Atención de urgencias las 24 horas. Certificada por ENARGAS. Más de 12 años trabajando en el área central de Rosario, con extensa trayectoria en edificios, departamentos y locales comerciales. Presupuesto sin cargo."
-  },
-  {
-    "id": "3",
-    "slug": "hector-daniel-pereyra",
-    "name": "Héctor Daniel Pereyra",
-    "photo": "https://picsum.photos/seed/gasista-hector/400/400",
-    "matricula": "M3-00312",
-    "zones": [
-      "Alberdi",
-      "Echesortu",
-      "Observatorio"
-    ],
-    "services": [
-      "Instalación y reparación de artefactos",
-      "Reparación de calderas",
-      "Certificaciones y Formularios"
-    ],
-    "phone": "",
-    "rating": 4.6,
-    "reviews": 28,
-    "featured": false,
-    "description": "Técnico con amplia trayectoria en reparación de calefones, termotanques y calderas de todas las marcas. Trabajo prolijo y garantizado. Atención de lunes a sábado de 8 a 20hs. Cubro toda la zona noroeste de Rosario. Repuestos originales y trabajo con factura."
   },
   {
     "id": "7",
@@ -225,5 +181,51 @@
     "reviews": 1,
     "featured": false,
     "description": "Realizo instalaciones y reparaciones de artefactos y rehabilitaciones."
+  },
+  {
+    "id": "14",
+    "slug": "juan-carlos-catini",
+    "name": "Juan Carlos Catini",
+    "photo": "",
+    "matricula": "M3-18631",
+    "zones": [
+      "Rosario",
+      "Luis Palacio",
+      "Ybarlucea"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Plomería y cloacas"
+    ],
+    "phone": "5493413070394",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalaciones de gas. Reparaciones. Rehabilitaciones. Colocación y arreglo de artefactos a gas. Plomería en general."
+  },
+  {
+    "id": "15",
+    "slug": "carlos-fabian-degiorgio-mas",
+    "name": "Carlos Fabián Degiorgio Mas",
+    "photo": "",
+    "matricula": "M3-40725",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Limpieza y mantenimiento preventivo",
+      "Certificaciones y Formularios"
+    ],
+    "phone": "5493413186122",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Me especializo en rehabilitaciones de suministro, obras nuevas epoxi y termofusión (tengo las dos matrículas de los correspondientes sistemas) y reparación e instalación de artefactos a gas. Informes de estados de instalación."
   }
 ]
