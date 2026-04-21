@@ -291,6 +291,7 @@ const zoneEntries = Object.entries(ZONES);
     resetBtn.classList.toggle('hidden', !hasFilter);
     resetBtn.style.display = hasFilter ? 'inline-flex' : '';
     if (noResults) noResults.classList.toggle('hidden', visible > 0);
+    document.dispatchEvent(new CustomEvent('filter-change', { detail: { hasFilter } }));
   };
 
   const setZone = (value: string, labelText: string) => {

@@ -224,5 +224,26 @@
     "reviews": 1,
     "featured": false,
     "description": "Soy gasista con 17 años de experiencia. También hago plomería en general."
+  },
+  {
+    "id": "17",
+    "slug": "edgardo-adrian-gallo",
+    "name": "Edgardo Adrian Gallo",
+    "photo": "",
+    "matricula": "M3-71496",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Urgencias 24hs",
+      "Plomería y cloacas"
+    ],
+    "phone": "543402673536",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Detección de fugas y pruebas de hermeticidad. Instalación y reparación de artefactos a gas. Urgencias las 24hs. Conexión de agua y plomería general."
   }
 ]
