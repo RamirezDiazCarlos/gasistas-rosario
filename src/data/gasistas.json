@@ -1,27 +1,5 @@
 [
   {
-    "id": "2",
-    "slug": "claudia-beatriz-ferreyra",
-    "name": "Claudia Beatriz Ferreyra",
-    "photo": "https://picsum.photos/seed/gasista-claudia/400/400",
-    "matricula": "M3-00581",
-    "zones": [
-      "Pichincha",
-      "Refinería",
-      "Centro"
-    ],
-    "services": [
-      "Instalación y reparación de artefactos",
-      "Detección de fugas y hermeticidad",
-      "Urgencias 24hs"
-    ],
-    "phone": "",
-    "rating": 4.9,
-    "reviews": 52,
-    "featured": true,
-    "description": "Especialista en detección y reparación de pérdidas de gas con equipo electrónico de última generación. Atención de urgencias las 24 horas. Certificada por ENARGAS. Más de 12 años trabajando en el área central de Rosario, con extensa trayectoria en edificios, departamentos y locales comerciales. Presupuesto sin cargo."
-  },
-  {
     "id": "7",
     "slug": "anni-quiroz",
     "name": "Anni Quiroz",
@@ -117,7 +95,7 @@
     "phone": "5493413151977",
     "rating": 5.0,
     "reviews": 1,
-    "featured": false,
+    "featured": true,
     "description": "Instalación, reparación y control de cañerías y artefactos. Atiendo en Rosario, Funes, Roldán, Villa Gobernador Gálvez y Alvear."
   },
   {
@@ -227,5 +205,24 @@
     "reviews": 1,
     "featured": false,
     "description": "Me especializo en rehabilitaciones de suministro, obras nuevas epoxi y termofusión (tengo las dos matrículas de los correspondientes sistemas) y reparación e instalación de artefactos a gas. Informes de estados de instalación."
+  },
+  {
+    "id": "16",
+    "slug": "damian-solis",
+    "name": "Damián Solís",
+    "photo": "",
+    "matricula": "M3-33887",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Plomería y cloacas"
+    ],
+    "phone": "5493415717279",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Soy gasista con 17 años de experiencia. También hago plomería en general."
   }
 ]
