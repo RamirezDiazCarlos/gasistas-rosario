@@ -20,7 +20,7 @@
     "phone": "5493416360033",
     "rating": 5.0,
     "reviews": 1,
-    "featured": true,
+    "featured": false,
     "description": "Trámites: planos, cálculos, habilitaciones y rehabilitaciones de servicio.\nSeguridad: pruebas de hermeticidad y detección de pérdidas.\nTécnica: instalación de ventilaciones reglamentarias y adecuación de ambientes."
   },
   {
@@ -95,7 +95,7 @@
     "phone": "5493413151977",
     "rating": 5.0,
     "reviews": 1,
-    "featured": true,
+    "featured": false,
     "description": "Instalación, reparación y control de cañerías y artefactos. Atiendo en Rosario, Funes, Roldán, Villa Gobernador Gálvez y Alvear."
   },
   {
@@ -240,7 +240,7 @@
       "Urgencias 24hs",
       "Plomería y cloacas"
     ],
-    "phone": "543402673536",
+    "phone": "5493402673536",
     "rating": 5.0,
     "reviews": 1,
     "featured": false,
