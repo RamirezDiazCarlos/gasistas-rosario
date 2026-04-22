@@ -1,0 +1,123 @@
+---
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface Props {
+  questions?: FAQItem[];
+}
+
+const DEFAULT_QUESTIONS: FAQItem[] = [
+  {
+    q: "¿Cómo encuentro un gasista matriculado en Rosario?",
+    a: "En GasistasRosario.com.ar encontrás un directorio de gasistas matriculados habilitados por Litoral Gas. Podés filtrar por zona (centro, Fisherton, Pichincha, Echesortu, entre otros barrios) y por servicio (instalación, reparación, certificado, urgencias). Cada profesional tiene su matrícula verificada y se contacta directo por WhatsApp, sin intermediarios ni comisiones.",
+  },
+  {
+    q: "¿Cómo verificar si un gasista está matriculado?",
+    a: "Ingresá al listado oficial de Litoral Gas (litoral-gas.com.ar/site/hogares-y-comercios/info-y-tramites/listado-de-gasistas-y-profesionales), seleccioná tu localidad y buscá al profesional por nombre. Si aparece en el listado, está matriculado. Todos los gasistas matriculados cuentan con una credencial con foto emitida por la distribuidora que acredita su identidad y categoría habilitada.",
+  },
+  {
+    q: "¿Qué diferencia hay entre gasista M1, M2 y M3?",
+    a: "Son las tres categorías de matriculación según ENARGAS. M1 (Primera Categoría) es la más alta: accesible a ingenieros, arquitectos y MMO, habilita instalaciones domiciliarias, comerciales e industriales hasta 150.000 Kcal/h. M2 (Segunda Categoría) habilita hasta 300.000 Kcal/h en edificios y comercios. M3 (Tercera Categoría) habilita unidades unifuncionales (casas y departamentos individuales).",
+  },
+  {
+    q: "¿Cuándo necesito contratar un gasista matriculado?",
+    a: "Siempre que se trabaje sobre una instalación de gas. Es obligatorio para nuevas instalaciones, reparaciones, detección de pérdidas, habilitación comercial, certificados para inmobiliarias o escribanías, rehabilitación de servicio cortado y planos. La Ley 24.076 y la normativa NAG-200 de ENARGAS establecen que solo un gasista matriculado puede intervenir legalmente en instalaciones de gas.",
+  },
+  {
+    q: "¿Qué hago si tengo una urgencia de gas en Rosario?",
+    a: "Si sentís olor a gas o sospechás una fuga, ventilá el ambiente, cerrá la llave de paso general, no enciendas luces ni aparatos eléctricos y llamá al 0800-777-5427 de Litoral Gas, disponible las 24 horas. Para reparaciones no urgentes, en GasistasRosario.com.ar podés filtrar profesionales que ofrecen atención 24hs en tu zona.",
+  },
+  {
+    q: "¿Qué servicios hace un gasista matriculado?",
+    a: "Un gasista matriculado realiza instalación de cañerías y artefactos, reparación de pérdidas, detección con equipamiento electrónico, certificados de aptitud para inmobiliarias y escribanías, habilitación comercial, instalación y mantenimiento de calderas, rehabilitación de servicio cortado, planos y cálculos para aprobación de obra. Solo él puede intervenir legalmente en instalaciones de gas.",
+  },
+];
+
+const { questions = DEFAULT_QUESTIONS } = Astro.props;
+---
+
+<section class="relative bg-[#1a1612] py-16 sm:py-20 overflow-hidden">
+
+  <!-- glow decorativo -->
+  <div
+    class="absolute left-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none"
+    aria-hidden="true"
+    style="background: radial-gradient(circle, rgba(224,116,24,0.06) 0%, transparent 65%);"
+  />
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Header asimétrico -->
+    <div class="grid lg:grid-cols-[1fr_2fr] gap-6 mb-12 scroll-reveal items-end">
+      <div>
+        <p class="text-[10px] font-semibold text-flame/60 uppercase tracking-[0.2em] mb-4">
+          Preguntas frecuentes
+        </p>
+        <h2 class="font-display font-800 text-white text-4xl sm:text-5xl tracking-tight leading-[0.95]">
+          Lo que<br />necesitás saber
+        </h2>
+      </div>
+      <p class="text-white/30 text-sm leading-relaxed max-w-md lg:pb-1">
+        Todo sobre la contratación segura de un gasista matriculado en Rosario y el Gran Rosario.
+      </p>
+    </div>
+
+    <!-- Items FAQ — alineados bajo la columna derecha -->
+    <div class="lg:grid lg:grid-cols-[1fr_2fr] lg:gap-6">
+      <div class="hidden lg:block" aria-hidden="true" />
+
+      <div>
+        {questions.map((item, i) => (
+          <details class="group border-b border-white/[0.08] first:border-t first:border-white/[0.08] open:border-white/[0.12] transition-colors duration-300">
+            <summary class="flex items-center gap-5 py-5 cursor-pointer select-none">
+
+              <!-- Número monospace -->
+              <span class="font-mono text-[11px] text-flame/50 group-open:text-flame/80 group-hover:text-flame/70 flex-shrink-0 w-6 transition-colors duration-200 tabular-nums">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+
+              <!-- Pregunta -->
+              <span class="flex-1 font-display font-700 text-white/75 group-hover:text-white group-open:text-white text-[15px] sm:text-base leading-snug transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                {item.q}
+              </span>
+
+              <!-- Chevron -->
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                class="flex-shrink-0 text-white/20 group-hover:text-flame/50 group-open:rotate-180 group-open:text-flame/70 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                aria-hidden="true"
+              >
+                <path d="M2 5L7 10L12 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </summary>
+
+            <!-- Respuesta con left-accent en flame -->
+            <div class="grid grid-rows-[0fr] group-open:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <div class="overflow-hidden">
+                <div class="flex gap-5 pb-6 pt-1">
+                  <span class="w-6 flex-shrink-0" aria-hidden="true" />
+                  <div class="flex gap-4 border-l-2 border-flame/30 pl-4">
+                    <p class="text-white/40 text-sm leading-relaxed">
+                      {item.a}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+  details summary::marker { display: none; }
+</style>

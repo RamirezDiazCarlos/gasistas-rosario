@@ -89,7 +89,7 @@ const {
             "@id": "https://gasistasrosario.com.ar/#organization",
             "name": "GasistasRosario",
             "url": "https://gasistasrosario.com.ar",
-            "description": "Directorio de gasistas matriculados y verificados en Rosario, Santa Fe",
+            "description": "Directorio de gasistas matriculados en Rosario, Santa Fe, habilitados por Litoral Gas.",
             "logo": {
               "@type": "ImageObject",
               "url": "https://gasistasrosario.com.ar/favicon-96x96.png"
@@ -99,7 +99,13 @@ const {
               "addressLocality": "Rosario",
               "addressRegion": "Santa Fe",
               "addressCountry": "AR"
-            }
+            },
+            "areaServed": {
+              "@type": "City",
+              "name": "Rosario",
+              "containedInPlace": { "@type": "State", "name": "Santa Fe" }
+            },
+            "sameAs": []
           }
         ]
       }
