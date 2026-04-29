@@ -245,5 +245,34 @@
     "reviews": 1,
     "featured": false,
     "description": "Detección de fugas y pruebas de hermeticidad. Instalación y reparación de artefactos a gas. Urgencias las 24hs. Conexión de agua y plomería general."
+  },
+  {
+    "id": "18",
+    "slug": "dario-obregon",
+    "name": "Dario Obregón",
+    "photo": "",
+    "matricula": "M2-72075",
+    "zones": [
+      "Rosario",
+      "Roldán",
+      "Funes",
+      "Pueblo Esther"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493464620133",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Mantenimiento y reparación de calefactores, estufas y calefones. Instalaciones domiciliarias y obra nueva con entrega de proyecto. Habilitaciones municipales y rehabilitaciones por falta de pago. Atiendo Rosario, Roldán, Funes y Pueblo Esther."
   }
 ]
