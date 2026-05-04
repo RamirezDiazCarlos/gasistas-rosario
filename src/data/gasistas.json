@@ -274,5 +274,29 @@
     "reviews": 1,
     "featured": false,
     "description": "Mantenimiento y reparación de calefactores, estufas y calefones. Instalaciones domiciliarias y obra nueva con entrega de proyecto. Habilitaciones municipales y rehabilitaciones por falta de pago. Atiendo Rosario, Roldán, Funes y Pueblo Esther."
+  },
+  {
+    "id": "19",
+    "slug": "jose-augusto-escobar",
+    "name": "José Augusto Escobar",
+    "photo": "",
+    "matricula": "M2-47091",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas"
+    ],
+    "phone": "5493413119772",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalaciones de gas y rehabilitaciones por corte de suministro. Plomería completa: agua fría y caliente, tanques cisterna, bombas presurizadoras y grifería. Cloacas, desagües pluviales y conexiones en general."
   }
 ]
