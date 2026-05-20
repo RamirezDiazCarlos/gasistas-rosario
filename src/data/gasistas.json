@@ -326,5 +326,29 @@
     "reviews": 1,
     "featured": false,
     "description": "¡Que el frío no te sorprenda! Limpieza y reparación de estufas, calefactores y calefones. Instalaciones nuevas, reconexión de servicios y trámites ante Litoral Gas. Instalaciones cloacales, pluviales, agua fría y caliente. 10% de descuento por pago en efectivo."
+  },
+  {
+    "id": "21",
+    "slug": "hernan-solis",
+    "name": "Hernan Solis",
+    "photo": "",
+    "matricula": "M2-48685",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Plomería y cloacas",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416408349",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalaciones de gas, agua, cloacas y calefacción. Todo tipo de obras domiciliarias y comerciales. Habilitaciones y rehabilitaciones de suministro."
   }
 ]
