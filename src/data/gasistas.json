@@ -350,5 +350,27 @@
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas, agua, cloacas y calefacción. Todo tipo de obras domiciliarias y comerciales. Habilitaciones y rehabilitaciones de suministro."
+  },
+  {
+    "id": "22",
+    "slug": "guillermo-coll",
+    "name": "Guillermo Coll",
+    "photo": "",
+    "matricula": "M2-29624",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas"
+    ],
+    "phone": "5493413684013",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalación y reparación de artefactos a gas. Limpieza y mantenimiento preventivo. Plomería, agua y desagüe. Obras nuevas. Atiendo todo Rosario, Funes y Roldán."
   }
 ]
