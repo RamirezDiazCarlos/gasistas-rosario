@@ -372,5 +372,29 @@
     "reviews": 1,
     "featured": false,
     "description": "Instalación y reparación de artefactos a gas. Limpieza y mantenimiento preventivo. Plomería, agua y desagüe. Obras nuevas. Atiendo todo Rosario, Funes y Roldán."
+  },
+  {
+    "id": "23",
+    "slug": "marcos-armoa",
+    "name": "Marcos Armoa",
+    "photo": "",
+    "matricula": "M2-29671",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493417536236",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "25 años de experiencia en obra. Instalación y reparación de artefactos a gas. Detección de fugas, rehabilitaciones y urgencias 24hs. Habilitaciones comerciales y certificaciones. Plomería, cloacas y otros trabajos de construcción."
   }
 ]
