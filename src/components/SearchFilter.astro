@@ -202,6 +202,7 @@ const zoneEntries = Object.entries(ZONES);
   };
 
   const ROSARIO_ZONES = new Set(Object.values(ZONES_DATA).flat());
+  const ALREDEDORES = new Set(ZONES_DATA["Alrededores"]);
 
   const zoneTrigger   = document.getElementById('zone-trigger') as HTMLButtonElement;
   const zonePanel     = document.getElementById('zone-panel')!;
@@ -278,7 +279,7 @@ const zoneEntries = Object.entries(ZONES);
       } else if (activeZone === '__todo_rosario__') {
         matchesZone = zones.some(z => z === 'Todo Rosario' || z === 'Rosario' || ROSARIO_ZONES.has(z));
       } else {
-        matchesZone = zones.includes(activeZone) || zones.includes('Todo Rosario');
+        matchesZone = zones.includes(activeZone) || zones.includes('Todo Rosario') || (!ALREDEDORES.has(activeZone) && zones.includes('Rosario'));
       }
       const matchesService = activeService === '' || services.includes(activeService);
       const show = matchesZone && matchesService;

@@ -396,5 +396,31 @@
     "reviews": 1,
     "featured": false,
     "description": "25 años de experiencia en obra. Instalación y reparación de artefactos a gas. Detección de fugas, rehabilitaciones y urgencias 24hs. Habilitaciones comerciales y certificaciones. Plomería, cloacas y otros trabajos de construcción."
+  },
+  {
+    "id": "24",
+    "slug": "waldemar-michelud",
+    "name": "Waldemar Michelud",
+    "photo": "",
+    "matricula": "M2-72299",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Urgencias 24hs",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493413493519",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": true,
+    "description": "Detección electrónica de fugas de gas para mayor precisión y seguridad. Rehabilitaciones de suministro, habilitaciones y reparaciones. Instalación y mantenimiento de artefactos. Plomería, cloacas y obras nuevas."
   }
 ]
