@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Gasistas Matriculados en Rosario | GasistasRosario",
-  description = "Encontrá gasistas matriculados y verificados en Rosario, Santa Fe. Instalaciones, reparaciones, certificados de gas y urgencias. Contactalos directo por WhatsApp.",
+  title = "Gasistas Matriculados en Rosario | Verificados por Litoral Gas",
+  description = "Directorio de gasistas matriculados en Rosario y alrededores, verificados por Litoral Gas. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.",
   canonicalURL = Astro.url.href,
   ogImage = "https://gasistasrosario.com.ar/og-image.png",
 } = Astro.props;
@@ -17,6 +17,14 @@ const {
 <!doctype html>
 <html lang="es-AR">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-90R4Q23B1M"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-90R4Q23B1M');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />

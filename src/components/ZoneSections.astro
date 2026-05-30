@@ -3,7 +3,9 @@ import gasistas from '../data/gasistas.json';
 
 type Gasista = typeof gasistas[number];
 
-const rosarioGasistas = gasistas.filter(g => g.zones.includes('Rosario'));
+const rosarioGasistas = gasistas
+  .filter(g => g.zones.includes('Rosario'))
+  .sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
 
 const zoneMap = new Map<string, Gasista[]>();
 
@@ -19,7 +21,7 @@ const zones = [...zoneMap.entries()].sort((a, b) => b[1].length - a[1].length);
 const mainZones = zones.filter(([, g]) => g.length >= 2);
 const otherZones = zones.filter(([, g]) => g.length === 1);
 
-const ROSARIO_PREVIEW = 5;
+const ROSARIO_PREVIEW = 4;
 const rosarioVisible = rosarioGasistas.slice(0, ROSARIO_PREVIEW);
 const rosarioExtra = rosarioGasistas.length - ROSARIO_PREVIEW;
 ---
@@ -48,93 +50,87 @@ const rosarioExtra = rosarioGasistas.length - ROSARIO_PREVIEW;
       </p>
     </div>
 
-    <!-- Rosario — zona principal, card full-width -->
-    <div class="mb-8 scroll-reveal">
-      <div class="group relative overflow-hidden bg-flame/[0.03] rounded-2xl border border-flame/[0.18] p-8 sm:p-10 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-flame/[0.28] hover:shadow-[0_8px_32px_-8px_rgba(224,116,24,0.12)]">
+    <!-- Rosario — zona principal, card full-width dark -->
+    <div class="mb-6 scroll-reveal">
+      <div class="relative overflow-hidden bg-dark rounded-2xl border border-flame/25 p-7 sm:p-9 shadow-[0_4px_32px_-8px_rgba(0,0,0,0.20)]">
 
-        <div class="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-flame/70 via-flame/30 to-transparent rounded-b-sm" aria-hidden="true" />
+        <div class="absolute inset-0 pointer-events-none opacity-[0.022]"
+          style="background-image: url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 256 256%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter id%3D%22noise%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.9%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23noise)%22%2F%3E%3C%2Fsvg%3E'); background-size: 180px;"
+          aria-hidden="true" />
 
-        <!-- Número decorativo: esquina inferior derecha, recortado -->
-        <span
-          class="absolute -right-4 -bottom-4 font-display font-800 leading-none select-none pointer-events-none tabular-nums text-flame/[0.06] group-hover:text-flame/[0.09] transition-colors duration-500"
-          style="font-size: clamp(120px, 16vw, 200px); line-height: 1;"
-          aria-hidden="true"
-        >
-          {rosarioGasistas.length}
-        </span>
+        <div class="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-flame via-flame/40 to-transparent rounded-b-sm" aria-hidden="true" />
 
-        <div class="relative">
-          <div class="flex items-center gap-3 mb-6 flex-wrap">
-            <h3 class="font-display font-700 text-dark text-2xl sm:text-3xl leading-tight">
-              Gasistas en Rosario
-            </h3>
-            <span class="inline-flex items-center gap-1 font-mono text-[10px] text-flame font-semibold bg-flame/[0.08] border border-flame/[0.18] px-2 py-0.5 rounded-full tabular-nums">
-              {rosarioGasistas.length} matriculados
-            </span>
+        <div class="relative flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-5 flex-wrap">
+              <h3 class="font-display font-700 text-white text-2xl sm:text-3xl leading-tight">
+                Gasistas en Rosario
+              </h3>
+              <span class="inline-flex items-center gap-1 font-mono text-[10px] text-flame font-semibold bg-flame/[0.12] border border-flame/[0.25] px-2 py-0.5 rounded-full tabular-nums">
+                {rosarioGasistas.length} matriculados
+              </span>
+            </div>
+
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2" role="list">
+              {rosarioVisible.map(g => (
+                <li>
+                  <a
+                    href={`/${g.slug}`}
+                    class="flex items-center gap-2.5 text-[13px] text-white/45 hover:text-flame transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group/link"
+                  >
+                    <span
+                      class="w-1.5 h-1.5 rounded-full bg-flame/40 group-hover/link:bg-flame flex-shrink-0 transition-colors duration-200"
+                      aria-hidden="true"
+                    />
+                    {g.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {rosarioExtra > 0 && (
+              <p class="mt-4 text-[11px] text-white/20 font-mono">
+                + {rosarioExtra} más
+              </p>
+            )}
           </div>
 
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2" role="list">
-            {rosarioVisible.map(g => (
-              <li>
-                <a
-                  href={`/${g.slug}`}
-                  class="flex items-center gap-2.5 text-[13px] text-warm-800/60 hover:text-flame transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group/link"
-                >
-                  <span
-                    class="w-1.5 h-1.5 rounded-full bg-flame/30 group-hover/link:bg-flame flex-shrink-0 transition-colors duration-200"
-                    aria-hidden="true"
-                  />
-                  {g.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {rosarioExtra > 0 && (
-            <p class="mt-4 text-[11px] text-warm-800/35 font-mono">
-              + {rosarioExtra} más
-            </p>
-          )}
+          <span class="hidden sm:block font-display font-800 leading-none select-none pointer-events-none tabular-nums text-flame/[0.12] flex-shrink-0 self-end"
+            style="font-size: clamp(72px, 9vw, 110px); line-height: 1;"
+            aria-hidden="true"
+          >
+            {rosarioGasistas.length}
+          </span>
         </div>
 
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 mb-4 stagger-children">
-      {mainZones.map(([zone, zoneGasistas], i) => (
-        <div class="group relative overflow-hidden bg-white rounded-2xl border border-warm-200/60 p-6 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-warm-300/70 hover:shadow-[0_8px_32px_-8px_rgba(0,0,0,0.10)]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4 stagger-children">
+      {mainZones.map(([zone, zoneGasistas]) => (
+        <div class="group relative overflow-hidden bg-white rounded-xl border border-warm-200/60 p-4 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-warm-300/70 hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08)]">
 
-          <div class="absolute top-0 left-6 right-6 h-[2px] bg-gradient-to-r from-flame/50 to-transparent rounded-b-sm" aria-hidden="true" />
-
-          {i === 0 && (
-            <span
-              class="absolute right-4 bottom-2 font-display font-800 leading-none select-none pointer-events-none tabular-nums text-warm-100 group-hover:text-warm-200/80 transition-colors duration-500"
-              style="font-size: clamp(72px, 9vw, 108px);"
-              aria-hidden="true"
-            >
-              {zoneGasistas.length}
-            </span>
-          )}
+          <div class="absolute top-0 left-4 right-4 h-[1.5px] bg-gradient-to-r from-flame/40 to-transparent rounded-b-sm" aria-hidden="true" />
 
           <div class="relative">
-            <div class="flex items-baseline justify-between gap-3 mb-4">
-              <h3 class="font-display font-700 text-dark text-2xl leading-tight">
+            <div class="flex items-baseline justify-between gap-2 mb-3">
+              <h3 class="font-display font-700 text-dark text-base leading-tight">
                 Gasistas en {zone}
               </h3>
-              <span class="font-mono text-[11px] text-flame/65 font-semibold flex-shrink-0 tabular-nums">
+              <span class="font-mono text-[10px] text-flame/65 font-semibold flex-shrink-0 tabular-nums">
                 {zoneGasistas.length} mat.
               </span>
             </div>
 
-            <ul class="flex flex-col gap-2" role="list">
-              {zoneGasistas.map(g => (
+            <ul class="flex flex-col gap-1.5" role="list">
+              {zoneGasistas.slice(0, 3).map(g => (
                 <li>
                   <a
                     href={`/${g.slug}`}
-                    class="flex items-center gap-2.5 text-[13px] text-warm-800/60 hover:text-flame transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group/link"
+                    class="flex items-center gap-2 text-[12px] text-warm-800/60 hover:text-flame transition-colors duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group/link"
                   >
                     <span
-                      class="w-1.5 h-1.5 rounded-full bg-warm-300 group-hover/link:bg-flame flex-shrink-0 transition-colors duration-200"
+                      class="w-1 h-1 rounded-full bg-warm-300 group-hover/link:bg-flame flex-shrink-0 transition-colors duration-200"
                       aria-hidden="true"
                     />
                     {g.name}

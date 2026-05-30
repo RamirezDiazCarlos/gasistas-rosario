@@ -75,8 +75,8 @@ const itemListSchema = {
 ---
 
 <Layout
-  title="Gasistas Matriculados en Rosario | GasistasRosario"
-  description="Encontrá gasistas matriculados y verificados en Rosario, Santa Fe. Instalaciones, reparaciones, certificados de gas y urgencias. Contactalos directo por WhatsApp."
+  title="Gasistas Matriculados en Rosario | Verificados por Litoral Gas"
+  description={`Directorio de ${gasistas.length} gasistas matriculados en Rosario y alrededores, verificados por Litoral Gas. Filtrá por barrio o servicio y contactá directo por WhatsApp. Sin intermediarios.`}
 >
   <Fragment slot="head">
     <script type="application/ld+json" is:inline set:html={JSON.stringify(faqSchema)} />

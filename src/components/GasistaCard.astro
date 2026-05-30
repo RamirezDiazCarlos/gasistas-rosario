@@ -22,7 +22,8 @@ import AvatarPlaceholder from './AvatarPlaceholder.astro';
 
 const { gasista } = Astro.props;
 
-const waLink = gasista.phone ? `https://wa.me/${gasista.phone}` : null;
+const waMsg = encodeURIComponent('Hola, te contacto desde GasistasRosario.com.ar. Necesito un gasista matriculado');
+const waLink = gasista.phone ? `https://wa.me/${gasista.phone}?text=${waMsg}` : null;
 const profileLink = `/${gasista.slug}`;
 
 const fullStars = Math.floor(gasista.rating);
@@ -164,6 +165,7 @@ const jsonLd = {
             rel="noopener noreferrer"
             class="group/wa inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white text-[12px] font-semibold rounded-full transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_8px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_16px_rgba(37,211,102,0.4)] active:scale-[0.97]"
             aria-label={`Contactar a ${gasista.name} por WhatsApp`}
+            onclick={`if(window.gtag) gtag('event', 'whatsapp_contact', { gasista_name: '${gasista.name}', gasista_slug: '${gasista.slug}' })`}
           >
             WhatsApp
             <span class="w-6 h-6 rounded-full bg-black/15 flex items-center justify-center transition-transform duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover/wa:translate-x-px group-hover/wa:-translate-y-px">
