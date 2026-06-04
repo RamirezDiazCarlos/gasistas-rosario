@@ -422,5 +422,28 @@
     "reviews": 1,
     "featured": true,
     "description": "Detección electrónica de fugas de gas para mayor precisión y seguridad. Rehabilitaciones de suministro, habilitaciones y reparaciones. Instalación y mantenimiento de artefactos. Plomería, cloacas y obras nuevas."
+  },
+  {
+    "id": "25",
+    "slug": "german-russo",
+    "name": "Germán Russo",
+    "photo": "",
+    "matricula": "M2-72066",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Planos, cálculos y nuevas redes"
+    ],
+    "phone": "5493415311303",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalación y reparación de artefactos a gas. Detección de fugas y rehabilitaciones de suministro. Plomería completa: agua, desagüe, tanques y grifería en general."
   }
 ]
