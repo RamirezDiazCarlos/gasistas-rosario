@@ -4,3 +4,29 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Gasistas eliminados — indicar a buscadores que ya no existen (410 Gone)
+[[redirects]]
+  from = "/roberto-marcelo-gutierrez"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/claudia-beatriz-ferreyra"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/hector-daniel-pereyra"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/ariel-gustavo-mendez"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/pablo-antonio-castillo"
+  to = "/404"
+  status = 410
