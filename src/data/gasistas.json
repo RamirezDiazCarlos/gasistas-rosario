@@ -445,5 +445,31 @@
     "reviews": 1,
     "featured": false,
     "description": "Instalación y reparación de artefactos a gas. Detección de fugas y rehabilitaciones de suministro. Plomería completa: agua, desagüe, tanques y grifería en general."
+  },
+  {
+    "id": "26",
+    "slug": "pablo-luciano-reynoso",
+    "name": "Pablo Luciano Reynoso",
+    "photo": "",
+    "matricula": "M2-36154",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Urgencias 24hs",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493412624771",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado y plomero con más de 12 años de experiencia. Trabajo con garantía, confianza y calidad."
   }
 ]
