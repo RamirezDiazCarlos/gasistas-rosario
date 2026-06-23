@@ -471,5 +471,32 @@
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado y plomero con más de 12 años de experiencia. Trabajo con garantía, confianza y calidad."
+  },
+  {
+    "id": "27",
+    "slug": "christian-pusillico",
+    "name": "Christian Pusillico",
+    "photo": "",
+    "matricula": "M2-29604",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416176796",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Instalaciones de gas domiciliarias, comerciales y de obras. Planos, trámites, habilitaciones, regularizaciones y certificados. Todo lo relacionado con gas natural."
   }
 ]
