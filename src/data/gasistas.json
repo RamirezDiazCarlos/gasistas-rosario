@@ -498,5 +498,30 @@
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas domiciliarias, comerciales y de obras. Planos, trámites, habilitaciones, regularizaciones y certificados. Todo lo relacionado con gas natural."
+  },
+  {
+    "id": "28",
+    "slug": "marcelo-adrian-fernandez",
+    "name": "Marcelo Adrián Fernández",
+    "photo": "",
+    "matricula": "M2-54420",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416199102",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Plomero y gasista matriculado con 12 años de experiencia."
   }
 ]
