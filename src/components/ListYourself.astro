@@ -824,14 +824,60 @@ const zoneEntries = Object.entries(ZONES);
     syncTodosZonaBtn();
   };
 
+  const markInvalid = (el: HTMLElement) => {
+    el.classList.add("!border-red-500/60");
+    el.addEventListener("input", () => el.classList.remove("!border-red-500/60"), { once: true });
+    el.addEventListener("change", () => el.classList.remove("!border-red-500/60"), { once: true });
+  };
+
+  const validate = (): boolean => {
+    let valid = true;
+    const name = document.getElementById("f-name") as HTMLInputElement;
+    const phone = document.getElementById("f-phone") as HTMLInputElement;
+    const email = document.getElementById("f-email") as HTMLInputElement;
+    const matricula = document.getElementById("f-matricula") as HTMLInputElement;
+    const categoria = form.querySelector<HTMLInputElement>('input[name="categoria-matricula"]:checked');
+
+    [name, phone, email, matricula].forEach(f => {
+      if (!f.value.trim()) { markInvalid(f); valid = false; }
+    });
+
+    if (!categoria) {
+      const catContainer = form.querySelector('.flex.gap-2') as HTMLElement;
+      catContainer?.querySelectorAll<HTMLElement>('label').forEach(l => markInvalid(l));
+      valid = false;
+    }
+
+    if (!todoSelected && selected.size === 0) {
+      const zonePicker = document.getElementById("zone-picker")!;
+      markInvalid(zonePicker.querySelector('.rounded-xl.border')!);
+      markInvalid(btnTodo);
+      valid = false;
+    }
+
+    if (selectedServices.size === 0) {
+      servicePills.forEach(p => markInvalid(p));
+      valid = false;
+    }
+
+    return valid;
+  };
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     syncHidden();
     syncServices();
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Enviando...";
     successMsg.classList.add("hidden");
     errorMsg.classList.add("hidden");
+
+    if (!validate()) {
+      errorMsg.querySelector("p")!.textContent = "Completá los campos obligatorios marcados en rojo.";
+      errorMsg.classList.remove("hidden");
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Enviando...";
 
     try {
       const res = await fetch("/", {
@@ -848,6 +894,7 @@ const zoneEntries = Object.entries(ZONES);
         successMsg.classList.remove("hidden");
       } else throw new Error();
     } catch {
+      errorMsg.querySelector("p")!.textContent = "Hubo un error al enviar. Revisá los campos o intentá de nuevo.";
       errorMsg.classList.remove("hidden");
     } finally {
       submitBtn.disabled = false;
