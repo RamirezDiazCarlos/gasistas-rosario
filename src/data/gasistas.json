@@ -549,5 +549,32 @@
     "reviews": 1,
     "featured": false,
     "description": "Rehabilitaciones de suministro, proyectos y trámites ante Litoral Gas. Instalación y reparación de artefactos, detección de fugas y plomería en general."
+  },
+  {
+    "id": "30",
+    "slug": "jose-omar-martinez",
+    "name": "José Omar Martínez",
+    "photo": "",
+    "matricula": "M2-72023",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416694040",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado y plomero. Atención todos los días, las 24 horas. Urgencias, instalaciones, reparaciones, rehabilitaciones y calderas."
   }
 ]
