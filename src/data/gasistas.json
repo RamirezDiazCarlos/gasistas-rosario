@@ -576,5 +576,33 @@
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado y plomero. Atención todos los días, las 24 horas. Urgencias, instalaciones, reparaciones, rehabilitaciones y calderas."
+  },
+  {
+    "id": "31",
+    "slug": "ruben-rosero",
+    "name": "Ruben Rosero",
+    "photo": "",
+    "matricula": "M2-41053",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416101281",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado. Instalación, reparación y mantenimiento de artefactos a gas y calderas. Rehabilitaciones, certificaciones y plomería. Atiendo Rosario, Funes y Roldán."
   }
 ]
