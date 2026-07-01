@@ -604,5 +604,31 @@
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado. Instalación, reparación y mantenimiento de artefactos a gas y calderas. Rehabilitaciones, certificaciones y plomería. Atiendo Rosario, Funes y Roldán."
+  },
+  {
+    "id": "32",
+    "slug": "raul-gimenez",
+    "name": "Raúl Giménez",
+    "photo": "",
+    "matricula": "M2-10337",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493415479290",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado con más de 27 años de experiencia. Instalaciones, reparaciones, rehabilitaciones y certificaciones. Plomería y cloacas en general."
   }
 ]
