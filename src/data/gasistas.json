@@ -630,5 +630,31 @@
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado con más de 27 años de experiencia. Instalaciones, reparaciones, rehabilitaciones y certificaciones. Plomería y cloacas en general."
+  },
+  {
+    "id": "33",
+    "slug": "fabio-alberto-mansilla",
+    "name": "Fabio Alberto Mansilla",
+    "photo": "",
+    "matricula": "M2-45505",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Reparación de calderas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios",
+      "Plomería y cloacas"
+    ],
+    "phone": "5493416044088",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado. Instalación y reparación de artefactos, calderas y calefones. Rehabilitaciones, habilitaciones y certificaciones. Plomería en general."
   }
 ]
