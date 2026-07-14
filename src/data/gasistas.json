@@ -656,5 +656,29 @@
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado. Instalación y reparación de artefactos, calderas y calefones. Rehabilitaciones, habilitaciones y certificaciones. Plomería en general."
+  },
+  {
+    "id": "34",
+    "slug": "bruno-di-paolo",
+    "name": "Bruno Di Paolo",
+    "photo": "",
+    "matricula": "M1-23300",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Reparación de calderas",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493415476048",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Amplia experiencia comprobada. Referencias disponibles. Matriculado en combustión."
   }
 ]
