@@ -730,5 +730,28 @@
     "reviews": 1,
     "featured": false,
     "description": "Contamos con experiencia y un buen equipo de trabajo."
+  },
+  {
+    "id": "37",
+    "slug": "abril-cejas",
+    "name": "Abril Cejas",
+    "photo": "",
+    "matricula": "M2-72473",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Rehabilitación de suministro",
+      "Detección de fugas y hermeticidad",
+      "Instalación y reparación de artefactos",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493412819556",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
   }
 ]
