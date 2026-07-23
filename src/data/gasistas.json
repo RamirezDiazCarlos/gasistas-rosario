@@ -680,5 +680,55 @@
     "reviews": 1,
     "featured": false,
     "description": "Amplia experiencia comprobada. Referencias disponibles. Matriculado en combustión."
+  },
+  {
+    "id": "35",
+    "slug": "daniel-e-pucheta",
+    "name": "Daniel E. Pucheta",
+    "photo": "",
+    "matricula": "M3-72776",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Instalación y reparación de artefactos",
+      "Urgencias 24hs",
+      "Rehabilitación de suministro",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes"
+    ],
+    "phone": "5493413762379",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
+  },
+  {
+    "id": "36",
+    "slug": "silvana-humeres",
+    "name": "Silvana Humeres",
+    "photo": "",
+    "matricula": "M2-72064",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416020715",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Contamos con experiencia y un buen equipo de trabajo."
   }
 ]
