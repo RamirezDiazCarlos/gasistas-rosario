@@ -753,5 +753,31 @@
     "reviews": 1,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "38",
+    "slug": "leonardo-galarza",
+    "name": "Leonardo Galarza",
+    "photo": "",
+    "matricula": "M3-72433",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Instalación y reparación de artefactos",
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes"
+    ],
+    "phone": "5493413612426",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
   }
 ]
