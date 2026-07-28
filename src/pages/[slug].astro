@@ -26,6 +26,8 @@ interface Gasista {
   reviews: number;
   featured: boolean;
   description: string;
+  instagram?: string;
+  facebook?: string;
 }
 
 const { gasista } = Astro.props as { gasista: Gasista };
@@ -292,6 +294,41 @@ const jsonLd = {
                 </a>
               ) : (
                 <p class="text-sm text-warm-800/50 italic text-center mb-4">Contacto próximamente disponible.</p>
+              )}
+
+              {gasista.featured && (gasista.instagram || gasista.facebook) && (
+                <div class="flex gap-2 mb-4">
+                  {gasista.instagram && (
+                    <a
+                      href={gasista.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-warm-200 hover:border-[#E1306C]/40 hover:bg-[#E1306C]/[0.04] text-warm-800/60 hover:text-[#E1306C] transition-all duration-200 text-xs font-medium group"
+                      aria-label="Instagram"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/>
+                      </svg>
+                      Instagram
+                    </a>
+                  )}
+                  {gasista.facebook && (
+                    <a
+                      href={gasista.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-warm-200 hover:border-[#1877F2]/40 hover:bg-[#1877F2]/[0.04] text-warm-800/60 hover:text-[#1877F2] transition-all duration-200 text-xs font-medium group"
+                      aria-label="Facebook"
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      Facebook
+                    </a>
+                  )}
+                </div>
               )}
 
               <div class="border-t border-warm-100 pt-4">
