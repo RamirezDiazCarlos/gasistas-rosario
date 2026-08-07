@@ -779,5 +779,34 @@
     "reviews": 1,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "39",
+    "slug": "adrian-cannavina",
+    "name": "Adrián Cannavina",
+    "photo": "",
+    "matricula": "M2-72916",
+    "zones": [
+      "Rosario",
+      "Funes",
+      "Roldán",
+      "Villa Gobernador Gálvez"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493416482275",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
   }
 ]
