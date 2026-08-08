@@ -808,5 +808,44 @@
     "reviews": 1,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "40",
+    "slug": "walter-e-barrera",
+    "name": "Walter E. Barrera",
+    "photo": "",
+    "matricula": "M2-72907",
+    "zones": [
+      "Rosario",
+      "Granadero Baigorria",
+      "Capitán Bermúdez",
+      "Roldán",
+      "Funes",
+      "San Lorenzo",
+      "Fray Luis Beltrán",
+      "Pueblo Esther",
+      "Puerto Gral. San Martín",
+      "Villa Gobernador Gálvez",
+      "General Lagos",
+      "Alvear",
+      "Arroyo Seco"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493413702533",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
   }
 ]
