@@ -17,6 +17,11 @@ for (const g of gasistas) {
   }
 }
 
+// Destacados primero dentro de cada zona
+for (const arr of zoneMap.values()) {
+  arr.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+}
+
 const zones = [...zoneMap.entries()].sort((a, b) => b[1].length - a[1].length);
 const mainZones = zones.filter(([, g]) => g.length >= 2);
 const otherZones = zones.filter(([, g]) => g.length === 1);
