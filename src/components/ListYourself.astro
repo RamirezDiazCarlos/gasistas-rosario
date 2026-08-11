@@ -27,56 +27,8 @@ const SERVICE_GROUPS: { label: string; items: string[] }[] = [
   },
 ];
 
-const ZONES: Record<string, string[]> = {
-  Centro: [
-    "Centro",
-    "Pichincha",
-    "Abasto",
-    "Echesortu",
-    "Barrio Martín",
-    "República de la Sexta",
-    "Lourdes",
-    "Terminal / Agote",
-  ],
-  Norte: [
-    "Alberdi",
-    "Arroyito",
-    "Refinería",
-    "Sarmiento",
-    "La Florida",
-    "Parque Field",
-    "Rucci",
-    "Lomas de Alberdi",
-  ],
-  Noroeste: [
-    "Fisherton",
-    "Belgrano",
-    "Azcuénaga",
-    "Empalme Granero",
-    "Ludueña",
-    "Hostal del Sol",
-    "Aldea",
-    "San Eduardo",
-  ],
-  Sur: [
-    "Saladillo",
-    "Tiro Suizo",
-    "Tablada",
-    "España y Hospitales",
-    "Las Heras",
-    "Acindar",
-  ],
-  Oeste: [
-    "Bella Vista",
-    "Cinco Esquinas",
-    "Barrio Godoy",
-    "Barrio Alvear",
-    "Vía Honda",
-  ],
-  Alrededores: ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "Capitán Bermúdez", "Fray Luis Beltrán", "Puerto Gral. San Martín", "Villa Gobernador Gálvez", "Pueblo Esther", "Arroyo Seco", "Alvear", "General Lagos"],
-};
-
-const zoneEntries = Object.entries(ZONES);
+const CITY_ZONES = ["Centro", "Norte", "Noroeste", "Sur", "Oeste"];
+const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "Capitán Bermúdez", "Fray Luis Beltrán", "Puerto Gral. San Martín", "Villa Gobernador Gálvez", "Pueblo Esther", "Arroyo Seco", "Alvear", "General Lagos", "Luis Palacio", "Ybarlucea"];
 ---
 
 <section id="listar" class="bg-dark py-16 lg:py-20 overflow-hidden">
@@ -325,11 +277,10 @@ const zoneEntries = Object.entries(ZONES);
             </div>
           </div>
 
-          <!-- ── Selector de zonas con tabs ── -->
+          <!-- ── Selector de zonas ── -->
           <div id="zone-picker">
             <div class="flex items-center justify-between mb-2.5">
-              <span
-                class="text-xs font-semibold text-white/60 uppercase tracking-wide"
+              <span class="text-xs font-semibold text-white/60 uppercase tracking-wide"
                 >Zonas que cubrís <span class="text-flame">*</span></span
               >
               <span
@@ -345,82 +296,52 @@ const zoneEntries = Object.entries(ZONES);
               id="btn-todo-rosario"
               class="w-full flex items-center justify-center gap-2 mb-3 py-2 rounded-lg border border-white/10 bg-dark-3 text-white/40 text-xs font-medium transition-all duration-200 hover:border-white/20 hover:text-white/60"
             >
-              <svg
-                width="11"
-                height="11"
-                viewBox="0 0 13 13"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z"
-                  stroke="currentColor"
-                  stroke-width="1.4"></path>
+              <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z" stroke="currentColor" stroke-width="1.4"></path>
                 <circle cx="6.5" cy="4.5" r="1.4" fill="currentColor"></circle>
               </svg>
               Todo Rosario
             </button>
 
-            <!-- Panel unificado: tabs + barrios -->
+            <!-- Chips de zonas urbanas -->
+            <div class="flex flex-wrap gap-1.5 mb-3">
+              {CITY_ZONES.map((zone) => (
+                <button
+                  type="button"
+                  class="lf-zone-chip flex-1 px-3 py-2 rounded-lg border border-white/10 bg-dark-3 text-white/40 text-xs font-semibold transition-all duration-150 hover:border-white/20 hover:text-white/60"
+                  data-zone={zone}
+                >
+                  {zone}
+                </button>
+              ))}
+            </div>
+
+            <!-- Alrededores expandible -->
             <div class="rounded-xl border border-white/10 bg-dark-3 overflow-hidden">
-              <div
-                class="flex overflow-x-auto scrollbar-none border-b border-white/8"
-                role="tablist"
-                id="zone-tabs"
+              <button
+                type="button"
+                id="btn-alrededores-toggle"
+                class="w-full flex items-center justify-between px-3 py-2.5 text-xs font-semibold text-white/40 hover:text-white/60 transition-colors"
               >
-                {
-                  zoneEntries.map(([group], i) => (
+                <span class="flex items-center gap-1.5">
+                  Alrededores
+                  <span id="alr-count" class="hidden text-flame tabular-nums"></span>
+                </span>
+                <svg id="alr-chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" class="transition-transform duration-200" aria-hidden="true">
+                  <path d="M1 1L4.5 5L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div id="alrededores-panel" class="hidden px-3 pb-3">
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {ALREDEDORES.map((loc) => (
                     <button
                       type="button"
-                      role="tab"
-                      class="zone-tab flex-shrink-0 px-2 py-1.5 text-[10px] font-medium transition-all duration-150 whitespace-nowrap"
-                      data-group={group}
-                      aria-selected={i === 0 ? "true" : "false"}
+                      class="alr-pill px-2.5 py-1 rounded-md border border-white/10 text-white/40 text-xs font-medium transition-all duration-150 hover:border-white/20 hover:text-white/60"
+                      data-value={loc}
                     >
-                      {group}
-                      <span
-                        class="zone-tab-count ml-1 text-[10px] font-bold tabular-nums"
-                        data-group={group}
-                      />
+                      {loc}
                     </button>
-                  ))
-                }
-              </div>
-
-              <div class="p-3">
-                <div
-                  class="flex flex-wrap gap-1.5 min-h-[60px] content-start"
-                  id="barrios-panel"
-                >
-                  {
-                    zoneEntries.map(([group, barrios], i) => (
-                      <div
-                        class="zone-panel w-full flex flex-wrap gap-1.5"
-                        data-group={group}
-                        style={i !== 0 ? "display:none" : ""}
-                      >
-                        {barrios.map((b: string) => (
-                          <button
-                            type="button"
-                            class="barrio-pill px-2.5 py-1 rounded-md border border-white/10 text-white/40 text-xs font-medium transition-all duration-150 hover:border-white/20 hover:text-white/60"
-                            data-group={group}
-                            data-value={b}
-                          >
-                            {b}
-                          </button>
-                        ))}
-                      </div>
-                    ))
-                  }
-                </div>
-                <div class="flex justify-end mt-2 pt-2 border-t border-white/5">
-                  <button
-                    type="button"
-                    id="btn-todos-zona"
-                    class="text-[10px] text-white/25 hover:text-flame transition-colors duration-150 font-medium"
-                  >
-                    seleccionar todos
-                  </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -533,31 +454,16 @@ const zoneEntries = Object.entries(ZONES);
 </section>
 
 <style>
-  .zone-tab {
-    color: rgba(255,255,255,0.3);
-    background: transparent;
-    border-bottom: 2px solid transparent;
-  }
-  .zone-tab:hover {
-    color: rgba(255,255,255,0.6);
-    background: rgba(255,255,255,0.04);
-  }
-  .zone-tab[aria-selected="true"] {
-    color: #f59e0b;
-    border-bottom-color: #e07418;
-  }
-  .zone-tab-count { color: transparent; }
-  .zone-tab-count.has-count { color: #e07418; }
-
-  /* barrio pills */
-  .barrio-pill.selected {
+  /* zona chips */
+  .lf-zone-chip.selected,
+  #btn-todo-rosario.selected {
     background: rgba(224, 116, 24, 0.15);
     border-color: rgba(224, 116, 24, 0.45);
     color: #f59e0b;
   }
 
-  /* todo rosario */
-  #btn-todo-rosario.selected {
+  /* alrededores pills */
+  .alr-pill.selected {
     background: rgba(224, 116, 24, 0.15);
     border-color: rgba(224, 116, 24, 0.45);
     color: #f59e0b;
@@ -587,189 +493,103 @@ const zoneEntries = Object.entries(ZONES);
 </style>
 
 <script>
-  const ZONES_DATA: Record<string, string[]> = {
-    Centro: [
-      "Centro",
-      "Pichincha",
-      "Abasto",
-      "Echesortu",
-      "Barrio Martín",
-      "República de la Sexta",
-      "Lourdes",
-      "Terminal / Agote",
-    ],
-    Norte: [
-      "Alberdi",
-      "Arroyito",
-      "Refinería",
-      "Sarmiento",
-      "La Florida",
-      "Parque Field",
-      "Rucci",
-      "Lomas de Alberdi",
-    ],
-    Noroeste: [
-      "Fisherton",
-      "Belgrano",
-      "Azcuénaga",
-      "Empalme Granero",
-      "Ludueña",
-      "Hostal del Sol",
-      "Aldea",
-      "San Eduardo",
-    ],
-    Sur: [
-      "Saladillo",
-      "Tiro Suizo",
-      "Tablada",
-      "España y Hospitales",
-      "Las Heras",
-      "Acindar",
-    ],
-    Oeste: [
-      "Bella Vista",
-      "Cinco Esquinas",
-      "Barrio Godoy",
-      "Barrio Alvear",
-      "Vía Honda",
-    ],
-    Alrededores: ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "Capitán Bermúdez", "Fray Luis Beltrán", "Puerto Gral. San Martín", "Villa Gobernador Gálvez", "Pueblo Esther", "Arroyo Seco", "Alvear", "General Lagos"],
+  const btnTodo      = document.getElementById("btn-todo-rosario") as HTMLButtonElement;
+  const zoneChips    = document.querySelectorAll<HTMLButtonElement>(".lf-zone-chip");
+  const alrPills     = document.querySelectorAll<HTMLButtonElement>(".alr-pill");
+  const btnAlrToggle = document.getElementById("btn-alrededores-toggle") as HTMLButtonElement;
+  const alrPanel     = document.getElementById("alrededores-panel")!;
+  const alrChevron   = document.getElementById("alr-chevron")!;
+  const alrCount     = document.getElementById("alr-count")!;
+  const zonesInput   = document.getElementById("f-zones") as HTMLInputElement;
+  const counter      = document.getElementById("zones-counter")!;
+  const extraInput   = document.getElementById("f-zones-extra") as HTMLInputElement | null;
+
+  let todoSelected = false;
+  const selectedZones = new Set<string>(); // "Centro", "Norte", etc.
+  const selectedAlr   = new Set<string>(); // localidades de alrededores
+
+  // ── sync ─────────────────────────────────────────────
+  const syncHidden = () => {
+    const parts: string[] = todoSelected
+      ? ["Todo Rosario"]
+      : [...Array.from(selectedZones), ...Array.from(selectedAlr)];
+    const extra = extraInput?.value.trim() ?? "";
+    zonesInput.value = [...parts, extra].filter(Boolean).join(", ");
   };
 
-  const tabs = document.querySelectorAll<HTMLButtonElement>(".zone-tab");
-  const panels = document.querySelectorAll<HTMLElement>(".zone-panel");
-  const barriosPills =
-    document.querySelectorAll<HTMLButtonElement>(".barrio-pill");
-  const btnTodo = document.getElementById(
-    "btn-todo-rosario",
-  ) as HTMLButtonElement;
-  const btnTodosZona = document.getElementById(
-    "btn-todos-zona",
-  ) as HTMLButtonElement;
-  const zonesInput = document.getElementById("f-zones") as HTMLInputElement;
-  const counter = document.getElementById("zones-counter")!;
+  extraInput?.addEventListener("input", syncHidden);
 
-  let activeGroup = Object.keys(ZONES_DATA)[0];
-  let todoSelected = false;
-  const selected = new Set<string>();
-
-  // ── helpers ──────────────────────────────────────────
   const syncCounter = () => {
     if (todoSelected) {
       counter.textContent = "Todo Rosario";
       counter.classList.add("has-selection");
     } else {
-      const n = selected.size;
-      counter.textContent =
-        n === 0 ? "ninguna" : `${n} barrio${n !== 1 ? "s" : ""}`;
-      counter.classList.toggle("has-selection", n > 0);
+      const total = selectedZones.size + selectedAlr.size;
+      if (total === 0) {
+        counter.textContent = "ninguna";
+        counter.classList.remove("has-selection");
+      } else {
+        const parts: string[] = [];
+        if (selectedZones.size) parts.push(`${selectedZones.size} zona${selectedZones.size !== 1 ? "s" : ""}`);
+        if (selectedAlr.size)   parts.push(`${selectedAlr.size} localidad${selectedAlr.size !== 1 ? "es" : ""}`);
+        counter.textContent = parts.join(", ");
+        counter.classList.add("has-selection");
+      }
     }
+    const n = selectedAlr.size;
+    alrCount.textContent = n > 0 ? `(${n})` : "";
+    alrCount.classList.toggle("hidden", n === 0);
   };
 
-  const extraInput = document.getElementById('f-zones-extra') as HTMLInputElement | null;
-
-  const syncHidden = () => {
-    const base = todoSelected ? 'Todo Rosario' : Array.from(selected).join(', ');
-    const extra = extraInput?.value.trim() ?? '';
-    zonesInput.value = [base, extra].filter(Boolean).join(', ');
+  const disableZoneControls = (off: boolean) => {
+    zoneChips.forEach(c  => { c.disabled = off; c.style.opacity = off ? "0.3" : ""; });
+    alrPills.forEach(p   => { p.disabled = off; p.style.opacity = off ? "0.3" : ""; });
+    btnAlrToggle.disabled    = off;
+    btnAlrToggle.style.opacity = off ? "0.3" : "";
   };
-
-  extraInput?.addEventListener('input', syncHidden);
-
-  const syncTabCounts = () => {
-    tabs.forEach((tab) => {
-      const g = tab.dataset.group!;
-      const n = ZONES_DATA[g].filter((b) => selected.has(b)).length;
-      const countEl = tab.querySelector<HTMLElement>(".zone-tab-count")!;
-      countEl.textContent = n > 0 ? String(n) : "";
-      countEl.classList.toggle("has-count", n > 0);
-    });
-  };
-
-  const syncTodosZonaBtn = () => {
-    const barrios = ZONES_DATA[activeGroup];
-    const allSel = barrios.every((b) => selected.has(b));
-    btnTodosZona.textContent = allSel ? "quitar todos" : "seleccionar todos";
-  };
-
-  const setActiveTab = (group: string) => {
-    activeGroup = group;
-    tabs.forEach((t) =>
-      t.setAttribute("aria-selected", String(t.dataset.group === group)),
-    );
-    panels.forEach((p) => {
-      p.style.display = p.dataset.group === group ? "" : "none";
-    });
-    syncTodosZonaBtn();
-  };
-
-  const disableBarrios = (off: boolean) => {
-    barriosPills.forEach((p) => {
-      p.disabled = off;
-      p.style.opacity = off ? "0.3" : "";
-    });
-    btnTodosZona.disabled = off;
-    btnTodosZona.style.opacity = off ? "0.3" : "";
-  };
-
-  // ── tabs ─────────────────────────────────────────────
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => setActiveTab(tab.dataset.group!));
-  });
-
-  // ── barrios ──────────────────────────────────────────
-  barriosPills.forEach((pill) => {
-    pill.addEventListener("click", () => {
-      const v = pill.dataset.value!;
-      if (selected.has(v)) {
-        selected.delete(v);
-        pill.classList.remove("selected");
-      } else {
-        selected.add(v);
-        pill.classList.add("selected");
-      }
-      syncCounter();
-      syncHidden();
-      syncTabCounts();
-      syncTodosZonaBtn();
-    });
-  });
-
-  // ── seleccionar todos (zona activa) ──────────────────
-  btnTodosZona.addEventListener("click", () => {
-    const barrios = ZONES_DATA[activeGroup];
-    const allSel = barrios.every((b) => selected.has(b));
-    barrios.forEach((b) => {
-      const pill = document.querySelector<HTMLButtonElement>(
-        `.barrio-pill[data-value="${b}"]`,
-      );
-      if (allSel) {
-        selected.delete(b);
-        pill?.classList.remove("selected");
-      } else {
-        selected.add(b);
-        pill?.classList.add("selected");
-      }
-    });
-    syncCounter();
-    syncHidden();
-    syncTabCounts();
-    syncTodosZonaBtn();
-  });
 
   // ── todo rosario ─────────────────────────────────────
   btnTodo.addEventListener("click", () => {
     todoSelected = !todoSelected;
     btnTodo.classList.toggle("selected", todoSelected);
     if (todoSelected) {
-      selected.clear();
-      barriosPills.forEach((p) => p.classList.remove("selected"));
+      selectedZones.clear();
+      selectedAlr.clear();
+      zoneChips.forEach(c => c.classList.remove("selected"));
+      alrPills.forEach(p  => p.classList.remove("selected"));
     }
-    disableBarrios(todoSelected);
+    disableZoneControls(todoSelected);
     syncCounter();
     syncHidden();
-    syncTabCounts();
-    syncTodosZonaBtn();
+  });
+
+  // ── chips de zona ─────────────────────────────────────
+  zoneChips.forEach(chip => {
+    chip.addEventListener("click", () => {
+      const z = chip.dataset.zone!;
+      if (selectedZones.has(z)) { selectedZones.delete(z); chip.classList.remove("selected"); }
+      else                       { selectedZones.add(z);    chip.classList.add("selected"); }
+      syncCounter();
+      syncHidden();
+    });
+  });
+
+  // ── alrededores toggle ───────────────────────────────
+  btnAlrToggle.addEventListener("click", () => {
+    const isOpen = !alrPanel.classList.contains("hidden");
+    alrPanel.classList.toggle("hidden", isOpen);
+    alrChevron.style.transform = isOpen ? "" : "rotate(180deg)";
+  });
+
+  // ── alrededores pills ─────────────────────────────────
+  alrPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      const v = pill.dataset.value!;
+      if (selectedAlr.has(v)) { selectedAlr.delete(v); pill.classList.remove("selected"); }
+      else                     { selectedAlr.add(v);    pill.classList.add("selected"); }
+      syncCounter();
+      syncHidden();
+    });
   });
 
   // ── servicios (pills) ────────────────────────────────
@@ -813,15 +633,15 @@ const zoneEntries = Object.entries(ZONES);
 
   const resetZones = () => {
     todoSelected = false;
-    selected.clear();
+    selectedZones.clear();
+    selectedAlr.clear();
     btnTodo.classList.remove("selected");
-    barriosPills.forEach((p) => p.classList.remove("selected"));
-    if (extraInput) extraInput.value = '';
-    disableBarrios(false);
+    zoneChips.forEach(c => c.classList.remove("selected"));
+    alrPills.forEach(p  => p.classList.remove("selected"));
+    if (extraInput) extraInput.value = "";
+    disableZoneControls(false);
     syncCounter();
     syncHidden();
-    syncTabCounts();
-    syncTodosZonaBtn();
   };
 
   const markInvalid = (el: HTMLElement) => {
@@ -848,7 +668,7 @@ const zoneEntries = Object.entries(ZONES);
       valid = false;
     }
 
-    if (!todoSelected && selected.size === 0) {
+    if (!todoSelected && selectedZones.size === 0 && selectedAlr.size === 0) {
       const zonePicker = document.getElementById("zone-picker")!;
       markInvalid(zonePicker.querySelector('.rounded-xl.border')!);
       markInvalid(btnTodo);

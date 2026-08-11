@@ -64,7 +64,7 @@ const jsonLd = {
 
 <div
   class:list={[
-    "group h-full p-[5px] rounded-[1.5rem] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+    "group h-full p-[5px] rounded-[1.5rem] transition-[box-shadow,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform",
     gasista.featured
       ? "bg-gradient-to-b from-flame/[0.24] to-flame/[0.08] border border-flame/[0.48] shadow-[0_0_0_1px_rgba(224,116,24,0.10),0_4px_28px_-4px_rgba(224,116,24,0.30)] hover:shadow-[0_0_0_1px_rgba(224,116,24,0.18),0_14px_48px_-8px_rgba(224,116,24,0.40)] hover:-translate-y-0.5"
       : "bg-gradient-to-b from-warm-100/80 to-warm-50/60 border border-warm-200/80 shadow-[0_1px_8px_-2px_rgba(0,0,0,0.05),0_4px_16px_-8px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_32px_-8px_rgba(0,0,0,0.12)]"
@@ -109,7 +109,7 @@ const jsonLd = {
         </span>
         <a
           href={profileLink}
-          class="flex-shrink-0 w-6 h-6 rounded-full bg-warm-100 hover:bg-flame hover:text-white text-warm-800 flex items-center justify-center transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+          class="flex-shrink-0 w-6 h-6 rounded-full bg-warm-100 hover:bg-flame hover:text-white text-warm-800 flex items-center justify-center transition-[background-color,color,transform] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
           aria-label={`Ver perfil de ${gasista.name}`}
         >
           <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -163,7 +163,7 @@ const jsonLd = {
             href={waLink}
             target="_blank"
             rel="noopener noreferrer"
-            class="group/wa inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white text-[12px] font-semibold rounded-full transition-all duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_8px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_16px_rgba(37,211,102,0.4)] active:scale-[0.97]"
+            class="group/wa inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 bg-[#25D366] hover:bg-[#1ebe5d] text-white text-[12px] font-semibold rounded-full transition-[background-color,box-shadow,transform] duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] shadow-[0_2px_8px_rgba(37,211,102,0.25)] hover:shadow-[0_4px_16px_rgba(37,211,102,0.4)] active:scale-[0.97]"
             aria-label={`Contactar a ${gasista.name} por WhatsApp`}
             onclick={`if(window.gtag) gtag('event', 'whatsapp_contact', { gasista_name: '${gasista.name}', gasista_slug: '${gasista.slug}' })`}
           >

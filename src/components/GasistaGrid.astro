@@ -3,6 +3,7 @@ import gasistas from '../data/gasistas.json';
 import GasistaCard from './GasistaCard.astro';
 
 const INITIAL_LIMIT = 6;
+const BATCH_SIZE = 6;
 
 const sorted = [...gasistas].sort((a, b) => {
   if (a.featured && !b.featured) return -1;
@@ -11,6 +12,7 @@ const sorted = [...gasistas].sort((a, b) => {
 });
 
 const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
+const firstBatchCount = Math.min(BATCH_SIZE, hiddenCount);
 ---
 
 <section id="profesionales" class="py-20 sm:py-24 bg-warm-50">
@@ -37,6 +39,7 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
           data-index={i}
           data-zones={gasista.zones.join(',')}
           data-services={gasista.services.join(',')}
+          data-name={gasista.name.toLowerCase()}
           class="h-full"
         >
           <GasistaCard gasista={gasista} />
@@ -52,7 +55,7 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
           type="button"
           class="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-white border border-warm-200/70 hover:border-flame/25 hover:bg-flame/[0.03] rounded-xl text-[13px] font-medium text-warm-700 hover:text-flame transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] hover:-translate-y-px"
         >
-          Ver <span id="show-more-count">{hiddenCount}</span> profesionales más
+          Ver <span id="show-more-count">{firstBatchCount}</span> profesionales más
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="group-hover:translate-y-0.5 transition-transform duration-200" aria-hidden="true">
             <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -80,58 +83,78 @@ const hiddenCount = Math.max(0, sorted.length - INITIAL_LIMIT);
 
 <script>
   const INITIAL_LIMIT = 6;
-  let expanded = false;
+  const BATCH_SIZE = 6;
+  let shown = INITIAL_LIMIT;
   let filterOverflowCards: HTMLElement[] = [];
 
   const allCards = Array.from(document.querySelectorAll<HTMLElement>('[data-card]'));
-  const overflowCards = allCards.filter((_, i) => i >= INITIAL_LIMIT);
   const showMoreBtn = document.getElementById('show-more-btn') as HTMLButtonElement | null;
   const showMoreWrapper = document.getElementById('show-more-wrapper');
   const showMoreCount = document.getElementById('show-more-count');
 
-  function hideOverflow() {
-    overflowCards.forEach(c => { c.style.display = 'none'; });
-    showMoreWrapper?.classList.remove('hidden');
+  // Muestra las primeras `shown` cards, oculta el resto
+  function applyVisibility() {
+    allCards.forEach((c, i) => { c.style.display = i < shown ? '' : 'none'; });
   }
 
-  function showAll() {
-    overflowCards.forEach(c => { c.style.display = ''; });
-    showMoreWrapper?.classList.add('hidden');
+  // Actualiza el botón según cuántas quedan por mostrar
+  function updateShowMoreBtn() {
+    const remaining = allCards.length - shown;
+    if (remaining <= 0) {
+      showMoreWrapper?.classList.add('hidden');
+    } else {
+      if (showMoreCount) showMoreCount.textContent = String(Math.min(BATCH_SIZE, remaining));
+      showMoreWrapper?.classList.remove('hidden');
+    }
   }
 
-  if (overflowCards.length > 0) hideOverflow();
+  // Estado inicial
+  if (allCards.length > INITIAL_LIMIT) {
+    applyVisibility();
+    updateShowMoreBtn();
+  }
 
   document.addEventListener('filter-change', (e) => {
     const { hasFilter } = (e as CustomEvent).detail;
     filterOverflowCards = [];
 
     if (hasFilter) {
+      // Con filtro: aplicar mismo batching de BATCH_SIZE sobre los resultados filtrados
       const visibleAfterFilter = allCards.filter(c => c.style.display !== 'none');
       filterOverflowCards = visibleAfterFilter.slice(INITIAL_LIMIT);
       filterOverflowCards.forEach(c => { c.style.display = 'none'; });
 
       if (filterOverflowCards.length > 0) {
-        if (showMoreCount) showMoreCount.textContent = String(filterOverflowCards.length);
+        if (showMoreCount) showMoreCount.textContent = String(Math.min(BATCH_SIZE, filterOverflowCards.length));
         showMoreWrapper?.classList.remove('hidden');
       } else {
         showMoreWrapper?.classList.add('hidden');
       }
     } else {
-      if (!expanded) {
-        hideOverflow();
-        if (showMoreCount) showMoreCount.textContent = String(overflowCards.length);
-      }
+      // Sin filtro: volver al lote inicial de 6
+      shown = INITIAL_LIMIT;
+      applyVisibility();
+      updateShowMoreBtn();
     }
   });
 
   showMoreBtn?.addEventListener('click', () => {
     if (filterOverflowCards.length > 0) {
-      filterOverflowCards.forEach(c => { c.style.display = ''; });
-      filterOverflowCards = [];
-      showMoreWrapper?.classList.add('hidden');
+      // Con filtro: mostrar siguiente lote de BATCH_SIZE
+      const nextBatch = filterOverflowCards.slice(0, BATCH_SIZE);
+      nextBatch.forEach(c => { c.style.display = ''; });
+      filterOverflowCards = filterOverflowCards.slice(BATCH_SIZE);
+
+      if (filterOverflowCards.length > 0) {
+        if (showMoreCount) showMoreCount.textContent = String(Math.min(BATCH_SIZE, filterOverflowCards.length));
+      } else {
+        showMoreWrapper?.classList.add('hidden');
+      }
     } else {
-      expanded = true;
-      showAll();
+      // Sin filtro: cargar el siguiente lote
+      shown = Math.min(shown + BATCH_SIZE, allCards.length);
+      applyVisibility();
+      updateShowMoreBtn();
     }
   });
 </script>

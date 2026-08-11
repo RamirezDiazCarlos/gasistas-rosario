@@ -7,103 +7,40 @@ const ZONES: Record<string, string[]> = {
   "Noroeste":    ["Fisherton", "Belgrano", "Azcuénaga", "Empalme Granero", "Ludueña", "Hostal del Sol", "Aldea", "San Eduardo"],
   "Sur":         ["Saladillo", "Tiro Suizo", "Tablada", "España y Hospitales", "Las Heras", "Acindar"],
   "Oeste":       ["Bella Vista", "Cinco Esquinas", "Barrio Godoy", "Barrio Alvear", "Vía Honda"],
-  "Alrededores": ["Funes", "Roldán", "Villa Gobernador Gálvez", "Alvear"],
+  "Alrededores": ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "Capitán Bermúdez", "Fray Luis Beltrán", "Puerto Gral. San Martín", "Villa Gobernador Gálvez", "Pueblo Esther", "Arroyo Seco", "Alvear", "General Lagos", "Luis Palacio", "Ybarlucea"],
 };
 
 const allServices = [...new Set(gasistas.flatMap((g: any) => g.services))].sort((a: any, b: any) => a.localeCompare(b, 'es'));
 const total = gasistas.length;
-const zoneEntries = Object.entries(ZONES);
+const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
 ---
 
 <div class="sticky top-[68px] z-40 pointer-events-none">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 pointer-events-auto">
-    <div class="bg-white/96 backdrop-blur-2xl border border-warm-200/60 rounded-2xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] px-3 sm:px-4">
+    <div id="filter-bar" class="bg-white/96 backdrop-blur-md border border-warm-200/60 rounded-2xl shadow-[0_4px_24px_-8px_rgba(0,0,0,0.08),0_1px_2px_rgba(0,0,0,0.04)] px-3 sm:px-4">
+
+      <!-- Fila 1: búsqueda + servicio + contador + limpiar -->
       <div class="flex items-center gap-1.5 sm:gap-2 py-2.5">
 
-        <div class="relative" id="zone-wrapper">
-          <button
-            type="button"
-            id="zone-trigger"
-            aria-haspopup="true"
-            aria-expanded="false"
-            class="filter-trigger flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-warm-200/80 bg-warm-50/70 text-[12px] font-medium text-warm-700 hover:bg-warm-100 hover:border-warm-300/60 transition-all duration-200"
-          >
-            <svg width="12" height="12" viewBox="0 0 13 13" fill="none" class="text-warm-500 flex-shrink-0" aria-hidden="true">
-              <path d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z" stroke="currentColor" stroke-width="1.3"/>
-              <circle cx="6.5" cy="4.5" r="1.4" fill="currentColor"/>
-            </svg>
-            <span id="zone-label">Zona</span>
-            <svg width="8" height="5" viewBox="0 0 9 5" fill="none" class="trigger-chevron text-warm-400 transition-transform duration-200 flex-shrink-0" aria-hidden="true">
-              <path d="M1 1L4.5 4L8 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-
-          <div
-            id="zone-panel"
-            class="filter-panel hidden absolute top-[calc(100%+8px)] left-0 z-50 w-96 max-w-[calc(100vw-32px)] bg-white border border-warm-200/80 rounded-2xl shadow-[0_8px_32px_-4px_rgba(0,0,0,0.12),0_2px_8px_-2px_rgba(0,0,0,0.06)] overflow-hidden"
-          >
-            <div class="px-3 pt-3 pb-2">
-              <button
-                type="button"
-                id="zone-opt-todo"
-                data-value="__todo_rosario__"
-                class="zone-option w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium text-warm-600 hover:bg-warm-50 hover:text-warm-900 transition-all duration-150 text-left"
-              >
-                <svg width="11" height="11" viewBox="0 0 13 13" fill="none" class="flex-shrink-0 text-flame">
-                  <path d="M6.5 1C4.567 1 3 2.567 3 4.5C3 7.5 6.5 12 6.5 12C6.5 12 10 7.5 10 4.5C10 2.567 8.433 1 6.5 1Z" stroke="currentColor" stroke-width="1.3"/>
-                  <circle cx="6.5" cy="4.5" r="1.4" fill="currentColor"/>
-                </svg>
-                Todo Rosario
-              </button>
-            </div>
-
-            <div class="h-px bg-warm-100 mx-3"></div>
-
-            <div class="flex gap-0.5 px-3 pt-2.5 overflow-x-auto scrollbar-none" role="tablist">
-              {zoneEntries.map(([group], i) => (
-                <button
-                  type="button"
-                  role="tab"
-                  class="zone-tab-btn flex-shrink-0 px-2 py-1 text-[10px] font-semibold rounded-lg transition-all duration-150 whitespace-nowrap"
-                  data-group={group}
-                  aria-selected={i === 0 ? "true" : "false"}
-                >
-                  {group}
-                </button>
-              ))}
-            </div>
-
-            <div class="px-3 pt-2 pb-3">
-              {zoneEntries.map(([group, barrios], i) => (
-                <div
-                  class="zone-barrios-panel flex flex-wrap gap-1"
-                  data-group={group}
-                  style={i !== 0 ? "display:none" : ""}
-                >
-                  {barrios.map((b: string) => (
-                    <button
-                      type="button"
-                      class="zone-option barrio-opt px-2 py-0.5 rounded-md border border-warm-200 text-warm-600 text-[11px] font-medium transition-all duration-150 hover:border-warm-300 hover:text-warm-900 hover:bg-warm-50"
-                      data-value={b}
-                    >
-                      {b}
-                    </button>
-                  ))}
-                </div>
-              ))}
-            </div>
-
-            <div class="border-t border-warm-100 px-3 py-2">
-              <button type="button" id="zone-clear" class="text-[10px] text-warm-400 hover:text-flame transition-colors duration-150 font-medium">
-                Ver todas las zonas
-              </button>
-            </div>
-          </div>
+        <!-- Búsqueda por nombre -->
+        <div class="relative flex-1 min-w-0 max-w-[180px] sm:max-w-xs">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" class="absolute left-2.5 top-1/2 -translate-y-1/2 text-warm-400 pointer-events-none flex-shrink-0" aria-hidden="true">
+            <circle cx="5" cy="5" r="3.5" stroke="currentColor" stroke-width="1.3"/>
+            <path d="M8 8L10.5 10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+          </svg>
+          <input
+            type="search"
+            id="gasista-search"
+            placeholder="Buscar gasista..."
+            autocomplete="off"
+            class="w-full pl-7 pr-2 py-1.5 rounded-xl border border-warm-200/80 bg-warm-50/70 text-[12px] font-medium text-warm-700 placeholder:text-warm-400/70 focus:outline-none focus:border-flame/30 focus:bg-white transition-all duration-200"
+          />
         </div>
 
         <div class="hidden sm:block w-px h-3.5 bg-warm-200/80 flex-shrink-0" aria-hidden="true"></div>
 
-        <div class="relative" id="service-wrapper">
+        <!-- Servicio dropdown -->
+        <div class="relative flex-shrink-0" id="service-wrapper">
           <button
             type="button"
             id="service-trigger"
@@ -145,10 +82,11 @@ const zoneEntries = Object.entries(ZONES);
           </div>
         </div>
 
-        <div class="ml-auto flex items-center gap-2.5">
+        <!-- Contador + Limpiar -->
+        <div class="ml-auto flex items-center gap-2.5 flex-shrink-0">
           <p id="result-count" class="text-[12px] text-warm-700/70">
             <span id="count-number" class="font-semibold text-warm-900/80">{total}</span>
-            <span id="count-label"> profesionales</span>
+            <span id="count-label" class="hidden sm:inline"> profesionales</span>
           </p>
           <button
             id="reset-filters"
@@ -163,6 +101,28 @@ const zoneEntries = Object.entries(ZONES);
         </div>
 
       </div>
+
+      <!-- Fila 2: chips de zona -->
+      <div class="relative">
+        <div class="flex items-center gap-1.5 pb-2.5 overflow-x-auto scrollbar-none">
+          {zoneChips.map((zone) => (
+            <button
+              type="button"
+              class="zone-chip flex-shrink-0 px-3 py-1 rounded-full border border-warm-200/80 bg-warm-50/70 text-[11px] font-semibold text-warm-600 hover:border-warm-300 hover:text-warm-900 transition-all duration-200 whitespace-nowrap"
+              data-zona-chip={zone === 'Todo Rosario' ? '__todo_rosario__' : zone}
+            >
+              {zone}
+            </button>
+          ))}
+        </div>
+        <!-- Fade derecho: indica que hay más chips para deslizar, solo en mobile -->
+        <div
+          class="pointer-events-none absolute right-0 top-0 bottom-2.5 w-10 sm:hidden"
+          style="background: linear-gradient(to left, rgba(255,255,255,0.96) 30%, transparent);"
+          aria-hidden="true"
+        ></div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -176,19 +136,19 @@ const zoneEntries = Object.entries(ZONES);
   .filter-trigger.is-active svg { color: #e07418; }
   .filter-trigger[aria-expanded="true"] .trigger-chevron { transform: rotate(180deg); }
 
-  .zone-tab-btn { color: #a8967e; background: transparent; }
-  .zone-tab-btn:hover { color: #3d322b; background: #f8f5f1; }
-  .zone-tab-btn[aria-selected="true"] { color: #b85c12; background: rgba(224,116,24,0.10); }
-
-  .barrio-opt.selected { background: rgba(224,116,24,0.10); border-color: rgba(224,116,24,0.35); color: #b85c12; }
+  .zone-chip-active {
+    background: rgba(224, 116, 24, 0.10);
+    border-color: rgba(224, 116, 24, 0.35);
+    color: #b85c12;
+  }
 
   .service-option.selected { color: #3d322b; background: #f8f5f1; }
   .service-option.selected .service-check { display: block; }
 
-  #zone-opt-todo.selected { background: rgba(224,116,24,0.08); color: #b85c12; }
-
   .scrollbar-none { scrollbar-width: none; }
   .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  #gasista-search::-webkit-search-cancel-button { display: none; }
 </style>
 
 <script>
@@ -198,134 +158,151 @@ const zoneEntries = Object.entries(ZONES);
     "Noroeste":    ["Fisherton","Belgrano","Azcuénaga","Empalme Granero","Ludueña","Hostal del Sol","Aldea","San Eduardo"],
     "Sur":         ["Saladillo","Tiro Suizo","Tablada","España y Hospitales","Las Heras","Acindar"],
     "Oeste":       ["Bella Vista","Cinco Esquinas","Barrio Godoy","Barrio Alvear","Vía Honda"],
-    "Alrededores": ["Funes","Roldán","Granadero Baigorria","San Lorenzo","Capitán Bermúdez","Fray Luis Beltrán","Puerto Gral. San Martín","Villa Gobernador Gálvez","Pueblo Esther","Arroyo Seco","Alvear","General Lagos"],
+    "Alrededores": ["Funes","Roldán","Granadero Baigorria","San Lorenzo","Capitán Bermúdez","Fray Luis Beltrán","Puerto Gral. San Martín","Villa Gobernador Gálvez","Pueblo Esther","Arroyo Seco","Alvear","General Lagos","Luis Palacio","Ybarlucea"],
   };
 
-  const ROSARIO_ZONES = new Set(Object.values(ZONES_DATA).flat());
   const ALREDEDORES = new Set(ZONES_DATA["Alrededores"]);
+  const GROUP_BARRIOS: Record<string, Set<string>> = {};
+  Object.entries(ZONES_DATA).forEach(([g, bs]) => { GROUP_BARRIOS[g] = new Set(bs); });
 
-  const zoneTrigger   = document.getElementById('zone-trigger') as HTMLButtonElement;
-  const zonePanel     = document.getElementById('zone-panel')!;
-  const zoneLabel     = document.getElementById('zone-label')!;
-  const zoneTabBtns   = document.querySelectorAll<HTMLButtonElement>('.zone-tab-btn');
-  const barriosPanels = document.querySelectorAll<HTMLElement>('.zone-barrios-panel');
-  const barrioOpts    = document.querySelectorAll<HTMLButtonElement>('.barrio-opt');
-  const zoneTodo      = document.getElementById('zone-opt-todo') as HTMLButtonElement;
-  const zoneClear     = document.getElementById('zone-clear') as HTMLButtonElement;
-  const serviceTrigger= document.getElementById('service-trigger') as HTMLButtonElement;
-  const servicePanel  = document.getElementById('service-panel')!;
-  const serviceLabel  = document.getElementById('service-label')!;
-  const serviceOpts   = document.querySelectorAll<HTMLButtonElement>('.service-option');
-  const serviceClear  = document.getElementById('service-clear') as HTMLButtonElement;
-  const resetBtn      = document.getElementById('reset-filters') as HTMLButtonElement;
-  const countNumber   = document.getElementById('count-number')!;
-  const countLabel    = document.getElementById('count-label')!;
-  const noResults     = document.getElementById('no-results');
+  const servicePanel   = document.getElementById('service-panel')!;
+  const serviceTrigger = document.getElementById('service-trigger') as HTMLButtonElement;
+  const serviceLabel   = document.getElementById('service-label')!;
+  const serviceOpts    = document.querySelectorAll<HTMLButtonElement>('.service-option');
+  const serviceClear   = document.getElementById('service-clear') as HTMLButtonElement;
+  const zoneChips      = document.querySelectorAll<HTMLButtonElement>('.zone-chip');
+  const searchInput    = document.getElementById('gasista-search') as HTMLInputElement;
+  const resetBtn       = document.getElementById('reset-filters') as HTMLButtonElement;
+  const countNumber    = document.getElementById('count-number')!;
+  const countLabel     = document.getElementById('count-label')!;
+  const noResults      = document.getElementById('no-results');
 
   let activeZone    = '';
   let activeService = '';
+  let activeSearch  = '';
+  let searchTimer: ReturnType<typeof setTimeout>;
 
-  const closeAll = () => {
-    [zonePanel, servicePanel].forEach(p => p.classList.add('hidden'));
-    [zoneTrigger, serviceTrigger].forEach(t => t.setAttribute('aria-expanded', 'false'));
+  // ── Servicio dropdown ────────────────────────────────────────────────────────
+  const closeService = () => {
+    servicePanel.classList.add('hidden');
+    serviceTrigger.setAttribute('aria-expanded', 'false');
   };
-
-  const togglePanel = (trigger: HTMLButtonElement, panel: HTMLElement) => {
-    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-    closeAll();
-    if (!isOpen) { panel.classList.remove('hidden'); trigger.setAttribute('aria-expanded', 'true'); }
-  };
-
-  zoneTrigger.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(zoneTrigger, zonePanel); });
-  serviceTrigger.addEventListener('click', (e) => { e.stopPropagation(); togglePanel(serviceTrigger, servicePanel); });
+  serviceTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = serviceTrigger.getAttribute('aria-expanded') === 'true';
+    closeService();
+    if (!isOpen) {
+      servicePanel.classList.remove('hidden');
+      serviceTrigger.setAttribute('aria-expanded', 'true');
+    }
+  });
   document.addEventListener('click', (e) => {
-    if (!(e.target as HTMLElement).closest('#zone-wrapper') && !(e.target as HTMLElement).closest('#service-wrapper')) closeAll();
+    if (!(e.target as HTMLElement).closest('#service-wrapper')) closeService();
   });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAll(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeService(); });
 
-  zoneTabBtns.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const g = tab.dataset.group!;
-      zoneTabBtns.forEach(t => t.setAttribute('aria-selected', String(t.dataset.group === g)));
-      barriosPanels.forEach(p => { p.style.display = p.dataset.group === g ? '' : 'none'; });
-    });
-  });
-
+  // ── Helpers ──────────────────────────────────────────────────────────────────
   const updateCount = (n: number) => {
     countNumber.textContent = String(n);
     countLabel.textContent  = n === 1 ? ' profesional' : ' profesionales';
   };
 
   const scrollToGrid = () => {
-    const filterEl = document.getElementById('zone-wrapper')?.closest('.sticky');
+    const filterEl = document.getElementById('filter-bar')?.closest('.sticky') as HTMLElement | null;
     const filterBottom = filterEl ? filterEl.getBoundingClientRect().bottom : 120;
     if (window.scrollY > filterBottom + 100) {
-      const grid = document.querySelector('[data-card]')?.closest('section') ?? document.body;
+      const grid = document.querySelector('[data-card]')?.closest('section') as HTMLElement ?? document.body;
       const offset = (filterEl?.getBoundingClientRect().height ?? 60) + 12;
-      const top = (grid as HTMLElement).getBoundingClientRect().top + window.scrollY - offset;
+      const top = grid.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   };
 
+  // ── Filtrado principal ───────────────────────────────────────────────────────
   const filterCards = () => {
     const cards = document.querySelectorAll<HTMLElement>('[data-card]');
     let visible = 0;
+
     cards.forEach(card => {
       const zones    = card.dataset.zones?.split(',').map(z => z.trim()) ?? [];
       const services = card.dataset.services?.split(',').map(s => s.trim()) ?? [];
+      const name     = card.dataset.name ?? '';
+
       let matchesZone = false;
       if (activeZone === '') {
         matchesZone = true;
       } else if (activeZone === '__todo_rosario__') {
-        matchesZone = zones.some(z => z === 'Todo Rosario' || z === 'Rosario' || ROSARIO_ZONES.has(z));
+        matchesZone = zones.some(z => z === 'Rosario' || z === 'Todo Rosario');
+      } else if (activeZone === 'Alrededores') {
+        matchesZone = zones.some(z => ALREDEDORES.has(z));
       } else {
-        matchesZone = zones.includes(activeZone) || zones.includes('Todo Rosario') || (!ALREDEDORES.has(activeZone) && zones.includes('Rosario'));
+        // Zona de la ciudad: cubre 'Rosario' (todo), el nombre de zona directo, o barrios del grupo
+        const groupSet = GROUP_BARRIOS[activeZone];
+        matchesZone = zones.includes('Rosario') || zones.includes('Todo Rosario')
+          || zones.includes(activeZone)
+          || zones.some(z => groupSet?.has(z));
       }
+
       const matchesService = activeService === '' || services.includes(activeService);
-      const show = matchesZone && matchesService;
+      const matchesSearch  = activeSearch === '' || name.includes(activeSearch);
+
+      const show = matchesZone && matchesService && matchesSearch;
       card.style.display = show ? '' : 'none';
       if (show) visible++;
     });
+
     updateCount(visible);
     scrollToGrid();
-    const hasFilter = activeZone !== '' || activeService !== '';
+    const hasFilter = activeZone !== '' || activeService !== '' || activeSearch !== '';
     resetBtn.classList.toggle('hidden', !hasFilter);
     resetBtn.style.display = hasFilter ? 'inline-flex' : '';
     if (noResults) noResults.classList.toggle('hidden', visible > 0);
     document.dispatchEvent(new CustomEvent('filter-change', { detail: { hasFilter } }));
   };
 
-  const setZone = (value: string, labelText: string) => {
+  // ── Chips de zona ────────────────────────────────────────────────────────────
+  const setZone = (value: string) => {
     activeZone = value;
-    zoneLabel.textContent = value === '' ? 'Zona' : labelText;
-    zoneTrigger.classList.toggle('is-active', value !== '');
-    zoneTodo.classList.toggle('selected', value === '__todo_rosario__');
-    barrioOpts.forEach(b => b.classList.toggle('selected', b.dataset.value === value));
+    zoneChips.forEach(chip => chip.classList.toggle('zone-chip-active', chip.dataset.zonaChip === value));
     filterCards();
-    closeAll();
   };
 
-  const setService = (value: string, labelText: string) => {
+  zoneChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      // Toggle: clic en el activo lo deselecciona
+      setZone(activeZone === chip.dataset.zonaChip! ? '' : chip.dataset.zonaChip!);
+    });
+  });
+
+  // ── Servicio ─────────────────────────────────────────────────────────────────
+  const setService = (value: string) => {
     activeService = value;
-    serviceLabel.textContent = value === '' ? 'Servicio' : labelText;
+    serviceLabel.textContent = value === '' ? 'Servicio' : value;
     serviceTrigger.classList.toggle('is-active', value !== '');
     serviceOpts.forEach(o => o.classList.toggle('selected', o.dataset.value === value));
     filterCards();
-    closeAll();
+    closeService();
   };
 
-  zoneTodo.addEventListener('click', () => setZone('__todo_rosario__', 'Todo Rosario'));
-  barrioOpts.forEach(b => b.addEventListener('click', () => setZone(b.dataset.value!, b.dataset.value!)));
-  zoneClear.addEventListener('click', () => setZone('', 'Zona'));
-
   serviceOpts.forEach(o => o.addEventListener('click', () => {
-    const newVal = activeService === o.dataset.value ? '' : o.dataset.value!;
-    setService(newVal, o.dataset.value!);
+    setService(activeService === o.dataset.value ? '' : o.dataset.value!);
   }));
-  serviceClear.addEventListener('click', () => setService('', 'Servicio'));
+  serviceClear.addEventListener('click', () => setService(''));
 
+  // ── Búsqueda por nombre ──────────────────────────────────────────────────────
+  searchInput.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      activeSearch = searchInput.value.toLowerCase().trim();
+      filterCards();
+    }, 300);
+  });
+
+  // ── Limpiar todo ─────────────────────────────────────────────────────────────
   resetBtn.addEventListener('click', () => {
-    setZone('', 'Zona');
-    setService('', 'Servicio');
+    activeSearch = '';
+    searchInput.value = '';
+    setZone('');
+    setService('');
   });
 </script>
