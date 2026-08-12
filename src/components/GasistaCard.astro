@@ -64,12 +64,23 @@ const jsonLd = {
 
 <div
   class:list={[
-    "group h-full p-[5px] rounded-[1.5rem] transition-[box-shadow,transform] duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform",
+    "group relative h-full p-[5px] rounded-[1.5rem] transition-transform duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
     gasista.featured
-      ? "bg-gradient-to-b from-flame/[0.24] to-flame/[0.08] border border-flame/[0.48] shadow-[0_0_0_1px_rgba(224,116,24,0.10),0_4px_28px_-4px_rgba(224,116,24,0.30)] hover:shadow-[0_0_0_1px_rgba(224,116,24,0.18),0_14px_48px_-8px_rgba(224,116,24,0.40)] hover:-translate-y-0.5"
-      : "bg-gradient-to-b from-warm-100/80 to-warm-50/60 border border-warm-200/80 shadow-[0_1px_8px_-2px_rgba(0,0,0,0.05),0_4px_16px_-8px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_32px_-8px_rgba(0,0,0,0.12)]"
+      ? "bg-gradient-to-b from-flame/[0.24] to-flame/[0.08] border border-flame/[0.48] shadow-[0_0_0_1px_rgba(224,116,24,0.10),0_4px_20px_-4px_rgba(224,116,24,0.25)] hover:-translate-y-0.5"
+      : "bg-gradient-to-b from-warm-100/80 to-warm-50/60 border border-warm-200/80 shadow-[0_1px_8px_-2px_rgba(0,0,0,0.05),0_4px_16px_-8px_rgba(0,0,0,0.07)]"
   ]}
 >
+  <!-- Sombra hover pre-pintada: solo opacity anima (GPU composite puro, sin repaint) -->
+  <div
+    class:list={[
+      "absolute inset-0 rounded-[1.5rem] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]",
+      gasista.featured
+        ? "shadow-[0_0_0_1px_rgba(224,116,24,0.18),0_8px_24px_-4px_rgba(224,116,24,0.32)]"
+        : "shadow-[0_4px_20px_-4px_rgba(0,0,0,0.10)]"
+    ]}
+    style="will-change: opacity;"
+    aria-hidden="true"
+  />
   <article
     class:list={[
       "relative h-full rounded-[calc(1.5rem-5px)] overflow-hidden flex shadow-[inset_0_1px_0_rgba(255,255,255,0.9)]",
@@ -88,7 +99,7 @@ const jsonLd = {
           </span>
         </div>
       )}
-      <a href={profileLink} tabindex="-1" aria-hidden="true" class="block h-full transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105">
+      <a href={profileLink} tabindex="-1" aria-hidden="true" class="block h-full">
         {gasista.photo
           ? <img src={gasista.photo} alt={`Foto de ${gasista.name}`} class="w-full h-full object-cover" />
           : <AvatarPlaceholder name={gasista.name} />
