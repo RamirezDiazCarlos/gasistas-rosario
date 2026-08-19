@@ -847,5 +847,37 @@
     "reviews": 1,
     "featured": false,
     "description": ""
+  },
+  {
+    "id": "41",
+    "slug": "emanuel-berg",
+    "name": "Emanuel Berg",
+    "photo": "",
+    "matricula": "M2-72494",
+    "zones": [
+      "Rosario",
+      "Roldán",
+      "Villa Gobernador Gálvez",
+      "Alvear",
+      "Granadero Baigorria",
+      "Puerto Gral. San Martín",
+      "Villa Amelia"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493415190882",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": "Gasista matriculado especializado en instalaciones, rehabilitación y mantenimiento de redes de gas. Detección de fugas, pruebas de hermeticidad, reparación e instalación de artefactos, habilitaciones, planos y nuevas redes. También realizo trabajos de plomería y cloacas. Atención y urgencias 24 hs."
   }
 ]
