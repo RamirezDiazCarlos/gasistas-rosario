@@ -5,6 +5,37 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Canonicalización — consolidar todo el tráfico en https://gasistasrosario.com.ar (sin www, sin trailing slash)
+[[redirects]]
+  from = "https://www.gasistasrosario.com.ar/*"
+  to = "https://gasistasrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.gasistasrosario.com.ar/*"
+  to = "https://gasistasrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://gasistasrosario.com.ar/*"
+  to = "https://gasistasrosario.com.ar/:splat"
+  status = 301
+  force = true
+
+# Trailing slash → sin trailing slash (cubre todos los slugs con / final indexados)
+[[redirects]]
+  from = "/:slug/"
+  to = "/:slug"
+  status = 301
+
+# URL con extensión .html incorrectamente indexada
+[[redirects]]
+  from = "/daiana-cooreman.html"
+  to = "/daiana-cooreman"
+  status = 301
+
 # Gasistas eliminados — indicar a buscadores que ya no existen (410 Gone)
 [[redirects]]
   from = "/roberto-marcelo-gutierrez"
