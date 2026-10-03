@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Windows
 Thumbs.db
+
+# material de redes sociales (reels, videos) — no forma parte del sitio
+redes-sociales/
