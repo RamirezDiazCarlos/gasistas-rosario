@@ -905,5 +905,29 @@
     "reviews": 1,
     "featured": false,
     "description": "Ofrezco mis servicios de agua, gas y desagüe. Su consulta no molesta."
+  },
+  {
+    "id": "43",
+    "slug": "jose-juarez",
+    "name": "Jose Juarez",
+    "photo": "",
+    "matricula": "M2-29655",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios"
+    ],
+    "phone": "5493415208001",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": true,
+    "description": "Con más de 34 años de experiencia, nos dedicamos a realizar reparaciones e instalaciones con materiales de primera calidad. Confianza, experiencia y calidad en cada proyecto."
   }
 ]
