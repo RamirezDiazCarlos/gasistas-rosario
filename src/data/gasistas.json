@@ -929,5 +929,30 @@
     "reviews": 1,
     "featured": true,
     "description": "Con más de 34 años de experiencia, nos dedicamos a realizar reparaciones e instalaciones con materiales de primera calidad. Confianza, experiencia y calidad en cada proyecto."
+  },
+  {
+    "id": "44",
+    "slug": "german-j-reviglione",
+    "name": "Germán J. Reviglione",
+    "photo": "",
+    "matricula": "M2-72302",
+    "zones": [
+      "Rosario"
+    ],
+    "services": [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+      "Instalación y reparación de artefactos",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes"
+    ],
+    "phone": "5493416533912",
+    "rating": 5.0,
+    "reviews": 1,
+    "featured": false,
+    "description": ""
   }
 ]
