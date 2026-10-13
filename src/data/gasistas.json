@@ -3,6 +3,7 @@
     "id": "7",
     "slug": "anni-quiroz",
     "name": "Anni Quiroz",
+    "gender": "mujer",
     "photo": "",
     "matricula": "M3-72723",
     "zones": [
@@ -18,7 +19,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493416360033",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Trámites: planos, cálculos, habilitaciones y rehabilitaciones de servicio.\nSeguridad: pruebas de hermeticidad y detección de pérdidas.\nTécnica: instalación de ventilaciones reglamentarias y adecuación de ambientes."
@@ -27,6 +28,7 @@
     "id": "8",
     "slug": "ramon-aguirre",
     "name": "Ramon Aguirre",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-40317",
     "zones": [
@@ -42,7 +44,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493415649178",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Responsabilidad en el trabajo."
@@ -51,6 +53,7 @@
     "id": "9",
     "slug": "daiana-cooreman",
     "name": "Daiana Cooreman",
+    "gender": "mujer",
     "photo": "",
     "matricula": "M3-72060",
     "zones": [
@@ -66,7 +69,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493417529827",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Hola! Mi nombre es Daiana, soy gasista matriculada y me dedico a las habilitaciones, rehabilitaciones, armado de expedientes y certificados comerciales y residenciales.\nCuento con un equipo de profesionales que trabajan para brindar la mejor calidad y también realizo trabajos administrativos para terceros."
@@ -75,6 +78,7 @@
     "id": "10",
     "slug": "silvia-viviana-martin",
     "name": "Silvia Viviana Martín",
+    "gender": "mujer",
     "photo": "",
     "matricula": "M3-71195/2",
     "zones": [
@@ -93,7 +97,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493413151977",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalación, reparación y control de cañerías y artefactos. Atiendo en Rosario, Funes, Roldán, Villa Gobernador Gálvez y Alvear."
@@ -102,6 +106,7 @@
     "id": "11",
     "slug": "ramon-fernando-chamorro",
     "name": "Ramón Fernando Chamorro",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-9592",
     "zones": [
@@ -114,7 +119,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493416211039",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Plomería, cloacas y gas. Más de 57 años de experiencia en el rubro."
@@ -123,6 +128,7 @@
     "id": "12",
     "slug": "sergio-gonzalez",
     "name": "Sergio González",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-43237",
     "zones": [
@@ -134,7 +140,7 @@
       "Rehabilitación de suministro"
     ],
     "phone": "5493413354456",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""
@@ -143,6 +149,7 @@
     "id": "13",
     "slug": "juan-martin",
     "name": "Juan Martín",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-49472",
     "zones": [
@@ -155,7 +162,7 @@
       "Urgencias 24hs"
     ],
     "phone": "5493436571107",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Realizo instalaciones y reparaciones de artefactos y rehabilitaciones."
@@ -164,6 +171,7 @@
     "id": "14",
     "slug": "juan-carlos-catini",
     "name": "Juan Carlos Catini",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-18631",
     "zones": [
@@ -179,7 +187,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493413070394",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas. Reparaciones. Rehabilitaciones. Colocación y arreglo de artefactos a gas. Plomería en general."
@@ -188,6 +196,7 @@
     "id": "15",
     "slug": "carlos-fabian-degiorgio-mas",
     "name": "Carlos Fabián Degiorgio Mas",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-40725",
     "zones": [
@@ -201,7 +210,7 @@
       "Certificaciones y Formularios"
     ],
     "phone": "5493413186122",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Me especializo en rehabilitaciones de suministro, obras nuevas epoxi y termofusión (tengo las dos matrículas de los correspondientes sistemas) y reparación e instalación de artefactos a gas. Informes de estados de instalación."
@@ -210,6 +219,7 @@
     "id": "16",
     "slug": "damian-solis",
     "name": "Damián Solís",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-33887",
     "zones": [
@@ -220,7 +230,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493415717279",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Soy gasista con 17 años de experiencia. También hago plomería en general."
@@ -229,6 +239,7 @@
     "id": "17",
     "slug": "edgardo-adrian-gallo",
     "name": "Edgardo Adrian Gallo",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-71496",
     "zones": [
@@ -241,7 +252,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493402673536",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Detección de fugas y pruebas de hermeticidad. Instalación y reparación de artefactos a gas. Urgencias las 24hs. Conexión de agua y plomería general."
@@ -250,6 +261,7 @@
     "id": "18",
     "slug": "dario-obregon",
     "name": "Dario Obregón",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72075",
     "zones": [
@@ -270,7 +282,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493464620133",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Mantenimiento y reparación de calefactores, estufas y calefones. Instalaciones domiciliarias y obra nueva con entrega de proyecto. Habilitaciones municipales y rehabilitaciones por falta de pago. Atiendo Rosario, Roldán, Funes y Pueblo Esther."
@@ -279,6 +291,7 @@
     "id": "19",
     "slug": "jose-augusto-escobar",
     "name": "José Augusto Escobar",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-47091",
     "zones": [
@@ -294,7 +307,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493413119772",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas y rehabilitaciones por corte de suministro. Plomería completa: agua fría y caliente, tanques cisterna, bombas presurizadoras y grifería. Cloacas, desagües pluviales y conexiones en general."
@@ -303,6 +316,7 @@
     "id": "20",
     "slug": "ezequiel-savarino",
     "name": "Ezequiel Savarino",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M1-71944",
     "zones": [
@@ -322,7 +336,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416131234",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "¡Que el frío no te sorprenda! Limpieza y reparación de estufas, calefactores y calefones. Instalaciones nuevas, reconexión de servicios y trámites ante Litoral Gas. Instalaciones cloacales, pluviales, agua fría y caliente. 10% de descuento por pago en efectivo."
@@ -331,6 +345,7 @@
     "id": "21",
     "slug": "hernan-solis",
     "name": "Hernan Solis",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-48685",
     "zones": [
@@ -346,7 +361,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416408349",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas, agua, cloacas y calefacción. Todo tipo de obras domiciliarias y comerciales. Habilitaciones y rehabilitaciones de suministro."
@@ -355,6 +370,7 @@
     "id": "22",
     "slug": "guillermo-coll",
     "name": "Guillermo Coll",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-29624",
     "zones": [
@@ -368,7 +384,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493413684013",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalación y reparación de artefactos a gas. Limpieza y mantenimiento preventivo. Plomería, agua y desagüe. Obras nuevas. Atiendo todo Rosario, Funes y Roldán."
@@ -377,6 +393,7 @@
     "id": "23",
     "slug": "marcos-armoa",
     "name": "Marcos Armoa",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-29671",
     "zones": [
@@ -392,7 +409,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493417536236",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "25 años de experiencia en obra. Instalación y reparación de artefactos a gas. Detección de fugas, rehabilitaciones y urgencias 24hs. Habilitaciones comerciales y certificaciones. Plomería, cloacas y otros trabajos de construcción."
@@ -401,6 +418,7 @@
     "id": "24",
     "slug": "waldemar-michelud",
     "name": "Waldemar Michelud",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72299",
     "zones": [
@@ -418,7 +436,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493413493519",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": true,
     "description": "Detección electrónica de fugas de gas para mayor precisión y seguridad. Rehabilitaciones de suministro, habilitaciones y reparaciones. Instalación y mantenimiento de artefactos. Plomería, cloacas y obras nuevas."
@@ -427,6 +445,7 @@
     "id": "25",
     "slug": "german-russo",
     "name": "Germán Russo",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72066",
     "zones": [
@@ -441,7 +460,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493415311303",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalación y reparación de artefactos a gas. Detección de fugas y rehabilitaciones de suministro. Plomería completa: agua, desagüe, tanques y grifería en general."
@@ -450,6 +469,7 @@
     "id": "26",
     "slug": "pablo-luciano-reynoso",
     "name": "Pablo Luciano Reynoso",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-36154",
     "zones": [
@@ -467,7 +487,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493412624771",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado y plomero con más de 12 años de experiencia. Trabajo con garantía, confianza y calidad."
@@ -476,6 +496,7 @@
     "id": "27",
     "slug": "christian-pusillico",
     "name": "Christian Pusillico",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-29604",
     "zones": [
@@ -494,7 +515,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416176796",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Instalaciones de gas domiciliarias, comerciales y de obras. Planos, trámites, habilitaciones, regularizaciones y certificados. Todo lo relacionado con gas natural."
@@ -503,6 +524,7 @@
     "id": "28",
     "slug": "marcelo-adrian-fernandez",
     "name": "Marcelo Adrián Fernández",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-54420",
     "zones": [
@@ -519,7 +541,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416199102",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Plomero y gasista matriculado con 12 años de experiencia."
@@ -528,6 +550,7 @@
     "id": "29",
     "slug": "pablo-alegre",
     "name": "Pablo Alegre",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-40910",
     "zones": [
@@ -545,7 +568,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416132428",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Rehabilitaciones de suministro, proyectos y trámites ante Litoral Gas. Instalación y reparación de artefactos, detección de fugas y plomería en general."
@@ -554,6 +577,7 @@
     "id": "30",
     "slug": "jose-omar-martinez",
     "name": "José Omar Martínez",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72023",
     "zones": [
@@ -572,7 +596,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416694040",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado y plomero. Atención todos los días, las 24 horas. Urgencias, instalaciones, reparaciones, rehabilitaciones y calderas."
@@ -581,6 +605,7 @@
     "id": "31",
     "slug": "ruben-rosero",
     "name": "Ruben Rosero",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-41053",
     "zones": [
@@ -600,7 +625,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416101281",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": true,
     "description": "Gasista matriculado. Instalación, reparación y mantenimiento de artefactos a gas y calderas. Rehabilitaciones, certificaciones y plomería. Atiendo Rosario, Funes y Roldán."
@@ -609,6 +634,7 @@
     "id": "32",
     "slug": "raul-gimenez",
     "name": "Raúl Giménez",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-10337",
     "zones": [
@@ -626,7 +652,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493415479290",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado. Trabajos de agua, cloacas y gas. Instalaciones domiciliarias y comerciales. Reparaciones. Más de 27 años en el oficio y siempre con el mismo número de celular, avalan nuestros trabajos."
@@ -635,6 +661,7 @@
     "id": "33",
     "slug": "fabio-alberto-mansilla",
     "name": "Fabio Alberto Mansilla",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-45505",
     "zones": [
@@ -652,7 +679,7 @@
       "Plomería y cloacas"
     ],
     "phone": "5493416044088",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado. Instalación y reparación de artefactos, calderas y calefones. Rehabilitaciones, habilitaciones y certificaciones. Plomería en general."
@@ -661,6 +688,7 @@
     "id": "34",
     "slug": "bruno-di-paolo",
     "name": "Bruno Di Paolo",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M1-23300",
     "zones": [
@@ -676,7 +704,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493415476048",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Amplia experiencia comprobada. Referencias disponibles. Matriculado en combustión."
@@ -685,6 +713,7 @@
     "id": "35",
     "slug": "daniel-e-pucheta",
     "name": "Daniel E. Pucheta",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-72776",
     "zones": [
@@ -701,7 +730,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493413762379",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""
@@ -710,6 +739,7 @@
     "id": "36",
     "slug": "silvana-humeres",
     "name": "Silvana Humeres",
+    "gender": "mujer",
     "photo": "",
     "matricula": "M2-72064",
     "zones": [
@@ -726,7 +756,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416020715",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Contamos con experiencia y un buen equipo de trabajo."
@@ -735,6 +765,7 @@
     "id": "37",
     "slug": "abril-cejas",
     "name": "Abril Cejas",
+    "gender": "mujer",
     "photo": "",
     "matricula": "M2-72473",
     "zones": [
@@ -749,7 +780,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493412819556",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""
@@ -758,6 +789,7 @@
     "id": "38",
     "slug": "leonardo-galarza",
     "name": "Leonardo Galarza",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M3-72433",
     "zones": [
@@ -775,7 +807,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493413612426",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""
@@ -784,6 +816,7 @@
     "id": "39",
     "slug": "adrian-cannavina",
     "name": "Adrián Cannavina",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72916",
     "zones": [
@@ -804,7 +837,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493416482275",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "10 años de experiencia en gas y plomería. Trabajamos en equipo: dos gasistas matriculados con personal de apoyo para responder rápido y bien. Responsabilidad garantizada en cada trabajo — y mejoramos cualquier presupuesto."
@@ -813,6 +846,7 @@
     "id": "40",
     "slug": "walter-e-barrera",
     "name": "Walter E. Barrera",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72907",
     "zones": [
@@ -843,7 +877,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493413702533",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""
@@ -852,6 +886,7 @@
     "id": "41",
     "slug": "emanuel-berg",
     "name": "Emanuel Berg",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72494",
     "zones": [
@@ -875,7 +910,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493415190882",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Gasista matriculado especializado en instalaciones, rehabilitación y mantenimiento de redes de gas. Detección de fugas, pruebas de hermeticidad, reparación e instalación de artefactos, habilitaciones, planos y nuevas redes. También realizo trabajos de plomería y cloacas. Atención y urgencias 24 hs."
@@ -884,6 +919,7 @@
     "id": "42",
     "slug": "flavio-hernan-gomez",
     "name": "Flavio Hernán Gómez",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-67860",
     "zones": [
@@ -901,7 +937,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493412427341",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": "Ofrezco mis servicios de agua, gas y desagüe. Su consulta no molesta."
@@ -910,6 +946,7 @@
     "id": "43",
     "slug": "jose-juarez",
     "name": "Jose Juarez",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-29655",
     "zones": [
@@ -925,7 +962,7 @@
       "Habilitaciones comerciales y consorcios"
     ],
     "phone": "5493415208001",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": true,
     "description": "Con más de 34 años de experiencia, nos dedicamos a realizar reparaciones e instalaciones con materiales de primera calidad. Confianza, experiencia y calidad en cada proyecto."
@@ -934,6 +971,7 @@
     "id": "44",
     "slug": "german-j-reviglione",
     "name": "Germán J. Reviglione",
+    "gender": "hombre",
     "photo": "",
     "matricula": "M2-72302",
     "zones": [
@@ -950,7 +988,7 @@
       "Planos, cálculos y nuevas redes"
     ],
     "phone": "5493416533912",
-    "rating": 5.0,
+    "rating": 5,
     "reviews": 1,
     "featured": false,
     "description": ""

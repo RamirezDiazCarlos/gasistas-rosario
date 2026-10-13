@@ -3,6 +3,7 @@ interface Gasista {
   id: string;
   slug: string;
   name: string;
+  gender?: 'hombre' | 'mujer';
   photo: string;
   matricula: string;
   zones: string[];
@@ -102,7 +103,7 @@ const jsonLd = {
       <a href={profileLink} tabindex="-1" aria-hidden="true" class="block h-full">
         {gasista.photo
           ? <img src={gasista.photo} alt={`Foto de ${gasista.name}`} class="w-full h-full object-cover" />
-          : <AvatarPlaceholder name={gasista.name} />
+          : <AvatarPlaceholder name={gasista.name} gender={gasista.gender} />
         }
       </a>
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black/[0.04] pointer-events-none"></div>
