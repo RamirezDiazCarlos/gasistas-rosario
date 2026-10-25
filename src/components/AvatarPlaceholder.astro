@@ -1,7 +1,7 @@
 ---
 interface Props {
   name: string;
-  gender?: 'hombre' | 'mujer';
+  gender?: string;
 }
 const { name, gender = 'hombre' } = Astro.props;
 const src = gender === 'mujer' ? '/gasistaM.webp' : '/gasistaH.webp';
