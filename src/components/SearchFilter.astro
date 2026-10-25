@@ -10,7 +10,40 @@ const ZONES: Record<string, string[]> = {
   "Alrededores": ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "Capitán Bermúdez", "Fray Luis Beltrán", "Puerto Gral. San Martín", "Villa Gobernador Gálvez", "Pueblo Esther", "Arroyo Seco", "Alvear", "General Lagos", "Luis Palacio", "Ybarlucea"],
 };
 
-const allServices = [...new Set(gasistas.flatMap((g: any) => g.services))].sort((a: any, b: any) => a.localeCompare(b, 'es'));
+const usedServices = new Set(gasistas.flatMap((g: any) => g.services));
+
+// Mismo agrupamiento que ListYourself.astro — el filtro de cara al vecino usa
+// la misma taxonomía que el formulario de alta, en vez de una lista plana.
+const SERVICE_GROUPS: { label: string; items: string[] }[] = [
+  {
+    label: "Urgencias y Seguridad",
+    items: [
+      "Detección de fugas y hermeticidad",
+      "Rehabilitación de suministro",
+      "Urgencias 24hs",
+    ],
+  },
+  {
+    label: "Instalaciones y Service",
+    items: [
+      "Instalación y reparación de artefactos",
+      "Reparación de calderas",
+      "Limpieza y mantenimiento preventivo",
+      "Plomería y cloacas",
+    ],
+  },
+  {
+    label: "Trámites y Obras",
+    items: [
+      "Certificaciones y Formularios",
+      "Planos, cálculos y nuevas redes",
+      "Habilitaciones comerciales y consorcios",
+    ],
+  },
+]
+  .map(g => ({ label: g.label, items: g.items.filter(s => usedServices.has(s)) }))
+  .filter(g => g.items.length > 0);
+
 const total = gasistas.length;
 const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
 ---
@@ -32,6 +65,7 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
             type="search"
             id="gasista-search"
             placeholder="Buscar gasista..."
+            aria-label="Buscar gasista por nombre"
             autocomplete="off"
             class="w-full pl-7 pr-2 py-1.5 rounded-xl border border-warm-200/80 bg-warm-50/70 text-[12px] font-medium text-warm-700 placeholder:text-warm-400/70 focus:outline-none focus:border-flame/30 focus:bg-white transition-all duration-200"
           />
@@ -62,17 +96,25 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
             id="service-panel"
             class="filter-panel hidden absolute top-[calc(100%+8px)] left-0 z-50 w-72 max-w-[calc(100vw-32px)] bg-white border border-warm-200/80 rounded-2xl shadow-[0_8px_32px_-4px_rgba(0,0,0,0.12),0_2px_8px_-2px_rgba(0,0,0,0.06)] py-2 overflow-hidden"
           >
-            {allServices.map((s: any) => (
-              <button
-                type="button"
-                class="service-option w-full flex items-center justify-between px-4 py-1.5 text-xs font-medium text-warm-600 hover:bg-warm-50 hover:text-warm-900 transition-all duration-150 text-left"
-                data-value={s}
-              >
-                {s}
-                <svg class="service-check hidden w-3 h-3 text-flame flex-shrink-0" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
+            {SERVICE_GROUPS.map((group, gi) => (
+              <div class:list={["pt-1", gi > 0 && "mt-1 border-t border-warm-100"]}>
+                <p class="px-4 pt-2 pb-1 text-[10px] font-semibold text-flame/70 uppercase tracking-[0.18em]">
+                  {group.label}
+                </p>
+                {group.items.map((s) => (
+                  <button
+                    type="button"
+                    class="service-option w-full flex items-center justify-between px-4 py-1.5 text-xs font-medium text-warm-600 hover:bg-warm-50 hover:text-warm-900 transition-all duration-150 text-left"
+                    data-value={s}
+                    aria-pressed="false"
+                  >
+                    {s}
+                    <svg class="service-check hidden w-3 h-3 text-flame flex-shrink-0" viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6L5 9L10 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                ))}
+              </div>
             ))}
             <div class="border-t border-warm-100 mt-1 pt-1 px-2">
               <button type="button" id="service-clear" class="w-full text-left text-[10px] text-warm-400 hover:text-flame transition-colors duration-150 font-medium px-2 py-1">
@@ -110,6 +152,7 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
               type="button"
               class="zone-chip flex-shrink-0 px-3 py-1 rounded-full border border-warm-200/80 bg-warm-50/70 text-[11px] font-semibold text-warm-600 hover:border-warm-300 hover:text-warm-900 transition-all duration-200 whitespace-nowrap"
               data-zona-chip={zone === 'Todo Rosario' ? '__todo_rosario__' : zone}
+              aria-pressed="false"
             >
               {zone}
             </button>
@@ -263,7 +306,11 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
   // ── Chips de zona ────────────────────────────────────────────────────────────
   const setZone = (value: string) => {
     activeZone = value;
-    zoneChips.forEach(chip => chip.classList.toggle('zone-chip-active', chip.dataset.zonaChip === value));
+    zoneChips.forEach(chip => {
+      const active = chip.dataset.zonaChip === value;
+      chip.classList.toggle('zone-chip-active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    });
     filterCards();
   };
 
@@ -279,7 +326,11 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
     activeService = value;
     serviceLabel.textContent = value === '' ? 'Servicio' : value;
     serviceTrigger.classList.toggle('is-active', value !== '');
-    serviceOpts.forEach(o => o.classList.toggle('selected', o.dataset.value === value));
+    serviceOpts.forEach(o => {
+      const active = o.dataset.value === value;
+      o.classList.toggle('selected', active);
+      o.setAttribute('aria-pressed', String(active));
+    });
     filterCards();
     closeService();
   };
