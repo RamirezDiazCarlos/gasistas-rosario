@@ -655,6 +655,13 @@ const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "
 
   const isValidPhone = (value: string) => /^\+?[\d\s()-]{8,20}$/.test(value) && /\d{8,}/.test(value.replace(/\D/g, ''));
 
+  // Marca el campo en rojo apenas se sale de él, sin esperar al submit.
+  const phoneInput = document.getElementById("f-phone") as HTMLInputElement;
+  phoneInput.addEventListener("blur", () => {
+    const value = phoneInput.value.trim();
+    if (value && !isValidPhone(value)) markInvalid(phoneInput);
+  });
+
   const validate = (): boolean => {
     let valid = true;
     const name = document.getElementById("f-name") as HTMLInputElement;
