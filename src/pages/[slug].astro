@@ -484,29 +484,31 @@ const jsonLd = {
 </Layout>
 
 <script>
-  const stickyBar = document.getElementById('wa-sticky');
-  if (stickyBar) {
-    let sidebarVisible = false;
-    let footerVisible = false;
+  document.addEventListener('astro:page-load', () => {
+    const stickyBar = document.getElementById('wa-sticky');
+    if (stickyBar) {
+      let sidebarVisible = false;
+      let footerVisible = false;
 
-    const update = () => {
-      const hide = sidebarVisible || footerVisible;
-      stickyBar.style.opacity = hide ? '0' : '1';
-      (stickyBar as HTMLElement).style.pointerEvents = hide ? 'none' : 'auto';
-    };
+      const update = () => {
+        const hide = sidebarVisible || footerVisible;
+        stickyBar.style.opacity = hide ? '0' : '1';
+        (stickyBar as HTMLElement).style.pointerEvents = hide ? 'none' : 'auto';
+      };
 
-    const sidebarObserver = new IntersectionObserver(
-      ([entry]) => { sidebarVisible = entry.isIntersecting; update(); },
-      { threshold: 0.1 }
-    );
-    const footerObserver = new IntersectionObserver(
-      ([entry]) => { footerVisible = entry.isIntersecting; update(); },
-      { threshold: 0.01 }
-    );
+      const sidebarObserver = new IntersectionObserver(
+        ([entry]) => { sidebarVisible = entry.isIntersecting; update(); },
+        { threshold: 0.1 }
+      );
+      const footerObserver = new IntersectionObserver(
+        ([entry]) => { footerVisible = entry.isIntersecting; update(); },
+        { threshold: 0.01 }
+      );
 
-    const sidebar = document.querySelector('aside');
-    const footer = document.querySelector('footer');
-    if (sidebar) sidebarObserver.observe(sidebar);
-    if (footer) footerObserver.observe(footer);
-  }
+      const sidebar = document.querySelector('aside');
+      const footer = document.querySelector('footer');
+      if (sidebar) sidebarObserver.observe(sidebar);
+      if (footer) footerObserver.observe(footer);
+    }
+  });
 </script>

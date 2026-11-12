@@ -493,6 +493,9 @@ const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "
 </style>
 
 <script>
+  document.addEventListener('astro:page-load', () => {
+  if (!document.getElementById('listing-form')) return; // esta página no tiene el formulario
+
   const btnTodo      = document.getElementById("btn-todo-rosario") as HTMLButtonElement;
   const zoneChips    = document.querySelectorAll<HTMLButtonElement>(".lf-zone-chip");
   const alrPills     = document.querySelectorAll<HTMLButtonElement>(".alr-pill");
@@ -650,6 +653,8 @@ const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "
     el.addEventListener("change", () => el.classList.remove("!border-red-500/60"), { once: true });
   };
 
+  const isValidPhone = (value: string) => /^\+?[\d\s()-]{8,20}$/.test(value) && /\d{8,}/.test(value.replace(/\D/g, ''));
+
   const validate = (): boolean => {
     let valid = true;
     const name = document.getElementById("f-name") as HTMLInputElement;
@@ -658,9 +663,14 @@ const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "
     const matricula = document.getElementById("f-matricula") as HTMLInputElement;
     const categoria = form.querySelector<HTMLInputElement>('input[name="categoria-matricula"]:checked');
 
-    [name, phone, email, matricula].forEach(f => {
+    [name, email, matricula].forEach(f => {
       if (!f.value.trim()) { markInvalid(f); valid = false; }
     });
+
+    if (!phone.value.trim() || !isValidPhone(phone.value.trim())) {
+      markInvalid(phone);
+      valid = false;
+    }
 
     if (!categoria) {
       const catContainer = form.querySelector('.flex.gap-2') as HTMLElement;
@@ -720,5 +730,6 @@ const ALREDEDORES = ["Funes", "Roldán", "Granadero Baigorria", "San Lorenzo", "
       submitBtn.disabled = false;
       submitBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8L6 12L14 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Enviar solicitud`;
     }
+  });
   });
 </script>

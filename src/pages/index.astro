@@ -147,16 +147,21 @@ const itemListSchema = {
 </style>
 
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
-  );
+  document.addEventListener('astro:page-load', () => {
+    const targets = document.querySelectorAll('.scroll-reveal, .stagger-children');
+    if (targets.length === 0) return;
 
-  document.querySelectorAll('.scroll-reveal, .stagger-children').forEach(el => observer.observe(el));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+    );
+
+    targets.forEach(el => observer.observe(el));
+  });
 </script>

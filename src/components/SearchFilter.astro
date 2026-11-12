@@ -195,6 +195,11 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
 </style>
 
 <script>
+  // Re-inicializa en cada carga (incluida la primera) para seguir funcionando
+  // con las navegaciones suaves de ClientRouter, que no recargan la página.
+  document.addEventListener('astro:page-load', () => {
+  if (!document.getElementById('service-trigger')) return; // esta página no tiene el filtro (p. ej. un perfil)
+
   const ZONES_DATA: Record<string, string[]> = {
     "Centro":      ["Centro","Pichincha","Abasto","Echesortu","Barrio Martín","República de la Sexta","Lourdes","Terminal / Agote"],
     "Norte":       ["Alberdi","Arroyito","Refinería","Sarmiento","La Florida","Parque Field","Rucci","Lomas de Alberdi"],
@@ -355,5 +360,6 @@ const zoneChips = ['Todo Rosario', ...Object.keys(ZONES)];
     searchInput.value = '';
     setZone('');
     setService('');
+  });
   });
 </script>

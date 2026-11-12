@@ -82,12 +82,17 @@ const firstBatchCount = Math.min(BATCH_SIZE, hiddenCount);
 </section>
 
 <script>
+  // Re-inicializa en cada carga (incluida la primera) para seguir funcionando
+  // con las navegaciones suaves de ClientRouter, que no recargan la página.
+  document.addEventListener('astro:page-load', () => {
   const INITIAL_LIMIT = 6;
   const BATCH_SIZE = 6;
   let shown = INITIAL_LIMIT;
   let filterOverflowCards: HTMLElement[] = [];
 
   const allCards = Array.from(document.querySelectorAll<HTMLElement>('[data-card]'));
+  if (allCards.length === 0) return;
+
   const showMoreBtn = document.getElementById('show-more-btn') as HTMLButtonElement | null;
   const showMoreWrapper = document.getElementById('show-more-wrapper');
   const showMoreCount = document.getElementById('show-more-count');
@@ -156,6 +161,7 @@ const firstBatchCount = Math.min(BATCH_SIZE, hiddenCount);
       applyVisibility();
       updateShowMoreBtn();
     }
+  });
   });
 </script>
 
